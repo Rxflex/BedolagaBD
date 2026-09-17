@@ -1,0 +1,34 @@
+name: Утечка данных или требование об удалении
+description: Секрет, персональные данные или просьба убрать свои сообщения
+title: "[приватность] "
+labels: [приватность]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Если находка сама содержит секрет — лучше сообщить приватно:
+        вкладка **Security** → *Report a vulnerability*. Здесь достаточно указать место.
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Что нашли
+      options:
+        - Секрет (токен, ключ, пароль)
+        - Персональные данные (имя, телефон, адрес)
+        - Чужая инфраструктура (открытая панель, нода)
+        - Прошу удалить мои сообщения или ник
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Где
+      description: Файл и строка, либо id пруфа рядом
+      placeholder: docs/01-панели/env.md:121
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Детали
+      description: Что именно нужно убрать. Сам секрет вставлять не нужно.

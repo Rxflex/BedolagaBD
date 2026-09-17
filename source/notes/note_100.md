@@ -1,9 +1,9 @@
 # chunk_100 (id 685367..700271, 14-16.06.2026)
 
 ## Конфиги Xray (дословно из чанка)
-- Ру-мост с балансировкой на несколько зарубежных нод: routing rules на geoip:private -> BLOCK, bittorrent -> BLOCK, domain mradx.net -> BLOCK, geosite:category-ru -> DIRECT, inboundTag (список ру-инбаундов RUNSK_VLESS_INBOUND, RUNSK_Trojan_Inbound, RUMSK1..4, RUSPB..) -> balancerTag «Balancer»; balancers: selector PROXY, strategy leastLoad, settings maxRTT 1s, expected 2, baselines 1s, fallbackTag PROXY_FIN1_Trojan_Outbound [id=685741|Руслан Иванов|14.06](https://t.me/c/2941121338/685741). Архитектура: несколько ру-серверов, каждый балансирует на несколько зарубежных; на клиентах — своя балансировка между ру-серверами; можно оставить один ру-инбаунд в inboundTag — балансировка с одного ру на все зарубежные [id=685744|Viktor|14.06, id=685749, id=685750](https://t.me/c/2941121338/685744)
-- Полный конфиг ру-ноды с балансировкой на 2 EU ноды: inbound RU_IN (vless, port 443, reality, dest ads.x5.ru:443, serverNames ads.x5.ru, fingerprint firefox, sniffing routeOnly http/tls/quic); outbounds EU_OUT_1/EU_OUT_2 (vless xtls-rprx-vision, reality, serverName www.amazon.com, fingerprint firefox), RU_DIRECT (freedom), RU_BLOCK (blackhole); routing: bittorrent->BLOCK, geoip:private->BLOCK, geoip:ru->RU_DIRECT, geosite:category-ru->RU_DIRECT, RU_IN->balancerTag EU_BALANCER; balancers: selector EU_OUT, strategy leastPing; domainStrategy IPIfNonMatch; policy connIdle 120, handshake 4, uplinkOnly 1, downlinkOnly 2, stats on; observatory probeUrl https://www.google.com/generate_204, probeInterval 30s, subjectSelector EU_OUT, enableConcurrency true [id=699075|Black Konda|16.06](https://t.me/c/2941121338/699075)
-- Проверка IP на блокировки зарубежными сервисами: bash <(curl -Ls IP.Check.Place) -l en и IPQuality: bash <(curl -Ls https://Check.Place) -EI [id=698860|Руслан Иванов|16.06](https://t.me/c/2941121338/698860)
+- Ру-мост с балансировкой на несколько зарубежных нод: routing rules на geoip:private -> BLOCK, bittorrent -> BLOCK, domain mradx.net -> BLOCK, geosite:category-ru -> DIRECT, inboundTag (список ру-инбаундов RUNSK_VLESS_INBOUND, RUNSK_Trojan_Inbound, RUMSK1..4, RUSPB..) -> balancerTag «Balancer»; balancers: selector PROXY, strategy leastLoad, settings maxRTT 1s, expected 2, baselines 1s, fallbackTag PROXY_FIN1_Trojan_Outbound [id=685741|Руслан И.|14.06](https://t.me/c/2941121338/685741). Архитектура: несколько ру-серверов, каждый балансирует на несколько зарубежных; на клиентах — своя балансировка между ру-серверами; можно оставить один ру-инбаунд в inboundTag — балансировка с одного ру на все зарубежные [id=685744|Viktor|14.06, id=685749, id=685750](https://t.me/c/2941121338/685744)
+- Полный конфиг ру-ноды с балансировкой на 2 EU ноды: inbound RU_IN (vless, port 443, reality, dest ads.x5.ru:443, serverNames ads.x5.ru, fingerprint firefox, sniffing routeOnly http/tls/quic); outbounds EU_OUT_1/EU_OUT_2 (vless xtls-rprx-vision, reality, serverName www.amazon.com, fingerprint firefox), RU_DIRECT (freedom), RU_BLOCK (blackhole); routing: bittorrent->BLOCK, geoip:private->BLOCK, geoip:ru->RU_DIRECT, geosite:category-ru->RU_DIRECT, RU_IN->balancerTag EU_BALANCER; balancers: selector EU_OUT, strategy leastPing; domainStrategy IPIfNonMatch; policy connIdle 120, handshake 4, uplinkOnly 1, downlinkOnly 2, stats on; observatory probeUrl https://www.google.com/generate_204, probeInterval 30s, subjectSelector EU_OUT, enableConcurrency true [id=699075|Black K.|16.06](https://t.me/c/2941121338/699075)
+- Проверка IP на блокировки зарубежными сервисами: bash <(curl -Ls IP.Check.Place) -l en и IPQuality: bash <(curl -Ls https://Check.Place) -EI [id=698860|Руслан И.|16.06](https://t.me/c/2941121338/698860)
 
 ## Xray-ядро / клиенты / INCY
 - INCY содержит ласт ядро Xray на последнем коммите; в XHTTP изменены значения (см. коммит e10347bf01f28bca118002963ee29bbcf529cb25 и PR #6258 XTLS/Xray-core) — старые XHTTP+CDN конфиги могут не работать; INCY поддерживает и новые, и старые поля для обратной совместимости; в Happ ядро старое, поэтому там работает [id=697609|INCY DVP (WORKING)|15.06](https://t.me/c/2941121338/697609)
@@ -17,11 +17,11 @@
 
 ## Remnawave / Bedolaga баги и фичи
 - Баг триала: кнопка «Тестовая подписка» (MENU_TRIAL) показывается при отключённом триале (TRIAL_DURATION_DAYS=0); в app/keyboards/inline.py условие show_trial = not has_had_paid_subscription and not has_active_subscription — не проверяет TRIAL_DURATION_DAYS/TRIAL_DISABLED_FOR; миниапп (app/webapi/routes/miniapp.py) проверяет корректно; фикс: добавить and settings.TRIAL_DURATION_DAYS > 0 and settings.TRIAL_DISABLED_FOR != 'all' и проверку в show_trial_offer/activate_trial; версия 3.60.0 [id=689723|Godzz godzilla|14.06](https://t.me/c/2941121338/689723)
-- Баг объединения аккаунтов (Bot 3.60.0 / Cabinet 1.57.0): GET/POST /cabinet/auth/merge/{merge_token} требует авторизацию, но маршрут /cabinet/auth/merge/ в массиве AUTH_ENDPOINTS кабинета — Axios не отправляет Bearer-токен, preview получает 401; фикс: убрать '/cabinet/auth/merge/' из AUTH_ENDPOINTS в bedolaga-cabinet/src/api/client.ts и пересобрать [id=694830|Константин Костин|15.06](https://t.me/c/2941121338/694830)
+- Баг объединения аккаунтов (Bot 3.60.0 / Cabinet 1.57.0): GET/POST /cabinet/auth/merge/{merge_token} требует авторизацию, но маршрут /cabinet/auth/merge/ в массиве AUTH_ENDPOINTS кабинета — Axios не отправляет Bearer-токен, preview получает 401; фикс: убрать '/cabinet/auth/merge/' из AUTH_ENDPOINTS в bedolaga-cabinet/src/api/client.ts и пересобрать [id=694830|Константин К.|15.06](https://t.me/c/2941121338/694830)
 - Баг МультиТарифа: подписка до включения МультиТарифа + докупленная вторая (потом удалённая) => основная подписка отображается истёкшей, в панели работает, синхронизация не работает [id=698864|Дима|16.06](https://t.me/c/2941121338/698864)
 - Реферальный бонус не приходит после пополнения [id=696752|X7|15.06](https://t.me/c/2941121338/696752)
 - Автопродление у новых пользователей выключено несмотря на включённую настройку (3.60.0) [id=687221|Серёжа|14.06](https://t.me/c/2941121338/687221)
-- Telegram Stars: ошибка PROVIDER_ACCOUNT_INVALID — provider_token присутствует в вызовах create_invoice_link/send_invoice для Stars (app/external/telegram_stars.py, app/services/payment_service.py, app/handlers/subscription/purchase.py, app/handlers/simple_subscription.py, app/cabinet/routes/balance.py, app/cabinet/routes/wheel.py) — надо удалить provider_token из инвойсов Stars [id=686599|Vadim Kulikov|14.06](https://t.me/c/2941121338/686599)
+- Telegram Stars: ошибка PROVIDER_ACCOUNT_INVALID — provider_token присутствует в вызовах create_invoice_link/send_invoice для Stars (app/external/telegram_stars.py, app/services/payment_service.py, app/handlers/subscription/purchase.py, app/handlers/simple_subscription.py, app/cabinet/routes/balance.py, app/cabinet/routes/wheel.py) — надо удалить provider_token из инвойсов Stars [id=686599|Vadim K.|14.06](https://t.me/c/2941121338/686599)
 - Провайдер триала: подписка, оформленная до изменения тарифов, сохраняет старые условия [id=684246|Гусь #NodaVPN|14.06](https://t.me/c/2941121338/684246); отдельный тариф под триал: сделать отдельный тариф и отключить его для покупки — будет только в триал; триалка применяется только для новых юзеров при переключении [id=690598, id=690603, id=698831|Egor|16.06, id=698832](https://t.me/c/2941121338/690598)
 - Бот перестал выдавать подписки: пополнения есть, но после покупки ссылка не генерится (висит) [id=700048|kanz1t|16.06](https://t.me/c/2941121338/700048)
 - Перенос бедолаги на новый домен: менять домен во всех .env (бота и панели), в DNS, Caddyfile; ошибка «ошибка вебхука» при отдаче 200 — вебхуки не настроены [id=691286..691309, id=698150|Frist|15.06](https://t.me/c/2941121338/691286)
@@ -36,7 +36,7 @@
 - Мониторинг клиентов: надстройка https://github.com/syvlech/remnawave-limiter [id=698072|bypara|15.06](https://t.me/c/2941121338/698072)
 
 ## Мониторинг
-- Xray Checker (https://github.com/kutovoys/xray-checker, xray-checker.kutovoy.dev) + Uptime Kuma: чекер сканит конфиги из подписки по API, Kuma собирает OK/FAILED; умеет Download-тесты до 10 ГБ (proof.ovh.net/files); НЕ поддерживает hysteria2, плохо работает с трояном, проект не актуализирован 3 месяца; по пингу врёт — Kuma принимает только OK/FAILED, правдивые пинги — экспорт в Prometheus [id=685766|Руслан Иванов|14.06](https://t.me/c/2941121338/685766)
+- Xray Checker (https://github.com/kutovoys/xray-checker, xray-checker.kutovoy.dev) + Uptime Kuma: чекер сканит конфиги из подписки по API, Kuma собирает OK/FAILED; умеет Download-тесты до 10 ГБ (proof.ovh.net/files); НЕ поддерживает hysteria2, плохо работает с трояном, проект не актуализирован 3 месяца; по пингу врёт — Kuma принимает только OK/FAILED, правдивые пинги — экспорт в Prometheus [id=685766|Руслан И.|14.06](https://t.me/c/2941121338/685766)
 - Beszel — простой мониторинг с нужными метриками [id=699306, id=699307|Сергей|16.06](https://t.me/c/2941121338/699306)
 - Монитор свободных серверов hiphosting: https://t.me/hiphosting_monitor_bot (для hip.hosting) [id=699083|Александр|16.06](https://t.me/c/2941121338/699083)
 
@@ -45,7 +45,7 @@
 - С доступом к панели Remnawave можно: сделать безлимитный ключ себе и поднять впн для села, выкачивать клиентов, раскурить всё [id=691102..691124](https://t.me/c/2941121338/691102)
 
 ## Happ / клиенты
-- Happ: скрытие серверов больше нельзя (фейк гео); app-management: https://www.happ.su/main/dev-docs/app-management; первые 100 устройств бесплатно, дальше ~1000$ [id=689343, id=689344|saveks|14.06, id=696951..696953|Frist|15.06, id=696953|Руслан Иванов|15.06](https://t.me/c/2941121338/689343)
+- Happ: скрытие серверов больше нельзя (фейк гео); app-management: https://www.happ.su/main/dev-docs/app-management; первые 100 устройств бесплатно, дальше ~1000$ [id=689343, id=689344|saveks|14.06, id=696951..696953|Frist|15.06, id=696953|Руслан И.|15.06](https://t.me/c/2941121338/689343)
 - FlClashX — не передаёт хвид [id=689684, id=689685|Сергей|14.06](https://t.me/c/2941121338/689684)
 
 ## CDN-обход (схемы)
@@ -83,12 +83,12 @@
 - Мост: ру нода -> финская нода, роутинг напрямую для отдельных сайтов (выходной IP ру ноды, нужен клиентский IP); та же «балансировка» у otherhost может быть [id=689594|Поддержка RoxVPN|14.06](https://t.me/c/2941121338/689594)
 - Оверsell: stealt time (украденное гипервизором время) — VM ready, но CPU занят соседом; мачка-пазла? Стил 20-30% [id=689549|Тимур|14.06, id=689600|—|14.06](https://t.me/c/2941121338/689549)
 - Экспресс (ExpressHost) взяли 30 IP, все 30 в бане, это mevspace подсети; подсети забанены; new rip afro IP — все в бане; ждите новую волну банов [id=698151..698161|omae/Frist|15.06](https://t.me/c/2941121338/698151)
-- Нигерия: самый дешёвый клауд 11$/мес (нужен нигерийский номер) [id=696960|Анатолий Федоров|15.06](https://t.me/c/2941121338/696960)
+- Нигерия: самый дешёвый клауд 11$/мес (нужен нигерийский номер) [id=696960|Анатолий Ф.|15.06](https://t.me/c/2941121338/696960)
 - Латвия: ещё раз (lookit) см. выше
 - Мы взяли в связи с тем, что (id 693305..) — «мужики, посоветуйте хост 10гбит» [id=695107|—|15.06](https://t.me/c/2941121338/695107)
 - Исходник парсера селектела продают за 40$ [id=695061|евген|15.06](https://t.me/c/2941121338/695061)
 - Скрипт на ловлю айпи мвс за 20$ [id=695791|Mikhail|15.06](https://t.me/c/2941121338/695791)
-- MultiRoller V6: парсер белых IP с площадок Yandex Cloud/Selectel/VK Cloud/Reg.ru/RUVDS/Timeweb/Beget/MWS, веб-панель, ТГ-уведомления, 2999₽ [id=690565|Multi Roller|14.06](https://t.me/c/2941121338/690565)
+- MultiRoller V6: парсер белых IP с площадок Yandex Cloud/Selectel/VK Cloud/Reg.ru/RUVDS/Timeweb/Beget/MWS, веб-панель, ТГ-уведомления, 2999₽ [id=690565|Multi R.|14.06](https://t.me/c/2941121338/690565)
 
 ## Абузы/события
 - Прилетел абуз DMCA на сервер, который лежал 3 дня неиспользуемый (за торрент-трафик) [id=699062..699063|—|16.06](https://t.me/c/2941121338/699062)
@@ -98,9 +98,9 @@
 - Lollipop: маркеры (lolz-team) продают манипуляции; абузы на лолзе [id=698215|—|15.06](https://t.me/c/2941121338/698215)
 - Не уложиться в 2тб: лимит триалов; «лимит на триалов ставить», «поставь огран гигабайт 600»; у меня триал обходов стоит рубль [id=690131|MA|14.06, id=690144, id=690146|Vladislav|14.06](https://t.me/c/2941121338/690131)
 - Депозит гарант Егор: bedolaga_cash, @bedolaga_cash, BedolagaGarant [id=686947|whereareyou|14.06, id=690729|—|14.06, id=697417|👢Cаlme Krueld|15.06](https://t.me/c/2941121338/686947)
-- vps_whitelistsell_bot / whitecloud_support — скамер (обманул при продаже RUVDS; рекомендации: гарант Егор) [id=686940|Сергей Шимченко|14.06](https://t.me/c/2941121338/686940)
+- vps_whitelistsell_bot / whitecloud_support — скамер (обманул при продаже RUVDS; рекомендации: гарант Егор) [id=686940|Сергей Ш.|14.06](https://t.me/c/2941121338/686940)
 - RUVDS: дыра — после продажи можно вернуть/поменять данные через ТП без ведома владельца; будьте внимательны даже после полной смены данных [id=700066, id=700086|Винтон|16.06](https://t.me/c/2941121338/700066)
-- Документация: docs.rw/security/cloudflare-zero-trust (Cloudflare Zero Trust для панели), docs.rw/docs/learn/xray-json-advanced [id=685768|Денис Ефросинин|14.06, id=699509|Spofy Admin|16.06](https://t.me/c/2941121338/685768)
+- Документация: docs.rw/security/cloudflare-zero-trust (Cloudflare Zero Trust для панели), docs.rw/docs/learn/xray-json-advanced [id=685768|Денис Е.|14.06, id=699509|Spofy Admin|16.06](https://t.me/c/2941121338/685768)
 - Country not allowed при заходе на ремнавейв: прописать ру/су/рф в панели дддос-защиты (страны) [id=694609..694614|lonely|15.06](https://t.me/c/2941121338/694609)
 - ТСПУ: TSPU режет всё до node: пакеты до сервера не доходят, сервер фулл отрезан от интернета [id=697081..697087|—|15.06](https://t.me/c/2941121338/697081)
 - Reality «выгнали»: поменял СНИ (serverNames) — рабочий сни стал забанен, не могу найти сни, все ноды перестали работать на tcp reality; Hy2/TLS работает нормально [id=698034, id=698035, id=698038|.|15.06, id=698039, id=698046|Frist|15.06](https://t.me/c/2941121338/698034)
@@ -114,19 +114,19 @@
 - Селект не работает на WiFi (у многих) [id=689828|Deleted Account|14.06, id=693290|Deleted Account|15.06](https://t.me/c/2941121338/689828)
 - Телега не работает (не открывается, через раз), MTU 1380 пробовать; провайдер [id=686353..686384|14.06](https://t.me/c/2941121338/686353)
 - Happ: саба при первом переходе «страница не найдена», перезагрузка помогает [id=685896|PAIN|14.06](https://t.me/c/2941121338/685896)
-- Happ не отдаёт пинг hysteria (не в нас проблема) — поменять тип пинга с tcp на другой [id=689651, id=689657, id=689651|Локо Aaaao|14.06](https://t.me/c/2941121338/689651)
+- Happ не отдаёт пинг hysteria (не в нас проблема) — поменять тип пинга с tcp на другой [id=689651, id=689657, id=689651|Локо A.|14.06](https://t.me/c/2941121338/689651)
 - ДНС: домен через плейтугоу; перенос домена на Cloudflare: добавить домен в CF, у регистратора поменять NS на клаудовские [id=695322|lonely|15.06, id=695333|Артем|15.06, id=695363|Артем|15.06](https://t.me/c/2941121338/695322)
 - Домен дёшево и без личных данных: regway.com (криптой) [id=700070, id=700072|Andrey|16.06](https://t.me/c/2941121338/700070)
 - PTR Reverse DNS: можно делать в карточке услуги на большой части сетей; @ddosguard PTR для почты (порт 25) [id=700224|zoomov|16.06, id=700217|Тимур|16.06](https://t.me/c/2941121338/700224)
 - Домен подписки sub.domain.ru + переадресация sub.domain.com (regru) — должны работать оба [id=700223|MA|16.06, id=700226|kX7|16.06](https://t.me/c/2941121338/700223)
 - announce-url хеддер в панели (для белых списков) [id=700188|Рустам|16.06](https://t.me/c/2941121338/700188)
-- Discord IP список: geoip:discord (есть в runetfreedom? проверено — нет) [id=700012|—|16.06, id=700016|Nikita Morozov|16.06](https://t.me/c/2941121338/700012)
-- ESIM Vodafone UK бесплатно (в РФ не работает, фиксанули) [id=695320|Stas Vlasov|15.06](https://t.me/c/2941121338/695320)
+- Discord IP список: geoip:discord (есть в runetfreedom? проверено — нет) [id=700012|—|16.06, id=700016|Nikita M.|16.06](https://t.me/c/2941121338/700012)
+- ESIM Vodafone UK бесплатно (в РФ не работает, фиксанули) [id=695320|Stas V.|15.06](https://t.me/c/2941121338/695320)
 
 ## Юнит-экономика/реклама
 - Яндекс Директ: ~80₽/клиент (не лид), 15000₽ под ключ ~150 клиентов, только веб-версия (сайт), телеграм не льют; рекуррентные платежи хорошо [id=699895|Deleted Account|16.06](https://t.me/c/2941121338/699895)
-- Реклама в тг/боте: продают по показателям (обязательно с местом размещения и статистикой) [id=691330|Zaur Achinsky|14.06](https://t.me/c/2941121338/691330)
-- Реселлинг впн подписок по 25₽ / 2-5 годов за 1500₽ [id=691343|Some One|14.06](https://t.me/c/2941121338/691343)
+- Реклама в тг/боте: продают по показателям (обязательно с местом размещения и статистикой) [id=691330|Zaur A.|14.06](https://t.me/c/2941121338/691330)
+- Реселлинг впн подписок по 25₽ / 2-5 годов за 1500₽ [id=691343|Some O.|14.06](https://t.me/c/2941121338/691343)
 - Реклама в Instagram/др.: тг/дс/ютуб/инста работает [id=696651|—|15.06](https://t.me/c/2941121338/696651)
 
 ## События/прочее
@@ -147,16 +147,16 @@
 - RU VDS Питер/СПб: чистые IP 10к [id=689681|me|14.06, id=691150|Егор|14.06](https://t.me/c/2941121338/689681)
 - Bedolaga гаранти: Егор — https://t.me/BedolagaGarant, @bedolaga_cash [id=686947|whereareyou|14.06, id=697417|👢Cаlme Krueld|15.06](https://t.me/c/2941121338/686947)
 - Warp: DNS от pihole в hysteria — мультики без рекламы [id=700235|—|16.06](https://t.me/c/2941121338/700235)
-- Схема оплат: Бубит (карта), казала/ехала (оплата) [id=690548| Manufacture Krueld|14.06, id=693320|—|15.06](https://t.me/c/2941121338/690548)
+- Схема оплат: Бубит (карта), казала/ехала (оплата) [id=690548| Manufacture K.|14.06, id=693320|—|15.06](https://t.me/c/2941121338/690548)
 - Крупный проект: 8000 пользователей, 787 платных, средний чек 117₽, ориентир 200-220 тыс руб [id=690039|великий Данил|14.06](https://t.me/c/2941121338/690039)
-- VPN сервис продажа: оборот 15-17к/мес, чистыми 12-14к, онлайн 80, 125+ платных; белые списки: MWS CDN, Yandex Cloud 84.201, Yandex Cloud CDN [id=695715|Big Smoke|15.06](https://t.me/c/2941121338/695715)
+- VPN сервис продажа: оборот 15-17к/мес, чистыми 12-14к, онлайн 80, 125+ платных; белые списки: MWS CDN, Yandex Cloud 84.201, Yandex Cloud CDN [id=695715|Big S.|15.06](https://t.me/c/2941121338/695715)
 - Конверсия 2-5%: 630 платных из 7800 юзеров (6 месяцев) [id=689602|RZ|14.06](https://t.me/c/2941121338/689602)
 - Товарищ 200-220 тыс руб за проект: 8000 пользователей/787 платных/средний чек 117₽ [id=690039|великий Данил|14.06](https://t.me/c/2941121338/690039)
 - Пинг 2.5 tbps DDoS (защита eternity) [id=685878|Саргон|14.06](https://t.me/c/2941121338/685878)
 - Обмен USDT→налик в МСК: Rapira, abcex [id=689152|R0xTaDDy|14.06](https://t.me/c/2941121338/689152)
 - Платежки: СБП/крипта, криптобот и тп [id=687111|глеб прокуратура|14.06](https://t.me/c/2941121338/687111)
-- Веб-хуки: ошибка вебхука (Platega/Rollypay) — см. выше; Тенге: через бубит [id=690548| Manufacture Krueld|14.06](https://t.me/c/2941121338/690548)
-- Клад: кабина переноса домена, (.env) [id=691302|Руслан Иванов|14.06](https://t.me/c/2941121338/691302)
+- Веб-хуки: ошибка вебхука (Platega/Rollypay) — см. выше; Тенге: через бубит [id=690548| Manufacture K.|14.06](https://t.me/c/2941121338/690548)
+- Клад: кабина переноса домена, (.env) [id=691302|Руслан И.|14.06](https://t.me/c/2941121338/691302)
 - Реклама: Remna-Admin панель (интеграция Remnawave, 2999₽) [id=689837|SAMURAI SYSTEMS|14.06](https://t.me/c/2941121338/689837)
 - OUT/443 архив (VLESS/Xray/Remnawave): 1000р [id=690839|Prompt Breaker Ai|14.06, id=698057|Prompt Breaker Ai|15.06](https://t.me/c/2941121338/690839)
 - Мануалы: VPN HUB (3000₽), INFO GHOST OS (4000₽), Deskgram 2 (трафик Telegram) [id=689096|loyalty|14.06, id=686703|Илья|14.06, id=686018|Ярмола|14.06](https://t.me/c/2941121338/689096)
@@ -164,7 +164,7 @@
 - Verif: Hetzner верифицированный аккаунт продают [id=696643|—|15.06](https://t.me/c/2941121338/696643)
 - По «http на 22 порту пашет, с оговорками, но пашет» (провайдер дропает всё кроме tcp с паттернами) — трюк: http на 22 порту работает [id=698301|—|16.06](https://t.me/c/2941121338/698301)
 - Контейнер на забаненном IP не поднять (HTTP дропает), но тсп можно настроить (xray-роутинг с ip1 на ip2) — не решено [id=698213|Егор|15.06, id=698285|—|16.06](https://t.me/c/2941121338/698213)
-- ru-eu-eu-eu-Казахстан каскады: юмор, каскады «Швеция-Германия-Франция-Исландия-Лос-Анджелес-Бразилия-Сингапур-Гонконг-Новая Зеландия» [id=691478|Руслан Иванов|14.06, id=691479|compact disc|14.06](https://t.me/c/2941121338/691478)
+- ru-eu-eu-eu-Казахстан каскады: юмор, каскады «Швеция-Германия-Франция-Исландия-Лос-Анджелес-Бразилия-Сингапур-Гонконг-Новая Зеландия» [id=691478|Руслан И.|14.06, id=691479|compact disc|14.06](https://t.me/c/2941121338/691478)
 - Дебаты по доп. локациям: для норм жизни хватит Польши/Нидерландов/США/Японии (закрывают 90% потребностей); редкие локации дешёвые впски; 85 стран, 300-500 мбит; автовыбор только среди основных локаций [id=693601|yng dev Zover|15.06, id=693570|—|15.06, id=693505|—|15.06, id=693602|Саргон|15.06](https://t.me/c/2941121338/693601)
 
 ## Флуд/оффтоп

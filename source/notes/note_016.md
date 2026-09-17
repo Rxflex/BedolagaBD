@@ -88,7 +88,7 @@ forward-socks5t /api.yookassa.ru/ ss_tunnel:1081 .
 }
 ```
 Автор: самый дефолтный вариант; добавить DNS и перенаправления по необходимости. У него tcp BS не блокировали, этот конфиг работоспособен, но у некоторых клиентов требовался перезапуск каждые 20 мин.
-### Пример (НЕ рабочий сам по себе) xhttp+reality c github.com SNI через nginx-сокет [id=80989, Артем Яковлев](https://t.me/c/2941121338/80989)
+### Пример (НЕ рабочий сам по себе) xhttp+reality c github.com SNI через nginx-сокет [id=80989, Артем Я.](https://t.me/c/2941121338/80989)
 Профиль ноды: inbound 443 vless, xhttp mode auto path /germany-xhttp, reality dest `/dev/shm/nginx.sock` xver 1, serverNames ["github.com"]. XHTTP extra params в хостах:
 ```json
 {"xmux":{"cMaxReuseTimes":0,"maxConcurrency":"16-32","maxConnections":0,"hKeepAlivePeriod":0,"hMaxRequestTimes":"600-900","hMaxReusableSecs":"1800-3000"},
@@ -96,7 +96,7 @@ forward-socks5t /api.yookassa.ru/ ss_tunnel:1081 .
  "scMaxEachPostBytes":1000000,"scMinPostsIntervalMs":30,"scStreamUpServerSecs":"20-80"}
 ```
 Ошибка: serverNames github.com, а должен быть свой SNI (селфстил) [id=80991-80993](https://t.me/c/2941121338/80991).
-### Другой TLS-конфиг с проблемами пинга [id=82297, Maksim Tovkalov](https://t.me/c/2941121338/82297)
+### Другой TLS-конфиг с проблемами пинга [id=82297, Maksim T.](https://t.me/c/2941121338/82297)
 VLESS+TCP+TLS 443 (letsencrypt сертификаты, ocspStapling 3600, cipherSuites список, maxVersion 1.3): пинг 500/3000+; на maxVersion 1.2 не работает; пингометр — Happ (это фича Happ, проверять в другом приложении) [id=82314, 82320](https://t.me/c/2941121338/82314).
 
 ## Технология БС/обходы

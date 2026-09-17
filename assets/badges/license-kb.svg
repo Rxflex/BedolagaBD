@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 22" width="160" height="22" role="img" aria-label="база: CC BY-SA 4.0">
+  <defs><clipPath id="r"><rect width="160" height="22" rx="4" fill="#fff"/></clipPath></defs>
+  <g clip-path="url(#r)">
+    <rect width="49" height="22" fill="#30363d"/>
+    <rect x="49" width="111" height="22" fill="#06d6a0"/>
+  </g>
+  <text x="24.4" y="15" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" font-weight="500" fill="#e6edf3" fill-opacity="1.0" text-anchor="middle">база</text>
+  <text x="104.39999999999999" y="15" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#0d1117" fill-opacity="1.0" text-anchor="middle">CC BY-SA 4.0</text>
+</svg>

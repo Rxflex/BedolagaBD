@@ -23,7 +23,7 @@ ALTER TABLE advertising_campaigns
 - [id=258807|Адам](https://t.me/c/2941121338/258807) Чистая установка: uv sync --locked --no-dev падает («lockfile needs to be updated, but --locked was provided»), после uv lock бот падает на DuplicateTableError — «Какую версию (тег) использовать для чистой установки? Нужно ли делать uv lock перед сборкой?»
 - [id=258830|thegrayfoxxx](https://t.me/c/2941121338/258830) uv lock норм, но при следующей обнове надо git stash, иначе pull не даст из-за изменённого uv.lock.
 - [id=259246|Мультитысячник](https://t.me/c/2941121338/259246) uv lock не помогает и удаление не помогает.
-- [id=259472|Vlad Kulik](https://t.me/c/2941121338/259472) Не даёт запустить 4 воркера WEB_API: [app.webapi.server] WEB_API_WORKERS > 1 не поддерживается в embed-режиме, используем 1.
+- [id=259472|Vlad K.](https://t.me/c/2941121338/259472) Не даёт запустить 4 воркера WEB_API: [app.webapi.server] WEB_API_WORKERS > 1 не поддерживается в embed-режиме, используем 1.
 - [id=259463|Фэйд/—](https://t.me/c/2941121338/259463) WATA включен, вебхуки включились, но способа оплаты в кабинете нет; ребилд: docker compose -f docker-compose.local.yml up -d --build.
 - [id=259474|—](https://t.me/c/2941121338/259474) docker compose -f docker-compose.local.yml up -d --build.
 - [id=259129..259131|Сергей](https://t.me/c/2941121338/259129) Проверка зачисления платеги долгая (~5 мин) — смотри настройки; [id=259139|Deleted Account](https://t.me/c/2941121338/259139) возможно PAYMENT_VERIFICATION_AUTO_CHECK_ENABLED стоит на 10.
@@ -33,7 +33,7 @@ ALTER TABLE advertising_campaigns
 - [id=259264|Egor](https://t.me/c/2941121338/259264) «сделай период день за 5 рублей» — не про это.
 - [id=259219|bypara](https://t.me/c/2941121338/259219) Djingle: сайт бедолаги не открывается — роутинг ру-сайтов напрямую, в .ru блок; нужно исключение из прокси.
 - [id=258807|Александр](https://t.me/c/2941121338/258807) Аеза для обхода: «Аеза 😂».
-- [id=259369|Sergey Komarov](https://t.me/c/2941121338/259369) Таймвеб для выделенки.
+- [id=259369|Sergey K.](https://t.me/c/2941121338/259369) Таймвеб для выделенки.
 
 ## DNS/SSL/почта
 - [id=259153|Max](https://t.me/c/2941121338/259153) Remnawave: HTTPS но страница подписки 504; [id=259166|zyko](https://t.me/c/2941121338/259166) Telegram OIDC в кабинете — документация https://docs.bedolagam.ru/cabinet/telegram-oidc (там репорт ошибка login).
@@ -65,8 +65,8 @@ webhook.example.com {
 - [id=259387|И̶л̶ь̶я̶с̶](https://t.me/c/2941121338/259387) Вайкор залочены порты почтовые; [id=259389|IS](https://t.me/c/2941121338/259389) SMTP-обход: бот шлёт по любому порту на другой свой сервер где открыт smtp, тот уже на почтовый сервер; [id=259392|И̶л̶ь̶я̶с̶](https://t.me/c/2941121338/259392) ограничить доступ только твоим IP.
 - [id=258632|Владимирович](https://t.me/c/2941121338/258632) Redirect URI для Telegram OIDC: https://bot.example.com/api/auth/telegram-login.
 - [id=259376|—](https://t.me/c/2941121338/259376) taigrr/spank (github.com/taigrr/spank) — ?
-- [id=259226|Name Lastname](https://t.me/c/2941121338/259226) Мосты/ТСПУ: «Умоляю объясни нахуя подсети руками прописываешь, руинится сеть у людей и билд» — [id=259177|Egor](https://t.me/c/2941121338/259177) «я извращенец» (в docker-compose subnet 172.20.0.0/16 gateway 172.20.0.1, MTU 1350).
-- [id=258316|Name Lastname](https://t.me/c/2941121338/258316) Готовый фикс: docker builder prune -a -f && docker compose down && docker compose build --no-cache && docker compose up -d && docker compose logs -f (билд кабинета падал с OOM).
+- [id=259226|Name L.](https://t.me/c/2941121338/259226) Мосты/ТСПУ: «Умоляю объясни нахуя подсети руками прописываешь, руинится сеть у людей и билд» — [id=259177|Egor](https://t.me/c/2941121338/259177) «я извращенец» (в docker-compose subnet 172.20.0.0/16 gateway 172.20.0.1, MTU 1350).
+- [id=258316|Name L.](https://t.me/c/2941121338/258316) Готовый фикс: docker builder prune -a -f && docker compose down && docker compose build --no-cache && docker compose up -d && docker compose logs -f (билд кабинета падал с OOM).
 - [id=258246..258258|User 777](https://t.me/c/2941121338/258246) Билд кабинета: JavaScript heap out of memory (Ineffective mark-compacts near heap limit); swap 1ГБ не помогал (только ~400мб); NODE_OPTIONS="--max-old-space-size=768" в Dockerfile; [id=258254](https://t.me/c/2941121338/258254) fallocate -l 1G /swapfile; chmod 600 /swapfile; mkswap /swapfile; swapon /swapfile; [id=258256](https://t.me/c/2941121338/258256) я на 2гб делал и добавил в /etc/fstab; [id=258286](https://t.me/c/2941121338/258286) вместо 4096 ставил 512 — крашилось; [id=258283](https://t.me/c/2941121338/258283) сработало с 400 мб свапа.
 - [id=258446|Max R](https://t.me/c/2941121338/258446) Remnawave: Locale directory is not writable. Ensure the mounted directory allows writes for the container user or configure LOCALES_PATH to a writable path. directory=/app/locales error=PermissionError(13) user_hint='(running as UID:GID 1000:1000)'.
 
@@ -124,7 +124,7 @@ docker rm tmp_cabinet
 - [id=259839|Кин](https://t.me/c/2941121338/259839) Мост.
 - [id=260041|MARELLO](https://t.me/c/2941121338/260041) Серверы в РФ с 10ГБ каналом — до 1,5-2 юзаю больше не видел; 5Гбит видел у селектела/яндекса/вк (id=260057).
 - [id=260441|Александр](https://t.me/c/2941121338/260441) Реклама SteelProxy (лагает телеграм? прокси для телеграма от 8₽/мес, бот @SteelProxyBot, отзыв lolz.live/threads/9500264) — [id=260469|Егор](https://t.me/c/2941121338/260469) «8 рублей в месяц.... скоро придется платить клиентам».
-- [id=260593|Sergey Komarov](https://t.me/c/2941121338/260593) Таймвеб.
+- [id=260593|Sergey K.](https://t.me/c/2941121338/260593) Таймвеб.
 - [id=259434|хеуклер](https://t.me/c/2941121338/259434) 1cent эстония за 180р; [id=259479|9](https://t.me/c/2941121338/259479) Эстонку 1цента возьми, 180р до гигабита, тарифы от 600р до 10гбит, апстрим RETN, «все что на ретне топ для игр»; кроме хоствдс, там у 60% без моста не будет работать.
 - [id=259419|ssshhh](https://t.me/c/2941121338/259419) doubleservers_bot Германия Франкфурт: 12,77€/мес (4 Core | 8 GB DDR4 | 75 GB NVMe), bbr включен; #doubleservers.
 - [id=258522|Димeнтий](https://t.me/c/2941121338/258522) UFO.hosting Нидерланды: 1 vCPU | 1 GB | 25 GB | 10 Gbit/s — 605 руб/мес.
@@ -133,7 +133,7 @@ docker rm tmp_cabinet
 - [id=259901|Dzhokhar](https://t.me/c/2941121338/259901) Что сейчас с IONOS, Netcup и OVHcloud — айпишники блочат.
 - [id=259794|9](https://t.me/c/2941121338/259794) 3х клауд Польша ахуненная но большой фрод; оплата онли европ картой; есть ру филиал procloud.ru но дороже и больше лок.
 - [id=259798..259799|—](https://t.me/c/2941121338/259798) Хосты: p2g (хайлоад/обычный), НИ В КОЕМ СЛУЧАЕ ЛОВКОСТ; 1цент — оверселл; fornex; вайкор (сети сейчас дрочит ркн — «если я скажу вайкор то я обьебу»).
-- [id=259829|Vlad Kulik](https://t.me/c/2941121338/259829) Не могу зайти на юкассу.
+- [id=259829|Vlad K.](https://t.me/c/2941121338/259829) Не могу зайти на юкассу.
 - [id=259835|Камavev](https://t.me/c/2941121338/259835) skip
 - [id=260303|—](https://t.me/c/2941121338/260303) НЕ РЕКОМЕНДУЮ.
 
@@ -157,9 +157,9 @@ docker rm tmp_cabinet
 - [id=259859|e](https://t.me/c/2941121338/259859) Курс для оплаты телеграм звездами в боте работает наоборот: должен умножать кол-во звезд на курс, а он делит.
 - [id=260869..260870|Тех. Поддержка](https://t.me/c/2941121338/260869) Суточный тариф баг: купил 5 устройств, стало 6 хотя ограничено до 4; цена 0 должна отключить покупку доп устройств.
 - [id=260887|V M](https://t.me/c/2941121338/260887) ВК режет мост на скачку.
-- [id=260886|Danil Yudenko](https://t.me/c/2941121338/260886) /start 60 секунд после обновления — из-за блокировки телеграмм (бот не мог отправить лого); решение: отключить отправку лого либо использовать vps без блокировок телеграмм.
+- [id=260886|Danil Y.](https://t.me/c/2941121338/260886) /start 60 секунд после обновления — из-за блокировки телеграмм (бот не мог отправить лого); решение: отключить отправку лого либо использовать vps без блокировок телеграмм.
 - [id=259696|Pedzeo](https://t.me/c/2941121338/259696) Скрипты бэкапа панели, бота и кабинета на другой впс + установка панели/ноды/бота/кабинета: https://github.com/PEDZEO/remnawave-panel-backup-telegram.
-- [id=259595|Artur Karimov](https://t.me/c/2941121338/259595) docs.bedolagam.ru не грузит.
+- [id=259595|Artur K.](https://t.me/c/2941121338/259595) docs.bedolagam.ru не грузит.
 - [id=259929..259943|Support](https://t.me/c/2941121338/259929) Промокод на 25руб на баланс: Type: TelegramBadRequest ошибки.
 - [id=260076|andrey](https://t.me/c/2941121338/260076) В енве бота CABINET_ENABLED=true, урл установлен, из браузера открывается — но не появляется кнопка.
 - [id=260192..260198|Никита](https://t.me/c/2941121338/260192) Баг: клиент пополнил баланс (159р), автопродление сработало (в ремне продлилась), но в логах/БД/истории события нет, баланс не списался; после этого кабина неправильно считает «не хватает» (85 на балансе, продление 385 → бот: 300, кабина: 375); синхронизация из бота в кабину не помогает.

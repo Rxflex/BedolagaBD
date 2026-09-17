@@ -1,7 +1,7 @@
 # Заметка по chunk_015 (id 74985..80984, 29.11.2025..01.12.2025)
 
 ## Caddy: полный конфиг Remnawave + Bedolaga (миниап + вебхуки) [id=79181, 79182; Whiteness/YungCayde, 30.11](https://t.me/c/2941121338/79181)
-Полный рабочий Caddyfile, автор Valerii Bezkorovainyi (foxlyvpn.xyz). Структура:
+Полный рабочий Caddyfile, автор Valerii B. (foxlyvpn.xyz). Структура:
 - Домен вебхуков `apibot.домен` с `encode gzip zstd` и handle-блоками на каждый платёжный вебхук, каждый проксируется на `remnawave_bot:8080` c `header_up Host {host}`, `header_up X-Real-IP {remote_host}` и `transport http { read_buffer 0 }`:
   `/yookassa-webhook`, `/platega-webhook`, `/cryptobot-webhook`, `/wata-webhook`, `/heleket-webhook`, `/tribute-webhook`, `/pal24-webhook`, `/mulenpay-webhook`
 - В том же блоке `handle /app-config.json` c `header Access-Control-Allow-Origin "*"` (тоже на бота) и catch-all `handle` на бота.
@@ -18,7 +18,7 @@
 DEBUG=false
 WEBHOOK_URL=https://bot.test.ru
 WEBHOOK_PATH=/webhook
-WEBHOOK_SECRET_TOKEN=c39c685e4dd315981c9bb738012afd0a  # создаётся командой
+WEBHOOK_SECRET_TOKEN=<32-hex, openssl rand -hex 16>  # создаётся командой
 WEBHOOK_DROP_PENDING_UPDATES=true
 WEBHOOK_MAX_QUEUE_SIZE=1024
 WEBHOOK_WORKERS=4
@@ -38,7 +38,7 @@ YOOKASSA_DEFAULT_RECEIPT_EMAIL=***@yandex.ru
 ```
 Симптом: инвойс создаётся и оплачивается, но зачисление только после ручной «Проверить платеж» в админке — у ЮKassa, CryptoBot, Platega. Причина: вебхук платёжки не доходит до бота (реверс-прокси/секрет-ключ в env). Проверка хуков: `curl https://доменхуков/health/unified` — выводит список включённых способов оплаты [id=79200, 79203, hdhdh4226ru](https://t.me/c/2941121338/79200). Браузером хуки отклоняются намеренно (безопасность) [id=79199](https://t.me/c/2941121338/79199).
 - Обход ЮKassa-блока запросов с иностранных IP: бот на РФ-сервер; либо прокси-сервер в РФ с самописным микро-сервисом перед Yookassa API (эндпоинт менять в .env — просьба автору бота) [id=80769, 80775, SawGoD Fake](https://t.me/c/2941121338/80769); либо через ТП ЮKassa (восстановили за пару часов) [id=80900](https://t.me/c/2941121338/80900).
-- ЮKassa блокает вебхуки с зарубежных IP: у кого бот за рубежом РФ — не работает [id=80753, Илья Захаров](https://t.me/c/2941121338/80753).
+- ЮKassa блокает вебхуки с зарубежных IP: у кого бот за рубежом РФ — не работает [id=80753, Илья З.](https://t.me/c/2941121338/80753).
 - SNI-пустой запрос к СБП-qr ЮKassa лог (service: yookassa_service, создание платежа с Idempotence-Key) [id=80500](https://t.me/c/2941121338/80500).
 
 ## Mihomo/Clash не ест grpc и xhttp [id=78991, 79003, 79153](https://t.me/c/2941121338/78991)

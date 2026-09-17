@@ -45,7 +45,7 @@
 ## Обновления Remnawave (мск-структура)
 - **[id=247411|MAKS|28.02](https://t.me/c/2941121338/247411)** Remnawave Admin v2.5.2: сортировка нарушений, пароль в уведомлениях, фильтры сохраняются в URL, удалённые хосты сразу исчезают.
 - **[id=243451|Дмитрий|26.02](https://t.me/c/2941121338/243451)** Remna: `cap_add: NET_ADMIN` в docker-compose для функции `Xray-Json Advanced`.
-- **[id=242311|Владимир Данилов|25.02](https://t.me/c/2941121338/242311)** Remnawave v2.6.4: Xray-Json Advanced, addVirtualHostAsOutbound, Mihomo + hidden hosts.
+- **[id=242311|Владимир Д.|25.02](https://t.me/c/2941121338/242311)** Remnawave v2.6.4: Xray-Json Advanced, addVirtualHostAsOutbound, Mihomo + hidden hosts.
 - **[id=242311|Дмитрий|26.02](https://t.me/c/2941121338/242311)** Panel v2.6.2+: просмотр/удаление пользовательских сессий, Xray-Json Advanced, скрытые hosts, Remna Node 2.6.0+.
 
 ## Remnawave: уязвимости / безопасность
@@ -63,7 +63,7 @@
   COPY --from=builder /usr/bin/caddy /usr/bin/caddy
   ```
 - **[id=247536|/dev/null|02.03](https://t.me/c/2941121338/247536)** Traffic-Guard (сканеры РКН): https://raw.githubusercontent.com/shadow-netlab/traffic-guard-lists/refs/heads/main/public/government_networks.list
-- **[id=249042|Artur Karimov|01.03](https://t.me/c/2941121338/249042)** Ремнавейв, разрешение на форки и `.io/.xyz/.top/.shop` домены, «localhost 8080»: веб-панель бедолаги.
+- **[id=249042|Artur K.|01.03](https://t.me/c/2941121338/249042)** Ремнавейв, разрешение на форки и `.io/.xyz/.top/.shop` домены, «localhost 8080»: веб-панель бедолаги.
 - **[id=248137|DonkyBoss|01.03](https://t.me/c/2941121338/248137)** `Invalid HTTP request received.` (отказ запросов от 8080).
 
 ## Экономика (цены, платежи)

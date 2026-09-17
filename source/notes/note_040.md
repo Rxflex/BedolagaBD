@@ -31,7 +31,7 @@
 - Триальный тариф не выделяется (id 235136-235210, Евгений/tgshtt): чтобы заработало, нужно: в .env прописать триал (n дней/n гб/n устройств), в боте выдать триальные серверы, галка «выдавать триал» на нужных сквадах в админ-панели (id 235152..235158); сам триальный тариф при этом «без тарифа» у пользователя — по факту работает и без тарифа.
 - Колесо удачи с промокодом: «ошибка сети при вращении барабана» (id 236163, Павел) — баг, без решения.
 - «Приветственное сообщение» в кабинете через админ панель (id 229219 — из 039).
-- Настройка «Почта - oauth - Google/Yandex» на гугле/яндексе — redirect_uri_mismatch (id 233987..233990, Илья Захаров/—) — колбэк `https://cabinet.example.com/auth/oauth/callback` (id 233987, Sayonara) для всех oauth.
+- Настройка «Почта - oauth - Google/Yandex» на гугле/яндексе — redirect_uri_mismatch (id 233987..233990, Илья З./—) — колбэк `https://cabinet.example.com/auth/oauth/callback` (id 233987, Sayonara) для всех oauth.
 - Кабинет: почему при регистрации по email 2 аккаунта в одном клиенте телеги видят подписку с одного устройства (id 235980/235984, —/.) — (флуд).
 - Кабинет: повторная активация админа в кабинете после «забанить» (id 235030, Bulat) — (флуд).
 - Кабинет: «Нет тарифа» у триальных юзеров после включения TRIAL_DISABLED_FOR=ALL — отключить hidden (id 235103..235105).
@@ -105,13 +105,13 @@
 - Bill (biil.ru) и Qwins (qwins.co): «шляпа» — сервера удалили ночью, восстановили 5%, бот валяется, компенсация 2 рубля (id 237033/237043/237056/237060/237079, Zavulon/—). Biil.ru: «в эотumn вообще удалили клиентские сервера без восстановления... компенсации дали 2 рубля... хохлы» (id 237051/237052, —).
 - VPSVille: (id 236402) — «поддержка работает» (Фантомас).
 - aeza: «все сервера ночью сегодня с аезы отлетели» (id 231275, —); aeza хороша как «отвалы/замедление» (id 235541..235563).
-- US: netcup, ufo (id 236140/236141, Black Konda/A M), 62yun (id 235097).
+- US: netcup, ufo (id 236140/236141, Black K./A M), 62yun (id 235097).
 - АИ, Билайн, Йота, Мегафон, T2: «не работает ЛК по тайм-ауту» (id 235518, Aero) — «Билайн в Ростовской области по ночам тестирует шляпу, ложатся все VPN с ЛК в вебе» (id 236902, Aero) — «Сабку и кабинет надо держать в МСК, где нет ТСПУ» (id 237226, whereareyou). «Мега сама ебланит» (id 231917).
 
 ## Инструменты/скрипты
 - https://github.com/hteppl/remnawave-cloudflare-nodes (id 235271, Евген) — мониторинг+DNS.
 - https://github.com/PEDZEO/remnawave-panel-backup-telegram (id 235014/235027, Pedzeo) — бэкап панели/бота/кабинета в телегу, тестеры приветствуются.
-- https://github.com/wrx861/server-shield (id 233139, ALIEN) — «коряво делает авторизацию по ключу, не работает» (id 233146/233147, —); ufw/f2b руками (id 233152, Anton Hogin).
+- https://github.com/wrx861/server-shield (id 233139, ALIEN) — «коряво делает авторизацию по ключу, не работает» (id 233146/233147, —); ufw/f2b руками (id 233152, Anton H.).
 - https://github.com/wrx861/bedolaga_auto_install (id 237286, ewside) — «старый скрипт» (id 237348, tgshtt), «надо знать что делать перед использованием» (id 237350).
 - https://github.com/DonMatteoVPN/TrafficGuard-auto — инсталлятор: `curl -fsSL https://raw.githubusercontent.com/DonMatteoVPN/TrafficGuard-auto/refs/heads/main/install-trafficguard.sh | sudo bash` (id 235475, saveks; команда «rknpidor» 🐈).
 - https://github.com/shadow-netlab/traffic-guard-lists (id 235935, Max R) — списки для traffic-guard.
@@ -131,7 +131,7 @@
   - Проверка процента CPU: `sysbench cpu run --threads=1`
 - hyperion-cs.github.io/dpi-checkers/ru/tcp-16-20/ (id 237193) — не то (id 237196, Bangtott).
 - ДНС айпи мегафона/билайна: id 236065 (—) - хостинг-список ip мегафона; id 236033 (Max R) — новые IP сразу блокируются v4|195.19.122.210|AS44391|ELECTROSVYAZ и v4|85.142.100.12|COMFORTEL-NET.
-- «после триггера (напр http://23.251.49.123) на 10 мин блокируется все эти аснки. Лучше не брать у них впс под НОДЫ» (id 236247, Евгений Плешаков) — список ASN: Cogent 174, IONOS 8560, M247 9009, DigitalOcean 14061, OVH 16276, VULTR 20473, GREEN FLOID 21100/204957, Zenlayer 21859, WIIT 24961, INTERKVM 25198, Baxet/JUSTHOST 26383, FDCservers 30058, velia.net 30083, UFO Hosting 33993, Layer7 Networks 35042, IDC Cube 36530, Contabo 40021, Albanian Hosting 48014, VDSINA 48282/216071, AVA HOST 48753, WorldStream 49981, Input Output Flood 53755, HOSTVDS 56971, Scalaxy 58061, CDN77/DataPacket 60068/212238, Clouvider 62240, GTHOST 62563/63023, Dedicated.com 63018, Bage Cloud 63150, HostHatch 63473, Akamai/Linode 63949, Advika 135682, GSL Networks 137409, netcup 197540, ALEXHOST 200019, WorkTitans 209847, Unesty 211301, WAIcore 213887, DePowered 214172, GLOBAL CONNECTIVITY 215540, H2NEXUS 215730, Shift Hosting 394177, Latitude.sh 396356, Global Layer 49453.
+- «после триггера (напр http://23.251.49.123) на 10 мин блокируется все эти аснки. Лучше не брать у них впс под НОДЫ» (id 236247, Евгений П.) — список ASN: Cogent 174, IONOS 8560, M247 9009, DigitalOcean 14061, OVH 16276, VULTR 20473, GREEN FLOID 21100/204957, Zenlayer 21859, WIIT 24961, INTERKVM 25198, Baxet/JUSTHOST 26383, FDCservers 30058, velia.net 30083, UFO Hosting 33993, Layer7 Networks 35042, IDC Cube 36530, Contabo 40021, Albanian Hosting 48014, VDSINA 48282/216071, AVA HOST 48753, WorldStream 49981, Input Output Flood 53755, HOSTVDS 56971, Scalaxy 58061, CDN77/DataPacket 60068/212238, Clouvider 62240, GTHOST 62563/63023, Dedicated.com 63018, Bage Cloud 63150, HostHatch 63473, Akamai/Linode 63949, Advika 135682, GSL Networks 137409, netcup 197540, ALEXHOST 200019, WorkTitans 209847, Unesty 211301, WAIcore 213887, DePowered 214172, GLOBAL CONNECTIVITY 215540, H2NEXUS 215730, Shift Hosting 394177, Latitude.sh 396356, Global Layer 49453.
 - Миграция с другого бота — «в разделе платная поддержка, там мигратор есть» (id 235018/235019, Pedzeo/—).
 - Backup/restore: «Bekap каждый час... только в енв меняется» (id 235350, su -) — туда же «включение бекапов» без остальных параметров, потом в ЛК (id 235358, 🪲).
 - «Как мигрировать с другого бота правильно?» (id 235016, Nikita Zimens).
@@ -141,7 +141,7 @@
 - Пинги: «вк 41мс, яндекс 800» (id 236697, .) — «бс от вк 500-2000 колеблется, у других впн бс мск 500-600» (id 236569, .).
 - VPN 500₽ с 1 сервером, Яндекса бс — «конкуренты спокойно продают» (id 236929, V M).
 - «РКН начали полностью закрывать VPN на протоколе VLESS» (id 235412/235413, Vlad/КиберТопор) — «Погоди) Vless В С Ё» (id 235991, Евген), «БС от вк на всех операторах работают» (id 235531/235532, Deleted Account/tgshtt).
-- «Отвалились мосты с Яндекс до иностранок» (id 237402/235702, Илья Захаров) — «второй раз ломаются» (id 235702) — «обычная рашка Яндекса обходит бс» (id 235770, —).
+- «Отвалились мосты с Яндекс до иностранок» (id 237402/235702, Илья З.) — «второй раз ломаются» (id 235702) — «обычная рашка Яндекса обходит бс» (id 235770, —).
 - Мегафон сдох (id 235440, DonkyBoss); билайн/мегафон/йота/т2 (id 235727, Deleted Account).
 - Роутинг YouTube: domain:youtube.com на ру-сервер — рекламы нет (id 235533/235534/235535, —), полный список доменов YouTube (id 234181, Фантомас): domain:youtube.com, domain:*.youtube.com, domain:googlevideo.com, domain:*.googlevideo.com, domain:ytimg.com, domain:*.ytimg.com, domain:youtubei.googleapis.com, domain:*.youtubei.googleapis.com, domain:youtube.googleapis.com, domain:*.youtube.googleapis.com.
 - Роутинг/ YouTube и ru в Эстонии: «в Армении сейчас у ютуба нет монетизации поэтому рекламы не будет» (id 231706, T А).
@@ -150,7 +150,7 @@
 - Ирландия (id 236467..236484, . / А M) — хосты малочисленны, UK/п passports.
 - IPv6-пряемые DNS 8.8.8.8 на роутере — чинить HWID/вайфай (id 234348, R0xTaDDy).
 - «DNS балансировка нода через curl — приложение обновляется 24 часа» (id 235367, Сергей).
-- Мосты: у «яндекса» и «вк» есть лимиты? «на ВК нет лимитов» (id 236371/236373, Forward/Илья Захаров); айпи у ВК: 84, 212, 37 (id 236441, .).
+- Мосты: у «яндекса» и «вк» есть лимиты? «на ВК нет лимитов» (id 236371/236373, Forward/Илья З.); айпи у ВК: 84, 212, 37 (id 236441, .).
 - Реверс-прокси: при polling→webhook бот перестает отвечать (id 235373, Filatov) — «Реверз прокси не настроил» (id 235374, Haxonate).
 - HAPP модем: «выпилили, просто не обновлялись» (id 232677/232681/232684/232685, PortVPN Operator/Max R/—).
 - HWID: «у пингеров IPv6 выключен» (id 234348) — (id 237247, Тимур).

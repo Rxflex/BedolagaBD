@@ -1,0 +1,39 @@
+name: Проверки базы знаний
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Внутренние ссылки и якоря
+        run: python _tools/check_links.py
+
+      - name: Скан утечек и персональных данных
+        run: python _tools/pii_scan.py
+
+      - name: Производные файлы пересобраны
+        run: |
+          python _tools/build_nav.py
+          python _tools/build_indexes.py
+          if ! git diff --quiet; then
+            echo '::error::Производные файлы устарели. Прогоните build_nav.py и build_indexes.py и закоммитьте результат.'
+            git --no-pager diff --stat
+            exit 1
+          fi
+
+      - name: Полные имена не вернулись
+        run: python _tools/sanitize.py --dry

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 106 22" width="106" height="22" role="img" aria-label="_tools: MIT">
+  <defs><clipPath id="r"><rect width="106" height="22" rx="4" fill="#fff"/></clipPath></defs>
+  <g clip-path="url(#r)">
+    <rect width="63" height="22" fill="#30363d"/>
+    <rect x="63" width="43" height="22" fill="#7c8cff"/>
+  </g>
+  <text x="31.6" y="15" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" font-weight="500" fill="#e6edf3" fill-opacity="1.0" text-anchor="middle">_tools</text>
+  <text x="84.6" y="15" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#0d1117" fill-opacity="1.0" text-anchor="middle">MIT</text>
+</svg>

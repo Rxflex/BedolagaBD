@@ -52,8 +52,17 @@ def main():
         return
     os.makedirs(DST_NOTES, exist_ok=True)
     names = sorted(n for n in os.listdir(SRC_NOTES) if n.endswith('.md'))
+    force = '--force' in sys.argv
+    copied = 0
     for n in names:
-        shutil.copyfile(os.path.join(SRC_NOTES, n), os.path.join(DST_NOTES, n))
+        dst = os.path.join(DST_NOTES, n)
+        # уже перенесённые заметки не перезатираем: они прошли обезличивание
+        # (sanitize.py). Повторный импорт — только с --force, после него
+        # обязательно прогнать python _tools/sanitize.py
+        if os.path.exists(dst) and not force:
+            continue
+        shutil.copyfile(os.path.join(SRC_NOTES, n), dst)
+        copied += 1
     topics = {}
     if os.path.exists(TOPIC_IDX):
         topics = json.load(open(TOPIC_IDX, encoding='utf-8'))
@@ -82,7 +91,8 @@ def main():
     out += ['', '---', '', '[⌂ База знаний](../README.md)']
     path = os.path.join(ROOT, 'source', 'README.md')
     open(path, 'w', encoding='utf-8').write('\n'.join(out) + '\n')
-    print('перенесено заметок: %d → source/notes' % len(names))
+    print('заметок всего: %d, перенесено заново: %d%s'
+          % (len(names), copied, ' — прогоните sanitize.py' if copied else ''))
     print('указатель: source/README.md')
 
 

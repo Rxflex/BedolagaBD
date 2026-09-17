@@ -100,7 +100,7 @@ https://{$SELF_STEAL_DOMAIN} { root * /var/www/html; try_files {path} /index.htm
 ```
 `.env: SELF_STEAL_DOMAIN=subdomen.domen.ru, SELF_STEAL_PORT=9443`; docker-compose с `network_mode: "host"`; target ноды = `127.0.0.1:9443`, SNI = СВОЙ домен [id=653860..653903|08.06.2026](https://t.me/c/2941121338/653860).
 - Caddy на два порта для xhttp+TCP selfsteal: `https_port {$SELF_STEAL_PORT_TCP}` + `https_port {$SELF_STEAL_PORT_XHTTP}` [id=94738|08.12.2025](https://t.me/c/2941121338/94738).
-- Caddy DNS-challenge Cloudflare (wildcard без перетасовки) [id=17404|Danila Tsaplin|27.09.2025](https://t.me/c/2941121338/17404):
+- Caddy DNS-challenge Cloudflare (wildcard без перетасовки) [id=17404|Danila T.|27.09.2025](https://t.me/c/2941121338/17404):
 ```dockerfile
 FROM caddy:2.9.1-builder AS builder
 RUN xcaddy build \

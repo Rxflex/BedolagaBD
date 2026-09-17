@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Термины и жаргон
+    url: https://github.com/Rxflex/BedolagaBD/blob/main/indexes/термины.md
+    about: Не понятно слово из базы — скорее всего оно уже расшифровано здесь.
+  - name: Карта разделов
+    url: https://github.com/Rxflex/BedolagaBD/blob/main/MAP.md
+    about: Все документы и их разделы на одной странице.

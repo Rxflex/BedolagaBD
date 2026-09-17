@@ -207,6 +207,38 @@ def build_map():
     print('обновлено: MAP.md')
 
 
+def docs_index():
+    """docs/README.md — витрина разделов, чтобы папка не выглядела свалкой."""
+    path = 'docs/README.md'
+    secs = sections()
+    out = ['<div align="center">', '',
+           '<img src="../assets/map.svg" alt="Разделы базы знаний" width="860">', '',
+           '</div>', '', '# 📚 Разделы базы знаний', '',
+           idx_bar(path), '',
+           '> Восемь разделов, 108 документов. В каждом разделе свой README-хаб '
+           'с таблицей документов и их подразделов.', '', '---', '',
+           '| | Раздел | О чём | Док. | Строк | Пруфов |', '|---|---|---|---:|---:|---:|']
+    for sec in secs:
+        tot = {'lines': 0, 'proofs': 0}
+        for fname, title, blurb in sec['files']:
+            st = stats(sec['dir'] + '/' + fname)
+            tot['lines'] += st['lines']
+            tot['proofs'] += st['proofs']
+        rel_dir = sec['dir'].split('/', 1)[1]
+        out.append('| %s | **[%s. %s](%s/README.md)** | %s | %d | %d | %d |'
+                   % (sec['emoji'], sec['key'], sec['name'], rel_dir, sec['blurb'],
+                      len(sec['files']), tot['lines'], tot['proofs']))
+    out += ['', '---', '', '## Все документы по разделам', '']
+    for sec in secs:
+        rel_dir = sec['dir'].split('/', 1)[1]
+        links = ' · '.join('[%s](%s/%s)' % (title, rel_dir, fname)
+                           for fname, title, blurb in sec['files'])
+        out += ['**%s %s. %s** — %s' % (sec['emoji'], sec['key'], sec['name'], links), '']
+    out += ['---', '', idx_bar(path)]
+    open(os.path.join(ROOT, path), 'w', encoding='utf-8').write('\n'.join(out) + '\n')
+    print('обновлено: docs/README.md')
+
+
 def main():
     secs = sections()
     n_docs = 0
@@ -217,6 +249,7 @@ def main():
         section_hub(sec, secs[j - 1] if j > 0 else None, secs[j + 1] if j < len(secs) - 1 else None)
         print('раздел %s: %d документов + хаб' % (sec['key'], len(sec['files'])))
     build_map()
+    docs_index()
     print('всего документов: %d' % n_docs)
 
 

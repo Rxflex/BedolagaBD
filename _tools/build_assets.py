@@ -99,6 +99,35 @@ def kb_stats():
     return tot
 
 
+def badge(slug, label, value, color):
+    """Локальный бейдж в стиле shields, но без внешних зависимостей."""
+    lw = 7.2 * len(label) + 20
+    vw = 7.6 * len(value) + 20
+    w, h = lw + vw, 22
+    body = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %.0f %d" width="%.0f" height="%d" '
+        'role="img" aria-label="%s: %s">' % (w, h, w, h, esc(label), esc(value)),
+        '  <defs><clipPath id="r"><rect width="%.0f" height="%d" rx="4" fill="#fff"/></clipPath></defs>' % (w, h),
+        '  <g clip-path="url(#r)">',
+        '    <rect width="%.0f" height="%d" fill="#30363d"/>' % (lw, h),
+        '    <rect x="%.0f" width="%.0f" height="%d" fill="%s"/>' % (lw, vw, h, color),
+        '  </g>',
+        text(lw / 2, 15, label, 11.5, '#e6edf3', '500', 'middle'),
+        text(lw + vw / 2, 15, value, 11.5, '#0d1117', '700', 'middle'),
+        '</svg>',
+    ]
+    write('assets/badges/%s.svg' % slug, '\n'.join(body) + '\n')
+
+
+def badges():
+    st = kb_stats()
+    badge('license-kb', 'база', 'CC BY-SA 4.0', '#06d6a0')
+    badge('license-tools', '_tools', 'MIT', '#7c8cff')
+    badge('docs', 'документов', str(st['docs']), '#4ecdc4')
+    badge('proofs', 'пруфов', '{:,}'.format(st['proofs']).replace(',', ' '), '#ffd166')
+    badge('period', 'период', '08.2025 → 08.2026', '#f78c6b')
+
+
 def banner():
     w, h, accent = 1200, 380, '#7c8cff'
     st = kb_stats()
@@ -154,6 +183,7 @@ def section_banner(sec):
 
 
 if __name__ == '__main__':
+    badges()
     banner()
     map_header()
     for s in sections():

@@ -6,6 +6,13 @@
 
 </div>
 
+[![Проверки](https://github.com/Rxflex/BedolagaBD/actions/workflows/checks.yml/badge.svg)](https://github.com/Rxflex/BedolagaBD/actions/workflows/checks.yml)
+[<img src="assets/badges/license-kb.svg" alt="база: CC BY-SA 4.0" height="22">](LICENSE)
+[<img src="assets/badges/license-tools.svg" alt="_tools: MIT" height="22">](LICENSE)
+[<img src="assets/badges/docs.svg" alt="документов: 108" height="22">](docs/README.md)
+[<img src="assets/badges/proofs.svg" alt="пруфов" height="22">](indexes/термины.md)
+[<img src="assets/badges/period.svg" alt="период" height="22">](docs/08-хронология/README.md)
+
 ---
 
 Год жизни сообщества **Bedolaga Social Club** (Remnawave · Bedolaga · Xray · обход ТСПУ), выжатый в справочник: **788 000 сообщений → 172 заметки → 108 документов**, каждый факт с пруфом на сообщение.
@@ -123,6 +130,12 @@ assets/
   banner.svg, map.svg, sections/*.svg, diagrams/*.svg
 _tools/                — генераторы навигации, индексов, графики и оформления
   data/threads.tsv     — id сообщения → id форум-треда (для пруф-ссылок)
+.github/               — шаблоны issue/PR и CI-проверки
+LICENSE                — CC BY-SA 4.0 на базу, MIT на _tools
+CONTRIBUTING.md        — как дополнять базу
+SECURITY.md            — приватность, утечки, удаление данных
+CODE_OF_CONDUCT.md     — правила общения
+CHANGELOG.md           — история изменений базы
 ```
 
 Правило: **правят только `docs/**` и `indexes/термины.md`**. Всё остальное (`MAP.md`, индексы, навигационные блоки, баннеры) пересобирается скриптами.
@@ -144,6 +157,9 @@ python _tools/check_links.py      # проверка всех внутренни
 python _tools/prettify_links.py   # голые URL → компактные markdown-ссылки
 python _tools/tables_for_links.py # ссылочные свалки → таблицы «Что | Ссылка | Пруф»
 python _tools/link_proofs.py      # [id=N] → ссылка на сообщение в Telegram
+python _tools/sanitize.py         # обезличивание имён, заглушки секретов
+python _tools/pii_scan.py         # скан утечек: ключи, токены, ПД
+python _tools/build_donate.py     # карточки донатов с QR
 ```
 
 `link_proofs.py` берёт треды из `_tools/data/threads.tsv`; если справочника нет, он парсит HTML-экспорт чата (`--export "<путь>"`) и собирает его заново.
@@ -158,6 +174,22 @@ python _tools/link_proofs.py      # [id=N] → ссылка на сообщен�
 Мемы, флуд, личные перепалки, реклама услуг без фактов опыта. Приоритет при отборе: дословные конфиги и команды → методики → даты и факты. Исходный HTML-экспорт чата (`messages*.html`) и текстовые чанки (99 МБ) в репозиторий не кладутся — из них остались заметки в [`source/notes`](source/notes).
 
 </details>
+
+## 🤝 Участие и правила
+
+| | |
+|---|---|
+| [**Как дополнять базу**](CONTRIBUTING.md) | формат записи, правило «нет пруфа — нет записи», порядок пересборки |
+| [**Приватность и удаление данных**](SECURITY.md) | что считается утечкой, как сообщить, как убрать свои сообщения |
+| [**Правила общения**](CODE_OF_CONDUCT.md) | как спорить по фактам и что в issue не приветствуется |
+| [**Лицензии**](LICENSE) | база — CC BY-SA 4.0, скрипты в `_tools` — MIT |
+| [**История изменений**](CHANGELOG.md) | что и когда менялось в самой базе |
+
+**Приватность.** Материал из приватного чата, поэтому перед публикацией: полные имена участников
+обезличены до формата «Имя Ф.» (308 имён, 2 600+ упоминаний), реальные секреты из чужих конфигов
+заменены заглушками, телефоны скрыты, адреса чужих открытых панелей замаскированы. Скан
+[`_tools/pii_scan.py`](_tools/pii_scan.py) гоняется в CI на каждый PR. Нашли что-то лишнее —
+[SECURITY.md](SECURITY.md), уберём без обсуждения.
 
 ## 💚 Поддержать
 

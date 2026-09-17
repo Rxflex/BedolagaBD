@@ -10,9 +10,9 @@
 ---
 <!-- /KB:HEAD -->
 
-- gRPC как inbound — костыль для клиентов, которые не могут XHTTP; легче палится, на iOS пинг растёт до 1000 мс; лучше не использовать либо выделять отдельный сервер [id=530401,530262,530273,530275|Stanislav Torichnev|18.05.2026](https://t.me/c/2941121338/530401).
+- gRPC как inbound — костыль для клиентов, которые не могут XHTTP; легче палится, на iOS пинг растёт до 1000 мс; лучше не использовать либо выделять отдельный сервер [id=530401,530262,530273,530275|Stanislav T.|18.05.2026](https://t.me/c/2941121338/530401).
 - grpc+reality работает [id=578834|Tesla|24.05.2026](https://t.me/c/2941121338/578834): `network: grpc, security: reality, grpcSettings: {mode:false, serviceName:"service"}, target: 127.0.0.1:9443`, xver:1.
-- gRPC+Reality через CDN не заработал [id=578984|Ак Барс|24.05.2026](https://t.me/c/2941121338/578984):
+- gRPC+Reality через CDN не заработал [id=578984|Ак Б.|24.05.2026](https://t.me/c/2941121338/578984):
 ```json
 {"tag": "grpc-cdn", "port": 10445, "protocol": "vless",
  "settings": {"clients": [], "decryption": "none"},
@@ -27,7 +27,7 @@
 - raw Reality target st.ozone.ru:443 + grpc-инбаунд на том же 443 (security none, serviceName vless) [id=636346|khanzele|04.06.2026](https://t.me/c/2941121338/636346).
 - «Только Telegram» конфиг: vless 443 + flow xtls-rprx-vision + grpc serviceName telegram-only + tls-сертификаты; routing: geosite:telegram/geoip:telegram → telegram, остальное tcp,udp → block [id=728264|Vladislav|21.06.2026](https://t.me/c/2941121338/728264).
 - При автовыборе (балансер) gRPC — периодические обрывы, по-видимому конфликт Happ [id=585235|24.05.2026](https://t.me/c/2941121338/585235).
-- «Перейдите на grpc; xhttp не особо рекомендую, но на запас можно» [id=647695|Pavel Kosyakov|06.06.2026](https://t.me/c/2941121338/647695).
+- «Перейдите на grpc; xhttp не особо рекомендую, но на запас можно» [id=647695|Pavel K.|06.06.2026](https://t.me/c/2941121338/647695).
 
 <!-- KB:FOOT -->
 ---

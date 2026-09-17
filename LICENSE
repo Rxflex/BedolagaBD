@@ -1,0 +1,44 @@
+# Лицензии этого репозитория
+
+Репозиторий состоит из двух частей, и у них разные условия.
+
+## 1. База знаний (`docs/`, `indexes/`, `source/`, `MAP.md`, `README.md`, `AGENTS.md`)
+
+**Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0)**
+
+Можно: копировать, распространять, перерабатывать, использовать в коммерческих целях.
+Условия: указать источник (ссылку на этот репозиторий) и распространять производные
+материалы под той же лицензией.
+
+Полный текст: <https://creativecommons.org/licenses/by-sa/4.0/legalcode.ru>
+Кратко: <https://creativecommons.org/licenses/by-sa/4.0/deed.ru>
+
+Оговорка об авторстве материала: это дайджест публичного обсуждения в сообществе.
+Конфиги, команды и скрипты, приведённые в базе, принадлежат их авторам и цитируются
+как факты обсуждения; лицензия CC BY-SA 4.0 распространяется на саму компиляцию —
+структуру, формулировки, сведение фактов и оформление, а не на сторонний код.
+Ссылки на сторонние проекты ведут в их собственные репозитории с их лицензиями.
+
+## 2. Инструменты (`_tools/`, `assets/`)
+
+**MIT License**
+
+Copyright (c) 2026 Rxflex
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -55,7 +55,7 @@
        "xPaddingBytes": "100-1000", "scMaxBufferedPosts": 30, "scMaxEachPostBytes": 1000000, "scStreamUpServerSecs": "20-80"}
    }}
   ```
-- **[id=72155|Просто Даня|24.11](https://t.me/c/2941121338/72155)** Гайд xhttp для селфстила на caddy: пути сертов
+- **[id=72155|Просто Д.|24.11](https://t.me/c/2941121338/72155)** Гайд xhttp для селфстила на caddy: пути сертов
   ```
   keyFile: /certs/caddy/certificates/acme-v02.api.letsencrypt.org-directory/вашдомен/ключ.key
   certificateFile: /certs/caddy/certificates/acme-v02.api.letsencrypt.org-directory/вашдомен/серт.crt
@@ -82,7 +82,7 @@
      "network": "xhttp", "security": "reality",
      "xhttpSettings": {"mode": "auto", "path": "/germany-xhttp"},
      "realitySettings": {"dest": "/dev/shm/nginx.sock", "show": false, "xver": 1, "spiderX": "",
-       "shortIds": ["4be3b5e3"], "privateKey": "9ho77A1QVREFFDhQkM", "serverNames": ["domen.life"]}
+       "shortIds": ["4be3b5e3"], "privateKey": "<приватный ключ Reality>", "serverNames": ["domen.life"]}
    }}
   ```
   В хосты в xHTTP extra (дословно):
@@ -103,7 +103,7 @@
 ## Миниапка / редиректы и прочее
 - **[id=71557|SawGoD|23.11](https://t.me/c/2941121338/71557)** Хосты для бота (DOMEN.life и другие).
 - **[id=73336,73337,73339,73341,73342|—,IS,Илья|24.11](https://t.me/c/2941121338/73336)** По resty — феи в whitе, у Ильи 25TB/год.
-- **[id=73943|Просто Даня|25.11](https://t.me/c/2941121338/73943)** Мультикнопка в боте: содержимое под кнопкой (апк, ссылка, download).
+- **[id=73943|Просто Д.|25.11](https://t.me/c/2941121338/73943)** Мультикнопка в боте: содержимое под кнопкой (апк, ссылка, download).
 - **[id=71555|SawGoD|23.11](https://t.me/c/2941121338/71555)** Перепродажа Vless от ilovvecn (id 1330492370) — блок и переоформление.
 - **[id=71515|SawGoD|23.11](https://t.me/c/2941121338/71515)** Криптопровайдеры (Crypto-Host): и запрос на VPS-хостинг от state-структуры.
 - **[id=71555|SawGoD|23.11](https://t.me/c/2941121338/71555)** crypto-платежи: для реги в bbot.

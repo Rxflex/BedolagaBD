@@ -45,10 +45,10 @@
 - «Мониторинг трафика: Отключен / Проверка пополнений: Отключена / Отчеты: Отключен» в логах при старте бота — активные фоновые сервисы перечислены в консоли (id 227564, Valerii).
 
 ## Кабинет/миниаппы
-- Ноды/сквады: то, что ты видишь в боте — внутренний сквад; сквад это «подъезд», нода — «жилец» (id 227423, Name Lastname). Чтобы в боте были серверы, создай сквады, сквады не синхронизируются автоматически (id 227415/227418, 227421/227588).
-- Адреса: cabinet_frontend:80 фронт, remnawave_bot:8080 API (id 227430, Name Lastname); в докере порты 80 и 8080 (id 227452).
-- Бекенд/фронт отдельно: если бот и панель на разных серверах, в .env кабинета в api укажи полную ссылку, а не /api (id 229128, Name Lastname).
-- Накатываешь SMTP на хосте: проверка работает, а в кабинете не приходят письма — заполни SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASSWORD/SMTP_FROM_EMAIL/SMTP_FROM_NAME/SMTP_USE_TLS=true в .env и перезапусти бота (make reload) (id 231228/231239/231243/231245, Anton Khakin/Dmitriy Balakshin).
+- Ноды/сквады: то, что ты видишь в боте — внутренний сквад; сквад это «подъезд», нода — «жилец» (id 227423, Name L.). Чтобы в боте были серверы, создай сквады, сквады не синхронизируются автоматически (id 227415/227418, 227421/227588).
+- Адреса: cabinet_frontend:80 фронт, remnawave_bot:8080 API (id 227430, Name L.); в докере порты 80 и 8080 (id 227452).
+- Бекенд/фронт отдельно: если бот и панель на разных серверах, в .env кабинета в api укажи полную ссылку, а не /api (id 229128, Name L.).
+- Накатываешь SMTP на хосте: проверка работает, а в кабинете не приходят письма — заполни SMTP_HOST/SMTP_PORT/SMTP_USER/SMTP_PASSWORD/SMTP_FROM_EMAIL/SMTP_FROM_NAME/SMTP_USE_TLS=true в .env и перезапусти бота (make reload) (id 231228/231239/231243/231245, Anton K./Dmitriy B.).
 - Статика кабинета: root, docker, /srv/cabinet (id 226665, c0mrade).
 - Caddy-конфиг (id 226539, c0mrade):
 ```
@@ -92,7 +92,7 @@ https://cabinet.mysite.com {
 - c0mrade: «cabinet/ws вообще сноси в caddy, он сам умеет вебсокеты обрабатывать» (id 226512) — снимок против ws-блока.
 
 ## Сеть/порты/докер
-- На 1 IP не обходится все: docker network connect bot_network remnawave_bot (id 227396/227413, Name Lastname; id 231281, —) — добавляет контейнер в сеть ремны.
+- На 1 IP не обходится все: docker network connect bot_network remnawave_bot (id 227396/227413, Name L.; id 231281, —) — добавляет контейнер в сеть ремны.
 - 3.13.0 docker-compose обновился — снесла сеть ремны (id 227409, —), c0mrade: лучше руками в компоуз прописать (id 227414).
 - Пакеты типа force_color '1' в docker-compose (секция bot:) (id 227494/227497, Max R).
 - 4vps — несколько машин, не жалуются (id 230864, Max R).
@@ -113,7 +113,7 @@ https://cabinet.mysite.com {
 - v2.6.1/2.6.2: Responses Rules (SRR) ignoreHostXrayJsonTemplate, dynamic outline conf, отдельная страница snippets (id 228179/228180 — Remnawave panel v2.6.1; Node v2.5.5 Rescue CLI `docker exec -it remnanode cli`).
 - Локализация: AVAILABLE_LANGUAGES=ru,en не скрывает все языки в кабинете; фоллбек при LANGUAGE_SELECTION_ENABLED=false (id 228961/228963/228964, Yaroslav/—).
 - Приветственное сообщение: В боте → Админ панель → сообщения → Приветственное сообщение (id 229219, Андрей).
-- Похоже на «couple questions» (id 229203..229228, Артём Соловьёв): уровни тарифов 1/2/3: расчет стоимости одного дня, переход бесплатный если «стоимость дня» дороже тарифа равна/ниже. Перенесено из id 224272 (предыдущий чанк).
+- Похоже на «couple questions» (id 229203..229228, Артём С.): уровни тарифов 1/2/3: расчет стоимости одного дня, переход бесплатный если «стоимость дня» дороже тарифа равна/ниже. Перенесено из id 224272 (предыдущий чанк).
 - Кабинет скрыть кнопку Админку? пока не (id 231464/231477/231491...).
 
 ## РКН/блокировки (слухи и факты)
@@ -123,15 +123,15 @@ https://cabinet.mysite.com {
 - ⚡ Telegram в РФ полностью заблокируют с 1 апреля (источники «Базы»), по аналогии с Instagram/Facebook; мессенджер MAX как замена (id 228712, Max R, новость 17.02).
 - РКН сплэшем заблокировал Linux в РФ (id 229741, Max R, новость).
 - RKN душит и SSH: «из-за замедления телеги VPN невозможен» (id 226678, R0xTaDDy).
-- Мост дабл-влесс: МСК/СПБ нода без ТСПУ → зарубежная нода (id 228954, whereareyou; id 229077, Valerii Bezkorovainyi).
+- Мост дабл-влесс: МСК/СПБ нода без ТСПУ → зарубежная нода (id 228954, whereareyou; id 229077, Valerii B.).
 - Прокладки через 3x-ui/Amnezia (id 228381) — (не пытался), детали не разобраны.
 - YouTube упал 18.02 ~2:00 по всему миру — массовый мировой сбой Google, не РКН (id 230677-230801, Aero/—: «YouTube упал у всех, по всему миру, без паники, это не баги впн/ркн»); проверять Downdetector (id 230743, Aero).
 - Реклама VPN: ЮТ видео «закон запрещает рекламить VPN» — и листовки в Ростове/Краснодаре привели к штрафам и закрытию сервиса (id 229185, Aero).
-- Безопасная реклама VPN — крипта + телеграм-звезды (id 229183, Aero) — касса (id 229178, Тёма/Black Konda).
+- Безопасная реклама VPN — крипта + телеграм-звезды (id 229183, Aero) — касса (id 229178, Тёма/Black K.).
 
 ## Бюджет/цены (опционально)
 - Цены раскрашены с шагом 50 (id 228301..228303).
-- Сумма списания больше стоимости тарифа: причины из БД/тарифов (id 228292-228316, Valerii Bezkorovainyi/Sayonara) — «чекай стоимость серверов(сквадов) в боте, по умолчанию 10р каждый, если в env активны пакеты трафика, он пытается присрать их к стоимости» (id 228311, Sayonara).
+- Сумма списания больше стоимости тарифа: причины из БД/тарифов (id 228292-228316, Valerii B./Sayonara) — «чекай стоимость серверов(сквадов) в боте, по умолчанию 10р каждый, если в env активны пакеты трафика, он пытается присрать их к стоимости» (id 228311, Sayonara).
 - Цены при продлении выше (id 229196, Dzhokhar).
 
 ## Выводы/ссылки
@@ -140,9 +140,9 @@ https://cabinet.mysite.com {
 - https://github.com/Case211/remnawave-admin (id 230944, Илья) — Remnawave Admin v2.3: Fleet Management (веб-терминал для нод xterm.js, gauge CPU/RAM/Disk, каталог скриптов); Collector и детекция нарушений перенесены из бота в Web Backend (−9000 строк дублирования, 800+ тестов, покрытие core 62%); Violation Detection (настройки анализаторов через веб-панель); System Logs (5 вкладок All/Backend/Bot/Frontend/Violations, structlog JSON, фронтенд-ошибки в реальном времени). ⚠️ При обновлении: перенаправить AGENT_COLLECTOR_URL node-agent на URL панели (вместо бота).
 - https://pypi.org/project/aioplatega/ + https://github.com/DOFER998/aioplatega (id 230805, Egor) — библиотека для платеги (уже готова).
 - https://dnschecker.org — проверка DNS, «как ток Питер меняется, то весь рф регион меняется» (id 229304, Haxonate).
-- hosting101.ru/hip-hosting — проверка хостинга перед покупкой (id 230861/230862, Valerii Bezkorovainyi/—).
+- hosting101.ru/hip-hosting — проверка хостинга перед покупкой (id 230861/230862, Valerii B./—).
 - vps.today — каталог VPS (id 229432, Виктор Белых).
-- Скрипт для проверки региона/IP: https://github.com/Davoyan/ipregion/raw/main/ipregion.sh / bench.gig.ovh/ipregion.sh (id 229760/229762, Valerii Bezkorovainyi/—).
+- Скрипт для проверки региона/IP: https://github.com/Davoyan/ipregion/raw/main/ipregion.sh / bench.gig.ovh/ipregion.sh (id 229760/229762, Valerii B./—).
 - XTLS документация по routing: https://xtls.github.io/en/config/routing.html#ruleobject (id 228443).
 - Роутинг для ютуба на ру-ноде: `{"domain": ["geosite:youtube"], "outboundTag": "DIRECT"}` (id 229898, Prokurátura); routing rule на сервере РФ: `{"inboundTag": ["001_PUBLIC_RU_INBOUND"], "outboundTag": "SS_OUTBOUND_TO_FI"}` (id 229861, В. Б.) и «использовать не ru, а канал 25-гигабитовый» (id 229752).
 - Скрипт защиты от DDoS L7 от DonMatteo: README раздел «Комплексный модуль безопасности» (id 228476/228503/228506, 💔/—) — только Nginx, для Caddy нет поддержки (id 228476).
@@ -151,14 +151,14 @@ https://cabinet.mysite.com {
 ## Доп. детали
 - «РКН случайно убил Windows Update» — ссылка «КиберТопор» (id 228709, Max R).
 - Caber: 3.15.1 затенение импорта UTC, баг с UTC при оплате фиксится обновлением (id 228400).
-- Обновления: `git pull origin main && docker compose down && docker compose up -d --build && docker compose logs -f` (id 226754/227491, Valerii Bezkorovainyi); если ошибка «Your local changes to the following files would be overwritten by merge: docker-compose.yml» — git stash → обнови → git stash pop (id 228693/229693..229699; id 231556/231617).
+- Обновления: `git pull origin main && docker compose down && docker compose up -d --build && docker compose logs -f` (id 226754/227491, Valerii B.); если ошибка «Your local changes to the following files would be overwritten by merge: docker-compose.yml» — git stash → обнови → git stash pop (id 228693/229693..229699; id 231556/231617).
 - 4vps в каталоге — id 230884..230898 (тесты). Хосты «Pq, The.hosting, Ufo.hosting» — топ-хосты (id 231233, stayinit). Занесены: «не один из них не советую», «1cent вообще говно тп» (id 231364/231366, SUPPORT) —
 - Рекомендация по повестке — оставить роутинг ютуба на ru-сервере, а всё остальное — на helsinki (id 229684, Виктор Белых).
 - Новая хостинговая «шляпа»: Nuxt Cloud отвалы: «двое суток выдают сервер, не советую» (id 228645, Kamil` Nikiforov). Смежное: «Отталкивается от сервисов» (id 229137, Nekrasov).
-- NaloGO (самозанятый): remnawave_bot ERROR "NaloGO временно недоступен (техработы)" — настройка DNS яндекса в yaml: 77.88.8.8 (id 228223/228230/228234, Данил Уваров/libkit) — чеки уже работают после DNS.
+- NaloGO (самозанятый): remnawave_bot ERROR "NaloGO временно недоступен (техработы)" — настройка DNS яндекса в yaml: 77.88.8.8 (id 228223/228230/228234, Данил У./libkit) — чеки уже работают после DNS.
 - IP-гео из Play2go NL выдал US — «геобазы не обновились» (id 228925/228927, Daniil/Haxonate).
 - Русские хосты ютуб без рекламы: Aeza локации норм (id 230630, —), таймвеб (id 230629, Prokurátura), hosting-russia (id 229749, Виктор Белых), нн Midas (id 231798, Whiteness), 1cent (id 230075/230061), dhost (id 231299/231296 — Германия 10 Гбит).
-- 4vds.su — «сервак отключили через 15 мин, приостановлен, без письма» (id 230790/230791, Valerii Bezkorovainyi).
+- 4vds.su — «сервак отключили через 15 мин, приостановлен, без письма» (id 230790/230791, Valerii B.).
 - Рефералка из кабинета в бота: человек переходит по реф-ссылке в кабинет, регается почтой или переходит в телегу — теряется реф (id 231858/231776, zyko) — бот-кампания ссылка на бота и веб-ссылка в кабинете (id 231744/231750).
 - Экспорт/логи: логи приложения remnawave_bot (id 228368, Андрей Костылев — download_system_logs error).
 - Кабинет: свернуть блок email, кнопки OAuth и т.д. (id 226691).
@@ -204,7 +204,7 @@ https://cabinet.mysite.com {
 - Ключ AppID в Remna: https://docs.rw/utils/happ-rb (id 226684, Max R — happ routing).
 - Выборка Telegram/MTProto: «из за особенности телеги, лучше всего на вифи» (id 227786, —) — (флуд).
 - Прокси для телеги: (id 228963/228965, D) — «кто прокси себе делал, подключение долгое» — обсуждение без выводов.
-- Vless | JSON подписки (id 230612, Valerii Bezkorovainyi) — вопросы к оформлению ссылки.
+- Vless | JSON подписки (id 230612, Valerii B.) — вопросы к оформлению ссылки.
 
 ## Итог (1 строка)
 Заметка: точные changelog'и, alembic-миграции, бэкапы/восстановление, настройка кнопок, кабинеты, конфиги Caddy, блокировки РКН, YouTube (18.02 упал весь мир), blacklist и связку.

@@ -7,10 +7,10 @@
 - Нодовые конфиги PL/DE: Reality на target example.com:8443 (там кадди-заглушка), serverNames/shortIds/fingerprint edge; PL «там всё хорошо», DE с 403/ошибкой сертификата — несогласованность сертов/заглушки.
 
 ## DNS-роутинг в INCY — сломан относительно других клиентов
-- **[id=843810/844763|Артём Соломатин](https://t.me/c/2941121338/843810)** Если в конфиге Xray прописан блок `dns` (встроенный DNS-аутбаунд с dns-proxy/dns-direct), то в INCY ДНС-запросы вообще не попадают в роутинг и идут напрямую; в Happ/v2rayN/голом ядре работает по документации Xray. Решение для INCY — убрать `dns` из конфига и пустить все запросы через прокси; точное разделение по доменам не получится. Полный JSON конфиг с dns-proxy(1.1.1.1)/dns-direct(8.8.8.8, geosite:category-ru, skipFallback) и routing-правилами (port 53 → dns, ip geoip:private/ru → direct, geosite:category-ru → direct, tcp,udp → proxy) приведён дословно (id=843810).
+- **[id=843810/844763|Артём С.](https://t.me/c/2941121338/843810)** Если в конфиге Xray прописан блок `dns` (встроенный DNS-аутбаунд с dns-proxy/dns-direct), то в INCY ДНС-запросы вообще не попадают в роутинг и идут напрямую; в Happ/v2rayN/голом ядре работает по документации Xray. Решение для INCY — убрать `dns` из конфига и пустить все запросы через прокси; точное разделение по доменам не получится. Полный JSON конфиг с dns-proxy(1.1.1.1)/dns-direct(8.8.8.8, geosite:category-ru, skipFallback) и routing-правилами (port 53 → dns, ip geoip:private/ru → direct, geosite:category-ru → direct, tcp,udp → proxy) приведён дословно (id=843810).
 
 ## Днс-детект/иные тулзы
-- **[id=843410|Константин Кривоносов](https://t.me/c/2941121338/843410)** `https://github.com/Runnin4ik/dpi-detector` — DPI-детектор (питон, «раньше на винде поднимал»).
+- **[id=843410|Константин К.](https://t.me/c/2941121338/843410)** `https://github.com/Runnin4ik/dpi-detector` — DPI-детектор (питон, «раньше на винде поднимал»).
 - **[id=843405|myaso](https://t.me/c/2941121338/843405)** «dpi detector или как-то так называется» — тот же репо.
 - **[id=845579|Daniil RollyPay](https://t.me/c/2941121338/845579)** `wget -qO- censorcheck.tlab.pw | bash` — чекатель ТСПУ/операторов (вывод по операторам ICMP/TCP/TLS).
 

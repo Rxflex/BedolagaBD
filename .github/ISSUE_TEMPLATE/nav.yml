@@ -1,0 +1,29 @@
+name: Навигация, оформление, скрипты
+description: Битая ссылка, кривая таблица, ошибка генератора
+title: "[repo] "
+labels: [оформление]
+body:
+  - type: dropdown
+    id: kind
+    attributes:
+      label: Что сломано
+      options:
+        - Битая ссылка или якорь
+        - Оформление (таблица, простыня, картинка)
+        - Генератор в _tools
+        - Другое
+    validations:
+      required: true
+  - type: input
+    id: where
+    attributes:
+      label: Где
+      placeholder: MAP.md → раздел 05, ссылка на «Тесты VPS»
+    validations:
+      required: true
+  - type: textarea
+    id: details
+    attributes:
+      label: Что происходит и что ожидалось
+    validations:
+      required: true

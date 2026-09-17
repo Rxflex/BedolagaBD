@@ -118,7 +118,7 @@ Webhook-блок дословно [id=79180](https://t.me/c/2941121338/79180):
 DEBUG=false
 WEBHOOK_URL=https://bot.test.ru
 WEBHOOK_PATH=/webhook
-WEBHOOK_SECRET_TOKEN=c39c685e4dd315981c9bb738012afd0a
+WEBHOOK_SECRET_TOKEN=<32-hex, openssl rand -hex 16>
 WEBHOOK_DROP_PENDING_UPDATES=true
 WEBHOOK_MAX_QUEUE_SIZE=1024
 WEBHOOK_WORKERS=4
@@ -840,7 +840,7 @@ TRIAL_ADD_REMAINING_DAYS_TO_PAID=false
 - `ALLOW_DEVICES_BELOW_TARIFF_LIMIT=true` — возвращает старое поведение [id=998125|Egor|30.07.2026](https://t.me/c/2941121338/998125).
 - `CABINET_REQUIRE_LEGAL_CONSENT=false` — отключает согласие с офертой [id=998125](https://t.me/c/2941121338/998125); `CABINET_LEGAL_CONSENT_PRECHECKED` [id=998121](https://t.me/c/2941121338/998121).
 - `MENU_BUTTON_WEBAPP_ENABLED` / `MENU_BUTTON_WEBAPP_TEXT` / `MENU_BUTTON_WEBAPP_URL` — кнопка «Меню» открывает кабинет; по умолчанию выключено [id=998125](https://t.me/c/2941121338/998125).
-- `BACKUP_TIME` — время бэкапа базы бота [id=1000947|Jack Jack|30.07.2026](https://t.me/c/2941121338/1000947); бэкап по расписанию — в env [id=999677-999683](https://t.me/c/2941121338/999677).
+- `BACKUP_TIME` — время бэкапа базы бота [id=1000947|Jack J.|30.07.2026](https://t.me/c/2941121338/1000947); бэкап по расписанию — в env [id=999677-999683](https://t.me/c/2941121338/999677).
 - При продлении подписки трафик не сбрасывается — «в env бедолаги есть строка, поменять значение» [id=995767-995778|Primat/kataomi.|29.07.2026](https://t.me/c/2941121338/995767).
 - `Webpage access is not allowed by Remnawave's SRR` — «домен надо точно прописать, в env ищи» [id=1002966-1002977|vnik_null|30.07.2026](https://t.me/c/2941121338/1002966).
 ### Панель Remnawave

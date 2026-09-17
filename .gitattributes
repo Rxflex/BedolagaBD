@@ -1,0 +1,12 @@
+* text=auto eol=lf
+
+*.md      text diff=markdown linguist-documentation
+*.svg     text
+*.py      text diff=python
+*.tsv     text
+
+# база знаний — это документация, а не код: не влияет на язык репозитория
+docs/**        linguist-documentation
+source/**      linguist-documentation
+indexes/**     linguist-documentation
+assets/**      linguist-vendored

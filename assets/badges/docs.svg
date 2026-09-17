@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 135 22" width="135" height="22" role="img" aria-label="документов: 108">
+  <defs><clipPath id="r"><rect width="135" height="22" rx="4" fill="#fff"/></clipPath></defs>
+  <g clip-path="url(#r)">
+    <rect width="92" height="22" fill="#30363d"/>
+    <rect x="92" width="43" height="22" fill="#4ecdc4"/>
+  </g>
+  <text x="46.0" y="15" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" font-weight="500" fill="#e6edf3" fill-opacity="1.0" text-anchor="middle">документов</text>
+  <text x="113.4" y="15" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="11.5" font-weight="700" fill="#0d1117" fill-opacity="1.0" text-anchor="middle">108</text>
+</svg>

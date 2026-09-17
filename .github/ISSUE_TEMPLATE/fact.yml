@@ -1,0 +1,48 @@
+name: Новый факт или исправление
+description: Дополнить базу или поправить неточность — с пруфом на сообщение чата
+title: "[факт] "
+labels: [факт]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Главное правило базы: **нет пруфа — нет записи**. Пруф — это номер сообщения в чате.
+  - type: input
+    id: where
+    attributes:
+      label: Где в базе
+      description: Путь к файлу и раздел, либо «новый документ»
+      placeholder: docs/02-транспорты/xhttp.md → раздел «Ошибки → фиксы»
+    validations:
+      required: true
+  - type: textarea
+    id: fact
+    attributes:
+      label: Факт
+      description: Одной-двумя фразами. Конфиги и команды — дословно, в блоке кода.
+    validations:
+      required: true
+  - type: input
+    id: proof
+    attributes:
+      label: Пруф
+      description: id сообщения, автор (ник, не полное имя), дата
+      placeholder: "[id=698034|Ник|16.06.2026]"
+    validations:
+      required: true
+  - type: input
+    id: date
+    attributes:
+      label: На какую дату это верно
+      placeholder: 16.06.2026
+    validations:
+      required: true
+  - type: checkboxes
+    id: rules
+    attributes:
+      label: Проверил
+      options:
+        - label: В тексте нет секретов, токенов и приватных ключей
+          required: true
+        - label: В тексте нет полных имён, телефонов и чужих адресов
+          required: true
