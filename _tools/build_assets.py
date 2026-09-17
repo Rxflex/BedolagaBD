@@ -128,6 +128,42 @@ def badges():
     badge('period', 'период', '08.2025 → 08.2026', '#f78c6b')
 
 
+def deepwiki():
+    """Крупная плашка-CTA: спросить ИИ по этой базе на DeepWiki."""
+    w, h, accent = 1200, 150, '#4ecdc4'
+    parts = [
+        '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 %d %d" width="%d" height="%d" '
+        'role="img" aria-label="Спросить ИИ по этой базе на DeepWiki">' % (w, h, w, h),
+        defs(accent, 24),
+        frame(w, h, accent),
+        '  <ellipse cx="1040" cy="75" rx="300" ry="150" fill="url(#glow)"/>',
+        # облачко диалога
+        '  <g transform="translate(52 38)">',
+        '    <rect width="74" height="58" rx="14" fill="%s" fill-opacity="0.16" '
+        'stroke="%s" stroke-opacity="0.65"/>' % (accent, accent),
+        '    <path d="M20 58 L20 74 L38 58 Z" fill="%s" fill-opacity="0.16" '
+        'stroke="%s" stroke-opacity="0.65"/>' % (accent, accent),
+        '    <circle cx="24" cy="29" r="4.5" fill="%s"/>' % accent,
+        '    <circle cx="37" cy="29" r="4.5" fill="%s"/>' % accent,
+        '    <circle cx="50" cy="29" r="4.5" fill="%s"/>' % accent,
+        '  </g>',
+        text(152, 56, 'DEEPWIKI', 15, accent, '700', spacing='4.2'),
+        text(150, 96, 'Спросите ИИ по этой базе', 30, FG, '800'),
+        text(152, 124, 'deepwiki.com/Rxflex/BedolagaBD · агент прочитал все 108 документов '
+                       'и ссылается на них в ответах', 14.5, DIM),
+        # кнопка-стрелка
+        '  <g transform="translate(990 52)">',
+        '    <rect width="166" height="46" rx="23" fill="%s" fill-opacity="0.18" '
+        'stroke="%s" stroke-opacity="0.7"/>' % (accent, accent),
+        text(26, 29, 'Задать вопрос', 15, FG, '700'),
+        '    <path d="M132 23 h12 m-5 -5 l5 5 l-5 5" fill="none" stroke="%s" '
+        'stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>' % accent,
+        '  </g>',
+        '</svg>',
+    ]
+    write('assets/deepwiki.svg', '\n'.join(parts) + '\n')
+
+
 def banner():
     w, h, accent = 1200, 380, '#7c8cff'
     st = kb_stats()
@@ -183,6 +219,7 @@ def section_banner(sec):
 
 
 if __name__ == '__main__':
+    deepwiki()
     badges()
     banner()
     map_header()

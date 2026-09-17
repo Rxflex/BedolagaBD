@@ -2,6 +2,8 @@
 
 <img src="assets/banner.svg" alt="База знаний Bedolaga Social Club" width="900">
 
+<a href="https://deepwiki.com/Rxflex/BedolagaBD"><img src="assets/deepwiki.svg" alt="Спросить ИИ по этой базе на DeepWiki" width="900"></a>
+
 ### [🗺 Карта разделов](MAP.md) · [🏷 Релизы](indexes/релизы.md) · [🩺 Ошибки](indexes/ошибки.md) · [🔧 Env](indexes/env.md) · [📖 Термины](indexes/термины.md) · [🔗 Ссылки](indexes/ссылки.md) · [🗃 Первоисточники](source/README.md)
 
 </div>
@@ -36,6 +38,7 @@
 
 | Способ | Куда идти |
 |---|---|
+| **Спросить словами** | [🤖 DeepWiki](https://deepwiki.com/Rxflex/BedolagaBD) — ИИ-агент прочитал репозиторий и отвечает на вопросы со ссылками на документы |
 | **Глазами** | [🗺 Карта разделов](MAP.md) — все 108 документов и их подразделы на одной странице |
 | **По сущности** | [🏷 версия](indexes/релизы.md) · [🩺 ошибка](indexes/ошибки.md) · [🔧 env-переменная](indexes/env.md) · [🔗 ссылка](indexes/ссылки.md) · [📖 термин](indexes/термины.md) |
 | **По дате** | [🗓 хронология по месяцам](docs/08-хронология/README.md) — 1940 вех с 03.2024 по 08.2026 |

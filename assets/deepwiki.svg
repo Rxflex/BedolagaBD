@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 150" width="1200" height="150" role="img" aria-label="Спросить ИИ по этой базе на DeepWiki">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/><stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#4ecdc4"/><stop offset="1" stop-color="#4ecdc4" stop-opacity="0.15"/>
+    </linearGradient>
+    <pattern id="grid" width="24" height="24" patternUnits="userSpaceOnUse">
+      <path d="M 24 0 H 0 V 24" fill="none" stroke="#ffffff" stroke-opacity="0.04"/>
+    </pattern>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#4ecdc4" stop-opacity="0.35"/>
+      <stop offset="1" stop-color="#4ecdc4" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="150" rx="16" fill="url(#bg)"/>
+  <rect width="1200" height="150" rx="16" fill="url(#grid)"/>
+  <rect width="1200" height="150" rx="16" fill="none" stroke="#4ecdc4" stroke-opacity="0.35"/>
+  <ellipse cx="1040" cy="75" rx="300" ry="150" fill="url(#glow)"/>
+  <g transform="translate(52 38)">
+    <rect width="74" height="58" rx="14" fill="#4ecdc4" fill-opacity="0.16" stroke="#4ecdc4" stroke-opacity="0.65"/>
+    <path d="M20 58 L20 74 L38 58 Z" fill="#4ecdc4" fill-opacity="0.16" stroke="#4ecdc4" stroke-opacity="0.65"/>
+    <circle cx="24" cy="29" r="4.5" fill="#4ecdc4"/>
+    <circle cx="37" cy="29" r="4.5" fill="#4ecdc4"/>
+    <circle cx="50" cy="29" r="4.5" fill="#4ecdc4"/>
+  </g>
+  <text x="152" y="56" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#4ecdc4" fill-opacity="1.0" text-anchor="start" letter-spacing="4.2">DEEPWIKI</text>
+  <text x="150" y="96" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="30" font-weight="800" fill="#e6edf3" fill-opacity="1.0" text-anchor="start">Спросите ИИ по этой базе</text>
+  <text x="152" y="124" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="14.5" font-weight="400" fill="#8b949e" fill-opacity="1.0" text-anchor="start">deepwiki.com/Rxflex/BedolagaBD · агент прочитал все 108 документов и ссылается на них в ответах</text>
+  <g transform="translate(990 52)">
+    <rect width="166" height="46" rx="23" fill="#4ecdc4" fill-opacity="0.18" stroke="#4ecdc4" stroke-opacity="0.7"/>
+  <text x="26" y="29" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="15" font-weight="700" fill="#e6edf3" fill-opacity="1.0" text-anchor="start">Задать вопрос</text>
+    <path d="M132 23 h12 m-5 -5 l5 5 l-5 5" fill="none" stroke="#4ecdc4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+</svg>
