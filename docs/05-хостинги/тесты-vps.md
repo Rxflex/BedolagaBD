@@ -10,7 +10,7 @@
 ---
 <!-- /KB:HEAD -->
 
-## Канонический набор тестов VPS (закреп Egor, дословно) [id=199900]
+## Канонический набор тестов VPS (закреп Egor, дословно) [id=199900](https://t.me/c/2941121338/199900)
 
 ```bash
 IP region
@@ -37,7 +37,7 @@ sysbench cpu run --threads=1
 ```bash
 curl -sL https://raw.githubusercontent.com/saveksme/multitest/master/multitest.sh -o /usr/local/bin/multitest && chmod +x /usr/local/bin/multitest && echo "Установлено! Запуск: multitest"
 ```
-[id=480497,495478]
+[id=480497,495478](https://t.me/c/2941121338/480497)
 
 **Прочие команды:**
 ```bash
@@ -48,25 +48,25 @@ curl nxtrace.org/nt | bash; nexttrace 8.8.8.8
 # Скорость до api.telegram.org
 curl -o /dev/null -s -w 'Connect: %{time_connect}s\nTTFB: %{time_starttransfer}s\nTotal: %{time_total}s\n' https://api.telegram.org
 ```
-[id=184554,87774]
+[id=184554,87774](https://t.me/c/2941121338/184554)
 
 **Чекер ТСПУ/операторов (по операторам ICMP/TCP/TLS):**
 ```bash
 wget -qO- censorcheck.tlab.pw | bash
 ```
-[id=845579]
+[id=845579](https://t.me/c/2941121338/845579)
 
 **Censorcheck с альтернативным портом 8443:**
 ```bash
 curl -sSL -A "Wget/1.21.3" censorcheck.tlab.pw | sed 's/":443"/":8443"/g; s/"port": 443/"port": 8443/g' | bash
 ```
-[id=935719]
+[id=935719](https://t.me/c/2941121338/935719)
 
 **dpi-detector:**
 ```bash
 docker run --rm -it --pull=always ghcr.io/runnin4ik/dpi-detector:latest
 ```
-[id=934724]
+[id=934724](https://t.me/c/2941121338/934724)
 
 **TrafficGuard (blockguard) установка:**
 ```bash
@@ -79,13 +79,13 @@ iptables -I FORWARD -m set --match-set autoban src -j DROP
 ipset save > /etc/ipset.conf
 iptables-save > /etc/iptables/rules.v4
 ```
-[id=469137]
+[id=469137](https://t.me/c/2941121338/469137)
 
 **Закрытие почтовых портов (анти-спам):**
 ```bash
 ufw deny out 25/tcp && ufw deny out 465/tcp && ufw deny out 587/tcp && ufw deny out 110/tcp && ufw deny out 995/tcp && ufw deny out 143/tcp && ufw deny out 993/tcp && ufw deny in 25/tcp && ufw deny in 465/tcp && ufw deny in 587/tcp && ufw deny in 110/tcp && ufw deny in 995/tcp && ufw deny in 143/tcp && ufw deny in 993/tcp
 ```
-[id=265309]
+[id=265309](https://t.me/c/2941121338/265309)
 
 **Обход ТСПУ через iptables (hashlimit на 443):**
 ```bash
@@ -109,7 +109,7 @@ iptables -A INPUT -p tcp --dport 443 -m state --state NEW -m hashlimit \
 iptables -A INPUT -p tcp --dport 443 -m state --state NEW -m recent --name blocked --set -j DROP
 netfilter-persistent save
 ```
-[id=776723]
+[id=776723](https://t.me/c/2941121338/776723)
 
 <!-- KB:FOOT -->
 ---

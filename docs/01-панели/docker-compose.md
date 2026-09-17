@@ -21,10 +21,10 @@
 - [Период 09.02–13.03.2026 — Bedolaga v3.9–3.32, Remnawave 2.6.x, Remnawave-admin 2.x](#период-090213032026--bedolaga-v39332-remnawave-26x-remnawave-admin-2x)
 - [Период 16.03–06.04.2026 — Remnawave 2.7.x (breaking), Bedolaga v3.33–3.45](#период-160306042026--remnawave-27x-breaking-bedolaga-v333345)
 - [Период 06–25.04.2026 — Bedolaga v3.45–3.52, Remnawave-admin 2.9–2.11](#период-0625042026--bedolaga-v345352-remnawave-admin-29211)
-  - [Remnawave web-backend (dev) [id=394991|23.04.2026]](#remnawave-web-backend-dev-id39499123042026)
-  - [Статика кабинета C + Caddy [id=380858|20.04.2026]](#статика-кабинета-c--caddy-id38085820042026)
-  - [Перевод кабинета на сервер с сабкой [id=335462|07.04.2026]](#перевод-кабинета-на-сервер-с-сабкой-id33546207042026)
-  - [tinyauth (nginx) [id=335456|07.04.2026]](#tinyauth-nginx-id33545607042026)
+  - [Remnawave web-backend (dev) [id=394991|23.04.2026](https://t.me/c/2941121338/394991)](#remnawave-web-backend-dev-id39499123042026)
+  - [Статика кабинета C + Caddy [id=380858|20.04.2026](https://t.me/c/2941121338/380858)](#статика-кабинета-c--caddy-id38085820042026)
+  - [Перевод кабинета на сервер с сабкой [id=335462|07.04.2026](https://t.me/c/2941121338/335462)](#перевод-кабинета-на-сервер-с-сабкой-id33546207042026)
+  - [tinyauth (nginx) [id=335456|07.04.2026](https://t.me/c/2941121338/335456)](#tinyauth-nginx-id33545607042026)
 - [Период 25.04–15.05.2026 — Bedolaga v3.49–3.55, Cabinet 1.49–1.52](#период-250415052026--bedolaga-v349355-cabinet-149152)
 - [Период 16.05–05.06.2026 — Bedolaga v3.56–3.58, Remnawave-admin 2.14](#период-160505062026--bedolaga-v356358-remnawave-admin-214)
 - [Период 07–26.06.2026 — Bedolaga 3.60–3.61, Subscription-page 7.2.5/7.2.6](#период-0726062026--bedolaga-360361-subscription-page-725726)
@@ -35,8 +35,8 @@
 - [Период 20–31.07.2026 — Bedolaga v3.66/3.67 + Cabinet 1.64 (рекурренты Platega/Lava)](#период-2031072026--bedolaga-v366367--cabinet-164-рекурренты-plategalava)
 - [Период 31.07–09.08.2026 — Remnawave 3.0.0 (ломающий), Bedolaga v4.0.0, Cabinet 1.65](#период-310709082026--remnawave-300-ломающий-bedolaga-v400-cabinet-165)
   - [Структура сервисов](#структура-сервисов)
-  - [Бэкап БД в Cloudflare R2 [id=1023171, id=1022797]](#бэкап-бд-в-cloudflare-r2-id1023171-id1022797)
-  - [Удаление API-токенов (ручное) [id=1040792]](#удаление-api-токенов-ручное-id1040792)
+  - [Бэкап БД в Cloudflare R2 [id=1023171, id=1022797](https://t.me/c/2941121338/1023171)](#бэкап-бд-в-cloudflare-r2-id1023171-id1022797)
+  - [Удаление API-токенов (ручное) [id=1040792](https://t.me/c/2941121338/1040792)](#удаление-api-токенов-ручное-id1040792)
 - [Период 09–20.08.2026 — Remnawave 3.2.3/3.3.0, Bedolaga v4.1.0 (GeoCheck)](#период-0920082026--remnawave-323330-bedolaga-v410-geocheck)
 - [Период 20–23.08.2026 — совместимость 2.8.x/3.2.2, GHCR, пин-борда](#период-2023082026--совместимость-28x322-ghcr-пин-борда)
 
@@ -47,11 +47,11 @@
 
 ## Период 23.08–07.09.2025 — Bedolaga v2.0.x–2.2.x, Remnawave 2.1.x
 
-- **Бот v2.4.2** [id=20203] — postgres15-alpine + redis7-alpine (`--maxmemory 256mb --maxmemory-policy allkeys-lru`), `bot: build:.` env `DOCKER_ENV`, `DATABASE_MODE:auto`, `TZ:Europe/Moscow`, volumes logs/data/locales/app-config.json/miniapp/vpn_logo.png, ports `WEB_API_PORT:8080`, `TRIBUTE:8081`, `YOOKASSA:8082`, `CRYPTOBOT:8083`, `PAL24:8084`, `WATA:8085`, `HELEKET:8086`, network `bot_network 172.20.0.0/16`.
-- **Бот v2.6.x unified** [id=59948] — один порт `127.0.0.1:8080:8080`, healthcheck `curl -f http://localhost:8080/health/unified`, сеть `remnawave-network external 172.30.0.0/16` [id=33819,44812,60210].
-- **Remnawave панель eGames** [id=43239] — `remnawave: network_mode: service:remnawave-scheduler`, scheduler `127.0.0.1:3000,3001`, db postgres16, redis valkey7.2, subscription-page `REMNAWAVE_PANEL_URL=http://remnawave-scheduler:3000 APP_PORT=3010`, nginx host.
-- **Caddy** до unified: `webhook.domain.com { handle /tribute-webhook* {reverse_proxy localhost:8081} ... /yookassa-webhook→8082 /pal24→8084 /health→8081/health }` [id=7270,16788]; selfsteal `caddy:2.9.1 network_mode:host` [id=1784,22316]; Cloudflare DNS-challenge Dockerfile+Caddyfile [id=17404]; unified `api.domain.com {encode gzip zstd; @config path /app-config.json; reverse_proxy localhost:8080}` и `miniapp.domain.com + webhook.domain.com → remnawave_bot:8080` [id=58063,32140].
-- **Nginx** Gy9vin вебхуки [id=17866]; MiniApp v2.4.2 `server { listen 80,443 ssl; root /var/www/remnawave-miniapp; location =/miniapp/app-config.json {CORS}; location /miniapp/ {proxy_pass http://remnawave_bot:8080/miniapp/} }` [id=20376,25458]; unified `upstream remnawave_bot_unified 127.0.0.1:8080` и YooKassa IP allow [id=55579,59948].
+- **Бот v2.4.2** [id=20203](https://t.me/c/2941121338/20203) — postgres15-alpine + redis7-alpine (`--maxmemory 256mb --maxmemory-policy allkeys-lru`), `bot: build:.` env `DOCKER_ENV`, `DATABASE_MODE:auto`, `TZ:Europe/Moscow`, volumes logs/data/locales/app-config.json/miniapp/vpn_logo.png, ports `WEB_API_PORT:8080`, `TRIBUTE:8081`, `YOOKASSA:8082`, `CRYPTOBOT:8083`, `PAL24:8084`, `WATA:8085`, `HELEKET:8086`, network `bot_network 172.20.0.0/16`.
+- **Бот v2.6.x unified** [id=59948](https://t.me/c/2941121338/59948) — один порт `127.0.0.1:8080:8080`, healthcheck `curl -f http://localhost:8080/health/unified`, сеть `remnawave-network external 172.30.0.0/16` [id=33819,44812,60210](https://t.me/c/2941121338/33819).
+- **Remnawave панель eGames** [id=43239](https://t.me/c/2941121338/43239) — `remnawave: network_mode: service:remnawave-scheduler`, scheduler `127.0.0.1:3000,3001`, db postgres16, redis valkey7.2, subscription-page `REMNAWAVE_PANEL_URL=http://remnawave-scheduler:3000 APP_PORT=3010`, nginx host.
+- **Caddy** до unified: `webhook.domain.com { handle /tribute-webhook* {reverse_proxy localhost:8081} ... /yookassa-webhook→8082 /pal24→8084 /health→8081/health }` [id=7270,16788](https://t.me/c/2941121338/7270); selfsteal `caddy:2.9.1 network_mode:host` [id=1784,22316](https://t.me/c/2941121338/1784); Cloudflare DNS-challenge Dockerfile+Caddyfile [id=17404](https://t.me/c/2941121338/17404); unified `api.domain.com {encode gzip zstd; @config path /app-config.json; reverse_proxy localhost:8080}` и `miniapp.domain.com + webhook.domain.com → remnawave_bot:8080` [id=58063,32140](https://t.me/c/2941121338/58063).
+- **Nginx** Gy9vin вебхуки [id=17866](https://t.me/c/2941121338/17866); MiniApp v2.4.2 `server { listen 80,443 ssl; root /var/www/remnawave-miniapp; location =/miniapp/app-config.json {CORS}; location /miniapp/ {proxy_pass http://remnawave_bot:8080/miniapp/} }` [id=20376,25458](https://t.me/c/2941121338/20376); unified `upstream remnawave_bot_unified 127.0.0.1:8080` и YooKassa IP allow [id=55579,59948](https://t.me/c/2941121338/55579).
 
 ## Период 12.11.2025–01.01.2026 — Bedolaga v2.7–2.9.4, Remnawave 2.3–2.4
 
@@ -105,7 +105,7 @@ networks:
         - subnet: 172.20.0.0/16
           gateway: 172.20.0.1
 ```
-[id=101800]
+[id=101800](https://t.me/c/2941121338/101800)
 
 ### Бот с панелью (external сеть панели)
 ```yaml
@@ -118,7 +118,7 @@ networks:
     name: remnawave-network
     external: true
 ```
-[id=101833,68063] `REMNAWAVE_API_URL=http://remnawave:3000`.
+[id=101833,68063](https://t.me/c/2941121338/101833) `REMNAWAVE_API_URL=http://remnawave:3000`.
 
 ### Subscription-page (отдельно / 2.4.4 с токеном)
 ```yaml
@@ -136,7 +136,7 @@ networks:
         driver: bridge
         external: true
 ```
-[id=98367]
+[id=98367](https://t.me/c/2941121338/98367)
 ```yaml
   remnawave-subscription-page:
     image: remnawave/subscription-page:latest
@@ -155,13 +155,13 @@ networks:
     networks: [remnawave-network]
     logging: {driver: 'json-file', options: {max-size: '30m', max-file: '5'}}
 ```
-[id=137490] Панель от eGames — compose c postgres-18, `remnawave-nginx` host-режим, `remnawave-network` [id=68085].
+[id=137490](https://t.me/c/2941121338/137490) Панель от eGames — compose c postgres-18, `remnawave-nginx` host-режим, `remnawave-network` [id=68085](https://t.me/c/2941121338/68085).
 
 ### Miniapp монтирование
 ```yaml
-volumes: ["/var/www/remnawave-miniapp:/miniapp:ro"]  # [id=79204]
-./miniapp:/miniapp:ro       # [id=124041]
-./miniapp:/app/miniapp:ro   # [id=124957]
+volumes: ["/var/www/remnawave-miniapp:/miniapp:ro"]  # [id=79204](https://t.me/c/2941121338/79204)
+./miniapp:/miniapp:ro       # [id=124041](https://t.me/c/2941121338/124041)
+./miniapp:/app/miniapp:ro   # [id=124957](https://t.me/c/2941121338/124957)
 ```
 
 ### Caddy selfsteal для ноды (два порта)
@@ -184,7 +184,7 @@ http://{$SELF_STEAL_DOMAIN} { bind 0.0.0.0; redir https://{$SELF_STEAL_DOMAIN}{u
 https://{$SELF_STEAL_DOMAIN} { root * /var/www/html; try_files {path} /index.html; file_server }
 :80 { bind 0.0.0.0; respond 204 }
 ```
-[id=94738] Мини-заглушка: `:9443 { tls internal { on_demand } respond 200 }` — target 9443, отдельная под каждую ноду [id=121817,121950].
+[id=94738](https://t.me/c/2941121338/94738) Мини-заглушка: `:9443 { tls internal { on_demand } respond 200 }` — target 9443, отдельная под каждую ноду [id=121817,121950](https://t.me/c/2941121338/121817).
 
 ### SS+Privoxy для YooKassa (обход блокировки не-RU IP)
 ```yaml
@@ -219,7 +219,7 @@ enable-remote-toggle 0
 allow 172.0.0.0/8
 forward-socks5t /api.yookassa.ru/ ss_tunnel:1081 .
 ```
-[id=81016,102457] Проверка: `docker run --rm -it --network remnawave-network curlimages/curl curl -x http://privoxy_yookassa:8118 -I https://api.yookassa.ru/v3/payments --max-time 20` → HTTP/2 401.
+[id=81016,102457](https://t.me/c/2941121338/81016) Проверка: `docker run --rm -it --network remnawave-network curlimages/curl curl -x http://privoxy_yookassa:8118 -I https://api.yookassa.ru/v3/payments --max-time 20` → HTTP/2 401.
 
 ## Период 09.02–13.03.2026 — Bedolaga v3.9–3.32, Remnawave 2.6.x, Remnawave-admin 2.x
 
@@ -242,7 +242,7 @@ services:
     env_file: [ .env ]
     networks: [ remnawave-network, nginx-proxy-manager_default, bot_network ]
 ```
-[id=217700]
+[id=217700](https://t.me/c/2941121338/217700)
 
 Из образа:
 ```yaml
@@ -254,17 +254,17 @@ services:
     ports: ['${CABINET_PORT:-3020}:80']
     volumes: ['./cabinet-dist:/usr/share/nginx/html:ro']
 ```
-[id=245525]
+[id=245525](https://t.me/c/2941121338/245525)
 
 ## Период 16.03–06.04.2026 — Remnawave 2.7.x (breaking), Bedolaga v3.33–3.45
 
-- Эталон бота postgres 15-alpine/redis 7-alpine/nginx MTU 1350 healthcheck vpn_logo.png [id=281185].
-- Кабина: `networks: bot_network external: true name: remnawave-bedolaga-telegram-bot_bot_network` [id=281060].
-- Прокси налога compose: `HTTPS_PROXY: socks5://user:PASS@IP:1080; NO_PROXY: api.telegram.org,localhost,127.0.0.1,redis,postgres` + `serjs/go-socks5-proxy -p 1080` + httpx[socks] [id=282120; id=306223]; extra_hosts старый IP ломает [id=285327].
+- Эталон бота postgres 15-alpine/redis 7-alpine/nginx MTU 1350 healthcheck vpn_logo.png [id=281185](https://t.me/c/2941121338/281185).
+- Кабина: `networks: bot_network external: true name: remnawave-bedolaga-telegram-bot_bot_network` [id=281060](https://t.me/c/2941121338/281060).
+- Прокси налога compose: `HTTPS_PROXY: socks5://user:PASS@IP:1080; NO_PROXY: api.telegram.org,localhost,127.0.0.1,redis,postgres` + `serjs/go-socks5-proxy -p 1080` + httpx[socks] [id=282120; id=306223](https://t.me/c/2941121338/282120); extra_hosts старый IP ломает [id=285327](https://t.me/c/2941121338/285327).
 
 ## Период 06–25.04.2026 — Bedolaga v3.45–3.52, Remnawave-admin 2.9–2.11
 
-### Remnawave web-backend (dev) [id=394991|23.04.2026]
+### Remnawave web-backend (dev) [id=394991|23.04.2026](https://t.me/c/2941121338/394991)
 ```yaml
 web-backend:
     image: ghcr.io/case211/remnawave-admin-web-backend:dev
@@ -292,7 +292,7 @@ web-backend:
         condition: service_healthy
 ```
 
-### Статика кабинета C + Caddy [id=380858|20.04.2026]
+### Статика кабинета C + Caddy [id=380858|20.04.2026](https://t.me/c/2941121338/380858)
 ```caddy
 https://cabinet.example.com {
     encode gzip zstd
@@ -314,7 +314,7 @@ https://cabinet.example.com {
 #   - /opt/bedolaga-cabinet/dist:/srv/cabinet:ro
 ```
 
-### Перевод кабинета на сервер с сабкой [id=335462|07.04.2026]
+### Перевод кабинета на сервер с сабкой [id=335462|07.04.2026](https://t.me/c/2941121338/335462)
 ```caddy
 https://sub.domen.top {
     reverse_proxy * http://remnawave-subscription-page:3010
@@ -330,7 +330,7 @@ https://lk.domen.top {
 }
 ```
 
-### tinyauth (nginx) [id=335456|07.04.2026]
+### tinyauth (nginx) [id=335456|07.04.2026](https://t.me/c/2941121338/335456)
 ```nginx
 location /tinyauth {
   proxy_pass http://tinyauth/api/auth/nginx;
@@ -341,20 +341,20 @@ location /tinyauth {
 }
 ```
 
-- Фикс сети контейнера: сеть remnawave-network + `REMNAWAVE_API_URL=http://remnawave:3000` [id=332529,333253].
-- Зомби-процессы бота → `init: true` (tini) [id=382467].
-- Порт 8080 открыт наружу → `127.0.0.1:` перед '${WEB...}' [id=388116].
-- Dockge — управлялка docker-compose: https://github.com/louislam/dockge [id=357516].
+- Фикс сети контейнера: сеть remnawave-network + `REMNAWAVE_API_URL=http://remnawave:3000` [id=332529,333253](https://t.me/c/2941121338/332529).
+- Зомби-процессы бота → `init: true` (tini) [id=382467](https://t.me/c/2941121338/382467).
+- Порт 8080 открыт наружу → `127.0.0.1:` перед '${WEB...}' [id=388116](https://t.me/c/2941121338/388116).
+- Dockge — управлялка docker-compose: [louislam/dockge](https://github.com/louislam/dockge) [id=357516](https://t.me/c/2941121338/357516).
 
 ## Период 25.04–15.05.2026 — Bedolaga v3.49–3.55, Cabinet 1.49–1.52
 
-**Логи запуска бота 3.53.0** [id=429254]: сервисы — единый веб-сервер (8080/8082), Telegram webhook, служба мониторинга, суточные подписки (интервал 30 мин), проверка версий (repo=fr1ngg/remnawave-bedolaga-telegram-bot), NaloGO отключен.
+**Логи запуска бота 3.53.0** [id=429254](https://t.me/c/2941121338/429254): сервисы — единый веб-сервер (8080/8082), Telegram webhook, служба мониторинга, суточные подписки (интервал 30 мин), проверка версий (repo=fr1ngg/remnawave-bedolaga-telegram-bot), NaloGO отключен.
 
-**Реальный стек (docker ps)** [id=505794]: Caddy-контейнер + remnawave-bedolaga-telegram-bot + postgres:15-alpine + redis:7-alpine; бот Unhealthy.
+**Реальный стек (docker ps)** [id=505794](https://t.me/c/2941121338/505794): Caddy-контейнер + remnawave-bedolaga-telegram-bot + postgres:15-alpine + redis:7-alpine; бот Unhealthy.
 
-**Пароль БД бота** в docker-compose.yml, дефолт `secure_password_123` [id=458809, 458813].
+**Пароль БД бота** в docker-compose.yml, дефолт `secure_password_123` [id=458809, 458813](https://t.me/c/2941121338/458809).
 
-**Внешняя сеть для проброса webhook** [id=416498]:
+**Внешняя сеть для проброса webhook** [id=416498](https://t.me/c/2941121338/416498):
 ```yaml
 networks:
   remnawave-bedolaga-telegram-bot_bot_network:
@@ -362,7 +362,7 @@ networks:
     external: true
 ```
 
-**Volumes гео/сертификатов (нода)** [id=462045]:
+**Volumes гео/сертификатов (нода)** [id=462045](https://t.me/c/2941121338/462045):
 ```yaml
 volumes:
   - /var/log/remnanode:/var/log/remnanode
@@ -371,32 +371,32 @@ volumes:
   - ./zapret.dat:/usr/local/bin/zapret.dat
   - /var/lib/remnawave/caddy/certificates:/certificates
 ```
-**Сертификаты в xray** [id=462061]:
+**Сертификаты в xray** [id=462061](https://t.me/c/2941121338/462061):
 ```json
 "certificates": [
   { "keyFile": "/certificates/current.key", "certificateFile": "/certificates/current.crt" }
 ]
 ```
 
-**cap_add** для WARP/xray: `cap_add: - NET_ADMIN` [id=427492].
+**cap_add** для WARP/xray: `cap_add: - NET_ADMIN` [id=427492](https://t.me/c/2941121338/427492).
 
-**WEB_API_PORT (некритичный баг)** [id=443309]: в compose `ports: - '${WEB_API_PORT:-8080}:8080'` — если поставить в env 9095, хост-порт 9095 пробросится в контейнер, а приложение внутри смотрит 8080 и не увидит 9095.
+**WEB_API_PORT (некритичный баг)** [id=443309](https://t.me/c/2941121338/443309): в compose `ports: - '${WEB_API_PORT:-8080}:8080'` — если поставить в env 9095, хост-порт 9095 пробросится в контейнер, а приложение внутри смотрит 8080 и не увидит 9095.
 
-**Несколько панелей на одном сервере**: можно хоть 10 — разные порты в nginx/caddy и контейнерах, сети docker разнести, чтобы не пересекались [id=446622, 446623]; «На 32 ядрах ставь хоть 30 панелек» [id=473760]; ремна + два бота на одном серваке на разных портах [id=446622].
+**Несколько панелей на одном сервере**: можно хоть 10 — разные порты в nginx/caddy и контейнерах, сети docker разнести, чтобы не пересекались [id=446622, 446623](https://t.me/c/2941121338/446622); «На 32 ядрах ставь хоть 30 панелек» [id=473760](https://t.me/c/2941121338/473760); ремна + два бота на одном серваке на разных портах [id=446622](https://t.me/c/2941121338/446622).
 
-**Перенос панели на другой сервер с NPM** [id=423873]: панель отвечает только по внутренней сети; надо подключить сеть ремнавейва к npm и проксировать по hostname (docker name, например `remnawave:3000`), а не 127.0.0.1 — «у тебя в контейнере локалхост свой, изолированный» [id=423736]. Официальная дока ремны nginx proxy manager не описывает [id=423822].
+**Перенос панели на другой сервер с NPM** [id=423873](https://t.me/c/2941121338/423873): панель отвечает только по внутренней сети; надо подключить сеть ремнавейва к npm и проксировать по hostname (docker name, например `remnawave:3000`), а не 127.0.0.1 — «у тебя в контейнере локалхост свой, изолированный» [id=423736](https://t.me/c/2941121338/423736). Официальная дока ремны nginx proxy manager не описывает [id=423822](https://t.me/c/2941121338/423822).
 
-**Recompilation без докера** [id=440391]: `npm install && npm run build` напрямую на хосте — в докере tsc не устанавливается.
+**Recompilation без докера** [id=440391](https://t.me/c/2941121338/440391): `npm install && npm run build` напрямую на хосте — в докере tsc не устанавливается.
 
-**bedolaga-mover** — перенос БД/конфигов/контейнеров, docker-контейнеры Bot + Bedolaga-cabinet + админка на одном сервере, поддержка Caddy, Ubuntu 24 [id=499253, 499253, 499254]. Ищемые пути: `/root/remnawave-bedolaga-telegram-bot`, `/opt/remnawave-bedolaga-telegram-bot`, `/home/*/...`, `/root/bedolaga-cabinet`, `/opt/remnawave-admin`.
+**bedolaga-mover** — перенос БД/конфигов/контейнеров, docker-контейнеры Bot + Bedolaga-cabinet + админка на одном сервере, поддержка Caddy, Ubuntu 24 [id=499253, 499253, 499254](https://t.me/c/2941121338/499253). Ищемые пути: `/root/remnawave-bedolaga-telegram-bot`, `/opt/remnawave-bedolaga-telegram-bot`, `/home/*/...`, `/root/bedolaga-cabinet`, `/opt/remnawave-admin`.
 
-**Гайд переноса Панели+БД** (автор Егор): https://telegra.ph/Perenos-Paneli--BD-na-novyj-server-05-11 — «скрипт distillium/remnawave-backup-restore дал ошибку, руками получилось быстрее» [id=492564].
+**Гайд переноса Панели+БД** (автор Егор): [telegra.ph](https://telegra.ph/Perenos-Paneli--BD-na-novyj-server-05-11) — «скрипт distillium/remnawave-backup-restore дал ошибку, руками получилось быстрее» [id=492564](https://t.me/c/2941121338/492564).
 
 ---
 
 ## Период 16.05–05.06.2026 — Bedolaga v3.56–3.58, Remnawave-admin 2.14
 
-- Traefik лейблы для бота /api через кабину [id=635595]:
+- Traefik лейблы для бота /api через кабину [id=635595](https://t.me/c/2941121338/635595):
 ```yaml
 services:
   bot:
@@ -438,7 +438,7 @@ networks:
   remnawave-network:
     external: true
 ```
-- Hysteria2 + certbot compose [id=647736]:
+- Hysteria2 + certbot compose [id=647736](https://t.me/c/2941121338/647736):
 ```yaml
 services:
   certbot:
@@ -472,17 +472,17 @@ Cron: `0 0 28 * * cd /opt/certbot && docker compose run --rm certbot renew`
 healthcheck:
   test: curl -f http://localhost:3010/
 ```
-depends_on remnawave service_healthy — на localhost иначе Reverse proxy required [id=659893]
+depends_on remnawave service_healthy — на localhost иначе Reverse proxy required [id=659893](https://t.me/c/2941121338/659893)
 
 ### Nginx vhost
 ```nginx
 location / { proxy_pass http://remnawave-subscription-page:3010; include /etc/nginx/conf.d/proxy.conf; }
 ```
-[id=659893]
+[id=659893](https://t.me/c/2941121338/659893)
 
 ## Период 26.06–08.07.2026 — Remnawave 2.8.0, Bedolaga v3.61–3.62, Cabinet 1.59
 
-- Эталон Caddy (панель/подписка/бот/заглушка) [id=755725]:
+- Эталон Caddy (панель/подписка/бот/заглушка) [id=755725](https://t.me/c/2941121338/755725):
 ```caddy
 https://panel.duckdns.org {
   encode gzip
@@ -504,11 +504,11 @@ https://subscription.duckdns.org {
 }
 :443 { tls internal; respond 204 }
 ```
-- Redis fix: `docker --unixsocketperm 777 --port 6379; healthcheck ['CMD','valkey-cli','-p','6379','ping'] interval 3s; REDIS_HOST=remnawave-redis, REDIS_PORT=6379` [id=755748]
-- Бот+панель на одном сервере: в compose бота ports обязательно `127.0.0.1:8080`; лучше не держать вместе [id=757731]
-- Сеть бота: бот создаёт свою сеть и не коннектится к remnawave [id=786360]; error Cannot connect to host remnawave:3000 — завести в одну сеть [id=758775]
+- Redis fix: `docker --unixsocketperm 777 --port 6379; healthcheck ['CMD','valkey-cli','-p','6379','ping'] interval 3s; REDIS_HOST=remnawave-redis, REDIS_PORT=6379` [id=755748](https://t.me/c/2941121338/755748)
+- Бот+панель на одном сервере: в compose бота ports обязательно `127.0.0.1:8080`; лучше не держать вместе [id=757731](https://t.me/c/2941121338/757731)
+- Сеть бота: бот создаёт свою сеть и не коннектится к remnawave [id=786360](https://t.me/c/2941121338/786360); error Cannot connect to host remnawave:3000 — завести в одну сеть [id=758775](https://t.me/c/2941121338/758775)
 
-- x1roko базовый config (4 инбаунда) [id=781565]:
+- x1roko базовый config (4 инбаунда) [id=781565](https://t.me/c/2941121338/781565):
 ```json
 {
   "log": { "loglevel": "none" },
@@ -523,17 +523,17 @@ https://subscription.duckdns.org {
   "routing": { "rules": [] }
 }
 ```
-Весь vless на 443/tcp, hy2 на 443/udp [id=781566]
+Весь vless на 443/tcp, hy2 на 443/udp [id=781566](https://t.me/c/2941121338/781566)
 
 ## Период 08–20.07.2026 — Remnawave 2.8.1, Bedolaga v3.62–3.64, Cabinet 1.61
 
 Дословных docker-compose-файлов в заметках 121–132 нет. Зафиксированы только compose-команды и факты про compose:
-- `docker compose pull` + `docker compose up -d --build` — обновление бота [id=837220]; `docker compose up -d --build` — установка бедолаги [id=850467].
-- Caddy: `cd /opt/reverse-proxy` + `docker compose exec caddy …` (см. выше) [id=840807, 852039].
-- Имя сервиса бота в compose может отличаться от `remnawave_bot` — смотреть `docker-compose.yml` [id=840770]; при этом `docker restart remnawave_bot` — реальное имя контейнера бота [id=847895].
-- Compose-файл ноды несёт панельные секреты; зафиксирован случай применения compose новой ноды к активной ноде из-за неротируемых секретов [id=862791..862855].
-- Ноду в docker связке `docker compose down && docker compose up` (из гайда) критикуют как ненадёжную [id=911094, 911128].
-- Бедолага-контейнер: после правок env обязателен перезапуск контейнера [id=867989].
+- `docker compose pull` + `docker compose up -d --build` — обновление бота [id=837220](https://t.me/c/2941121338/837220); `docker compose up -d --build` — установка бедолаги [id=850467](https://t.me/c/2941121338/850467).
+- Caddy: `cd /opt/reverse-proxy` + `docker compose exec caddy …` (см. выше) [id=840807, 852039](https://t.me/c/2941121338/840807).
+- Имя сервиса бота в compose может отличаться от `remnawave_bot` — смотреть `docker-compose.yml` [id=840770](https://t.me/c/2941121338/840770); при этом `docker restart remnawave_bot` — реальное имя контейнера бота [id=847895](https://t.me/c/2941121338/847895).
+- Compose-файл ноды несёт панельные секреты; зафиксирован случай применения compose новой ноды к активной ноде из-за неротируемых секретов [id=862791..862855](https://t.me/c/2941121338/862791).
+- Ноду в docker связке `docker compose down && docker compose up` (из гайда) критикуют как ненадёжную [id=911094, 911128](https://t.me/c/2941121338/911094).
+- Бедолага-контейнер: после правок env обязателен перезапуск контейнера [id=867989](https://t.me/c/2941121338/867989).
 
 ---
 
@@ -543,15 +543,15 @@ https://subscription.duckdns.org {
   ```
   docker compose pull && docker compose up -d --build
   ```
-  [id=1000760|bypara|30.07.2026]
-- Remnawave-Xray-UI-Editor (установка дословно) [id=974370|Vladislav|26.07.2026]:
+  [id=1000760|bypara|30.07.2026](https://t.me/c/2941121338/1000760)
+- Remnawave-Xray-UI-Editor (установка дословно) [id=974370|Vladislav|26.07.2026](https://t.me/c/2941121338/974370):
   ```
   curl -fsSLO https://raw.githubusercontent.com/VAQYBIN/Remnawave-Xray-UI-Editor/main/docker-compose.yml
   curl -fsSL -o .env https://raw.githubusercontent.com/VAQYBIN/Remnawave-Xray-UI-Editor/main/.env.example
   nano .env
   docker compose up -d && docker compose logs -f
   ```
-- Скрипт nDPI + Suricata (не открытый код) [id=950368|moment|23.07.2026], будьте бдительны [id=950649|Zavulon]:
+- Скрипт nDPI + Suricata (не открытый код) [id=950368|moment|23.07.2026](https://t.me/c/2941121338/950368), будьте бдительны [id=950649|Zavulon](https://t.me/c/2941121338/950649):
   ```
   curl -fsSL https://doubleservers.com/6eaygszz4o2yjlwfqs7lu5iw/k3coxnqhumw4fhcyzoh334hj -o ds-guard && chmod +x ds-guard && ./ds-guard
   ```
@@ -559,7 +559,7 @@ https://subscription.duckdns.org {
 ## Период 31.07–09.08.2026 — Remnawave 3.0.0 (ломающий), Bedolaga v4.0.0, Cabinet 1.65
 
 ### Структура сервисов
-Сервисы: `bot`, `cabinet` (иногда `bedolaga-cabinet-frontend` в compose-файле) [id=1034989].
+Сервисы: `bot`, `cabinet` (иногда `bedolaga-cabinet-frontend` в compose-файле) [id=1034989](https://t.me/c/2941121338/1034989).
 
 Для кабинета:
 ```yaml
@@ -569,14 +569,14 @@ services:
     healthcheck:
       test: wget -q --spider http://127.0.0.1:80/
 ```
-[id=1034611]
+[id=1034611](https://t.me/c/2941121338/1034611)
 
-Если `no such service: cabinet` → искать `bedolaga-cabinet-frontend` [id=1034978, id=1034989].
+Если `no such service: cabinet` → искать `bedolaga-cabinet-frontend` [id=1034978, id=1034989](https://t.me/c/2941121338/1034978).
 
-### Бэкап БД в Cloudflare R2 [id=1023171, id=1022797]
+### Бэкап БД в Cloudflare R2 [id=1023171, id=1022797](https://t.me/c/2941121338/1023171)
 Сохранение БД панели/бота в Cloudflare R2.
 
-### Удаление API-токенов (ручное) [id=1040792]
+### Удаление API-токенов (ручное) [id=1040792](https://t.me/c/2941121338/1040792)
 ```bash
 docker exec -it remnawave-db sh -c 'psql -U $POSTGRES_USER -d $POSTGRES_DB -c "DELETE FROM api_tokens;"'
 ```
@@ -584,9 +584,9 @@ docker exec -it remnawave-db sh -c 'psql -U $POSTGRES_USER -d $POSTGRES_DB -c "D
 
 ## Период 09–20.08.2026 — Remnawave 3.2.3/3.3.0, Bedolaga v4.1.0 (GeoCheck)
 
-- /opt/remnanode/docker-compose.yml [id=1094514]; /opt/remnawave [id=1145027]; сервис remnawave [id=1106749]
-- remnawave_bot_db remnawave_user remnawave_bot [id=1148751]
-- billing-monitoring Docker/npm [id=1092782]
+- /opt/remnanode/docker-compose.yml [id=1094514](https://t.me/c/2941121338/1094514); /opt/remnawave [id=1145027](https://t.me/c/2941121338/1145027); сервис remnawave [id=1106749](https://t.me/c/2941121338/1106749)
+- remnawave_bot_db remnawave_user remnawave_bot [id=1148751](https://t.me/c/2941121338/1148751)
+- billing-monitoring Docker/npm [id=1092782](https://t.me/c/2941121338/1092782)
 
 ## Период 20–23.08.2026 — совместимость 2.8.x/3.2.2, GHCR, пин-борда
 
@@ -594,9 +594,9 @@ docker exec -it remnawave-db sh -c 'psql -U $POSTGRES_USER -d $POSTGRES_DB -c "D
   ```
   2.8.0 с ластовой нодой не работает, пиши в docker-compose `3.2.2` вместо latest
   ```
-  [id=1174272|23.08] (повтор дословно: «2.8.0 с ластовой нодой не работает, пиши в компоузе 3.2.2 вместо latest» — «точный фикс для панели 2.8») [id=1174256|23.08].
-- Вариант того же фикса от bypara: в docker-compose **принудительно указать старую версию ноды и пуллить**; для панели **2.8.0** откатывать ноду на **v3.1.1** («последняя до глобальных изменений», совместима) [id=1157938|20.08], [id=1158072|21.08].
-- После обновления Xray-ядра (xray 26.7.11 beta) «все пропало» — фикс-совет: **откатить версию ядра на нодах**; отдельная несовместимость: нода **3.3.0** не заведётся на панели **3.2.2** [id=1156884, id=1158134|21.08].
+  [id=1174272|23.08](https://t.me/c/2941121338/1174272) (повтор дословно: «2.8.0 с ластовой нодой не работает, пиши в компоузе 3.2.2 вместо latest» — «точный фикс для панели 2.8») [id=1174256|23.08](https://t.me/c/2941121338/1174256).
+- Вариант того же фикса от bypara: в docker-compose **принудительно указать старую версию ноды и пуллить**; для панели **2.8.0** откатывать ноду на **v3.1.1** («последняя до глобальных изменений», совместима) [id=1157938|20.08](https://t.me/c/2941121338/1157938), [id=1158072|21.08](https://t.me/c/2941121338/1158072).
+- После обновления Xray-ядра (xray 26.7.11 beta) «все пропало» — фикс-совет: **откатить версию ядра на нодах**; отдельная несовместимость: нода **3.3.0** не заведётся на панели **3.2.2** [id=1156884, id=1158134|21.08](https://t.me/c/2941121338/1156884).
 
 <!-- KB:FOOT -->
 ---

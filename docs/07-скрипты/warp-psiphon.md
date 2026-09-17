@@ -14,11 +14,11 @@
 ```bash
 bash <(curl -fsSL https://raw.githubusercontent.com/distillium/warp-native/main/install.sh)
 ```
-[id=504448, 1086697]. Шаблоны аутбаундов: README_ru.md [id=636115]. WARP поднимается на ноду, аутбаунд в warp → гугл/гемини роутить [id=427566]. «Ниже правил DIRECT и BLOCK добавь варп, а не между ними» [id=427683, 427860].
-- `github.com/tagashi666/vps-warp` — WARP-установщик с авто-ротацией IP из пула 162.159.{192,193,195}.x, TCP MSS Clamping, Table=off, поддержка WARP+; CLI vps-warp; README под Remnawave 2.8.1 UseIP→ForceIP [id=723065, 1086718].
-- `github.com/Capybara-z/RemnaSetup` — «полный пакет» selfsteal + WARP [id=483752, 636113].
-- `github.com/Chara-Freedom/vps-psiphon` — Psiphon для Gemini; «ставьте регион Нидерланды и Ютуб пашет без рекламы» [id=1166999, 1153563].
-- WARP outbound (Xray wireguard, дословно [id=749432]):
+[id=504448, 1086697](https://t.me/c/2941121338/504448). Шаблоны аутбаундов: README_ru.md [id=636115](https://t.me/c/2941121338/636115). WARP поднимается на ноду, аутбаунд в warp → гугл/гемини роутить [id=427566](https://t.me/c/2941121338/427566). «Ниже правил DIRECT и BLOCK добавь варп, а не между ними» [id=427683, 427860](https://t.me/c/2941121338/427683).
+- `github.com/tagashi666/vps-warp` — WARP-установщик с авто-ротацией IP из пула 162.159.{192,193,195}.x, TCP MSS Clamping, Table=off, поддержка WARP+; CLI vps-warp; README под Remnawave 2.8.1 UseIP→ForceIP [id=723065, 1086718](https://t.me/c/2941121338/723065).
+- `github.com/Capybara-z/RemnaSetup` — «полный пакет» selfsteal + WARP [id=483752, 636113](https://t.me/c/2941121338/483752).
+- `github.com/Chara-Freedom/vps-psiphon` — Psiphon для Gemini; «ставьте регион Нидерланды и Ютуб пашет без рекламы» [id=1166999, 1153563](https://t.me/c/2941121338/1166999).
+- WARP outbound (Xray wireguard, дословно [id=749432](https://t.me/c/2941121338/749432)):
 ```json
 { "tag": "warp", "protocol": "wireguard", "settings": {
   "mtu": 1280,
@@ -28,8 +28,8 @@ bash <(curl -fsSL https://raw.githubusercontent.com/distillium/warp-native/main/
   "secretKey": "***"
 } }
 ```
-Роутинг в warp: geosite:openai, domain:spotify.com, domain:scdn.co, geosite:netflix, domain:chatgpt.com, domain:oaistatic.com, domain:gemini.google.com → outboundTag warp [id=749436].
-- Ошибка запуска warp в RemnaNode (Docker): `failed to create virtual tun interface > failed to disable ipv4 rp_filter for all: read-only file system` — нужен NET_ADMIN: в docker-compose `cap_add: - NET_ADMIN` [id=749423].
+Роутинг в warp: geosite:openai, domain:spotify.com, domain:scdn.co, geosite:netflix, domain:chatgpt.com, domain:oaistatic.com, domain:gemini.google.com → outboundTag warp [id=749436](https://t.me/c/2941121338/749436).
+- Ошибка запуска warp в RemnaNode (Docker): `failed to create virtual tun interface > failed to disable ipv4 rp_filter for all: read-only file system` — нужен NET_ADMIN: в docker-compose `cap_add: - NET_ADMIN` [id=749423](https://t.me/c/2941121338/749423).
 
 <!-- KB:FOOT -->
 ---

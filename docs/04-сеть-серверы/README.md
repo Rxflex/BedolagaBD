@@ -48,9 +48,9 @@
 <details>
 <summary><b>Firewall и анти-DDoS</b> — 5 разделов</summary>
 
-- [3.1 hashlimit + xt_recent (лимитируем подключения к 443) — дословно [id=776723|Evi|30.06.2026]](firewall-ddos.md#31-hashlimit--xt_recent-лимитируем-подключения-к-443--дословно-id776723evi30062026)
-- [3.2 Geo-block на ipset — дословно [id=487828|Frist|10.05.2026]](firewall-ddos.md#32-geo-block-на-ipset--дословно-id487828frist10052026)
-- [3.3 Анти-скан скрипт (ban сканеров nmap/zmap) — дословно [id=469137|DarkDragonFlame|07.05.2026]](firewall-ddos.md#33-анти-скан-скрипт-ban-сканеров-nmapzmap--дословно-id469137darkdragonflame07052026)
+- [3.1 hashlimit + xt_recent (лимитируем подключения к 443) — дословно [id=776723|Evi|30.06.2026](https://t.me/c/2941121338/776723)](firewall-ddos.md#31-hashlimit--xt_recent-лимитируем-подключения-к-443--дословно-id776723evi30062026)
+- [3.2 Geo-block на ipset — дословно [id=487828|Frist|10.05.2026](https://t.me/c/2941121338/487828)](firewall-ddos.md#32-geo-block-на-ipset--дословно-id487828frist10052026)
+- [3.3 Анти-скан скрипт (ban сканеров nmap/zmap) — дословно [id=469137|DarkDragonFlame|07.05.2026](https://t.me/c/2941121338/469137)](firewall-ddos.md#33-анти-скан-скрипт-ban-сканеров-nmapzmap--дословно-id469137darkdragonflame07052026)
 - [3.4 XDP](firewall-ddos.md#34-xdp)
 - [3.5 fail2ban / crowdsec / traffic-guard / анти-DDoS-продукты](firewall-ddos.md#35-fail2ban--crowdsec--traffic-guard--анти-ddos-продукты)
 

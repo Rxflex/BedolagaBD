@@ -21,7 +21,7 @@ BOLD_RE = re.compile(r'^\s*[-*] [*][*](?P<t>[^*]{3,200})[*][*](?P<rest>.*)$')
 H456_RE = re.compile(r'^#{3,6} +(.*)$')
 URL_RE = re.compile(r'https?://[^\s)\]}>`,"|]+')
 ENV_RE = re.compile(r'\b[A-Z][A-Z0-9]*(?:_[A-Z0-9]+)+\b')
-ID_RE = re.compile(r'\[id=[^\]]+\]')
+ID_RE = re.compile(r'\[id=[^\]]+\](?:\((?:https?:)?[^)]*\))?')
 DATE_RE = re.compile(r'\d{2}\.\d{2}\.\d{4}')
 VERTOK_RE = re.compile(r'v?\d+\.\d+(?:\.\d+)?[a-z0-9+-]*')
 
@@ -167,7 +167,10 @@ def build_errors():
             elif hm and 'id=' in line:
                 name, rest = hm.group(1), ''
             elif line.startswith('|') and not re.match(r'^\|[\s:|-]+$', line):
-                cells = [c.strip() for c in line.strip('|').split('|')]
+                # в таблицах пайпы внутри пруфов экранированы — по ним не режем
+                safe = line.replace(chr(92) + '|', chr(1))
+                cells = [c.strip().replace(chr(1), chr(92) + '|')
+                         for c in safe.strip('|').split('|')]
                 if len(cells) < 2 or cells[0].lower() in ('симптом', 'ошибка', 'проблема', 'дата', 'что', ''):
                     continue
                 name = cells[0]
@@ -252,7 +255,8 @@ def build_links():
             for url in URL_RE.findall(line):
                 url = url.rstrip('.,;:)>')
                 if (url.startswith('https://your-') or 'example.com' in url
-                        or 'domain.com' in url or 'localhost' in url):
+                        or 'domain.com' in url or 'localhost' in url
+                        or url.startswith('https://t.me/c/')):
                     continue
                 e = info.setdefault(url, {'count': 0, 'where': []})
                 e['count'] += 1

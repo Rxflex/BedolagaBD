@@ -1,4 +1,4 @@
-# Note: chunk 142 — [id=987659..993858], 28-29.07.2026
+# Note: chunk 142 — [id=987659..993858](https://t.me/c/2941121338/987659), 28-29.07.2026
 
 ## Config from chat (verbatim)
 Routing snippet for tg-only access through an inbound (id 993331, Jordan, 29.07.2026; ответ «нужен полный конфиг» 993336):

@@ -17,7 +17,7 @@
 Казахстан: 9198, 16092 (Kcell/Activ), 20445, 9066 (Beeline KZ), 42336, 44111 (Tele2.kz/ALTEL)
 ```
 
-**Полный ASN-бан-лист хостеров (после триггера на 10 мин блокируется все эти аснки) [id=236247]:**
+**Полный ASN-бан-лист хостеров (после триггера на 10 мин блокируется все эти аснки) [id=236247](https://t.me/c/2941121338/236247):**
 ```
 Cogent 174, IONOS 8560, M247 9009, DigitalOcean 14061, OVH 16276, VULTR 20473, GREEN FLOID 21100/204957, Zenlayer 21859, WIIT 24961, INTERKVM 25198, Baxet/JUSTHOST 26383, FDCservers 30058, velia.net 30083, UFO Hosting 33993, Layer7 Networks 35042, IDC Cube 36530, Contabo 40021, Albanian Hosting 48014, VDSINA 48282/216071, AVA HOST 48753, WorldStream 49981, Input Output Flood 53755, HOSTVDS 56971, Scalaxy 58061, CDN77/DataPacket 60068/212238, Clouvider 62240
 ```

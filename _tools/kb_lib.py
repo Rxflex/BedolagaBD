@@ -199,6 +199,8 @@ def doc_paths():
 def slug(text, used=None):
     """Аналог github-slugger: lowercase, выкидываем пунктуацию/символы, пробелы → '-'."""
     s = re.sub(r'<[^>]+>', '', text).strip().lower()
+    # markdown-ссылка в заголовке даёт якорь по тексту ссылки, URL не участвует
+    s = re.sub(r'\[([^\]]*)\]\([^)]*\)', r'\1', s)
     s = s.replace('`', '')
     s = re.sub(r'[^\w\s-]', '', s, flags=re.UNICODE)
     s = s.replace(' ', '-')

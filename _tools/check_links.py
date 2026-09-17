@@ -56,7 +56,7 @@ def main():
             if line.startswith('```'):
                 infence = not infence
                 continue
-            clean_lines.append('' if infence else line)
+            clean_lines.append('' if infence else re.sub(r'`[^`]*`', '', line))
         body = '\n'.join(clean_lines)
         targets = LINK_RE.findall(body) + HREF_RE.findall(body) + IMG_RE.findall(body)
         for t in targets:

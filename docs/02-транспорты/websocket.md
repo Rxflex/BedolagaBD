@@ -11,7 +11,7 @@
 <!-- /KB:HEAD -->
 
 - Инбаунд ws: `streamSettings: {"network": "ws", "wsSettings": {"path": "/api/v2/stream/events"}}` [note_017].
-- «Vless websocket tls с fp randomized — заведётся любая нода» [id=651697|pkhat|07.06.2026].
+- «Vless websocket tls с fp randomized — заведётся любая нода» [id=651697|pkhat|07.06.2026](https://t.me/c/2941121338/651697).
 
 <!-- KB:FOOT -->
 ---

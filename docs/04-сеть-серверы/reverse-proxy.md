@@ -20,10 +20,10 @@
 ---
 <!-- /KB:HEAD -->
 
-Общий фон: caddy — «скопировал вставил», серты автоматом; nginx — модули/контроль [id=135101, 55501]. 443 — у обратного прокси; бот 8080, панель 3000, метрики 3001, сабка 3010 [id=135294]. Два прокси на одном сервере (nginx+caddy) не живут [id=83827]. nginx и бот обязаны быть в одной docker-сети, иначе `host not found in upstream "remnawave_bot"` [id=20376..20378].
+Общий фон: caddy — «скопировал вставил», серты автоматом; nginx — модули/контроль [id=135101, 55501](https://t.me/c/2941121338/135101). 443 — у обратного прокси; бот 8080, панель 3000, метрики 3001, сабка 3010 [id=135294](https://t.me/c/2941121338/135294). Два прокси на одном сервере (nginx+caddy) не живут [id=83827](https://t.me/c/2941121338/83827). nginx и бот обязаны быть в одной docker-сети, иначе `host not found in upstream "remnawave_bot"` [id=20376..20378](https://t.me/c/2941121338/20376).
 
 ## 4.1 Caddy
-- Полная схема стека (мейн-сервер) [id=7270..7287]:
+- Полная схема стека (мейн-сервер) [id=7270..7287](https://t.me/c/2941121338/7270):
 ```
 https://webhook.domain.com {
     handle /tribute-webhook* { reverse_proxy localhost:8081 }
@@ -36,7 +36,7 @@ https://monitoring.domain.com { reverse_proxy * http://uptime-kuma:3001 }
 https://besz.domain.com { reverse_proxy * http://beszel:8090 }
 :443 { tls internal; respond 204 }
 ```
-- Единый webhook-сервер бота (v2.6+): один порт 8080, пути `/yookassa-webhook`, `/platega-webhook`, `/cryptobot-webhook`, `/wata-webhook`, `/heleket-webhook`, `/tribute-webhook`, `/pal24-webhook`, `/mulenpay-webhook`, `/freekassa-webhook`, `/cloudpayments-webhook`, `/remnawave-webhook`; эталон Caddyfile c `(proxy_defaults)`: [id=324376|c0mrade, 226539]:
+- Единый webhook-сервер бота (v2.6+): один порт 8080, пути `/yookassa-webhook`, `/platega-webhook`, `/cryptobot-webhook`, `/wata-webhook`, `/heleket-webhook`, `/tribute-webhook`, `/pal24-webhook`, `/mulenpay-webhook`, `/freekassa-webhook`, `/cloudpayments-webhook`, `/remnawave-webhook`; эталон Caddyfile c `(proxy_defaults)`: [id=324376|c0mrade, 226539](https://t.me/c/2941121338/324376):
 ```
 (proxy_defaults) {
     header_up Host {host}
@@ -84,8 +84,8 @@ cabinet.example.com {
     }
 }
 ```
-- Канонический Caddyfile кабинета от Егора — с `import geoip_block` и теми же кеш-правилами [id=220889|12.02.2026]; вебсокет кабинета работает сам (`cabinet/ws сноси в caddy`) [id=226512]; wss-фикс [id=294843]: `handle /cabinet/ws* { reverse_proxy remnawave_bot:8080 }`.
-- Selfsteal-заглушка Caddy [id=244529|27.02.2026]:
+- Канонический Caddyfile кабинета от Егора — с `import geoip_block` и теми же кеш-правилами [id=220889|12.02.2026](https://t.me/c/2941121338/220889); вебсокет кабинета работает сам (`cabinet/ws сноси в caddy`) [id=226512](https://t.me/c/2941121338/226512); wss-фикс [id=294843](https://t.me/c/2941121338/294843): `handle /cabinet/ws* { reverse_proxy remnawave_bot:8080 }`.
+- Selfsteal-заглушка Caddy [id=244529|27.02.2026](https://t.me/c/2941121338/244529):
 ```
 {
     https_port {$SELF_STEAL_PORT}
@@ -98,9 +98,9 @@ https://{$SELF_STEAL_DOMAIN} { root * /var/www/html; try_files {path} /index.htm
 :{$SELF_STEAL_PORT} { tls internal; respond 204 }
 :80 { bind 0.0.0.0; respond 204 }
 ```
-`.env: SELF_STEAL_DOMAIN=subdomen.domen.ru, SELF_STEAL_PORT=9443`; docker-compose с `network_mode: "host"`; target ноды = `127.0.0.1:9443`, SNI = СВОЙ домен [id=653860..653903|08.06.2026].
-- Caddy на два порта для xhttp+TCP selfsteal: `https_port {$SELF_STEAL_PORT_TCP}` + `https_port {$SELF_STEAL_PORT_XHTTP}` [id=94738|08.12.2025].
-- Caddy DNS-challenge Cloudflare (wildcard без перетасовки) [id=17404|Danila Tsaplin|27.09.2025]:
+`.env: SELF_STEAL_DOMAIN=subdomen.domen.ru, SELF_STEAL_PORT=9443`; docker-compose с `network_mode: "host"`; target ноды = `127.0.0.1:9443`, SNI = СВОЙ домен [id=653860..653903|08.06.2026](https://t.me/c/2941121338/653860).
+- Caddy на два порта для xhttp+TCP selfsteal: `https_port {$SELF_STEAL_PORT_TCP}` + `https_port {$SELF_STEAL_PORT_XHTTP}` [id=94738|08.12.2025](https://t.me/c/2941121338/94738).
+- Caddy DNS-challenge Cloudflare (wildcard без перетасовки) [id=17404|Danila Tsaplin|27.09.2025](https://t.me/c/2941121338/17404):
 ```dockerfile
 FROM caddy:2.9.1-builder AS builder
 RUN xcaddy build \
@@ -133,7 +133,7 @@ COPY --from=builder /usr/bin/caddy /usr/bin/caddy
     }
 }
 ```
-- XHTTP за Caddy без селфстила (TLS у Caddy, Xray без шифрования) [id=651359|07.06.2026]:
+- XHTTP за Caddy без селфстила (TLS у Caddy, Xray без шифрования) [id=651359|07.06.2026](https://t.me/c/2941121338/651359):
 ```
 yourdomain.com {
     handle /api* {
@@ -145,8 +145,8 @@ yourdomain.com {
     respond "OK" 200
 }
 ```
-- Caddy для кабинета из README: `handle /api/* { uri strip_prefix /api; reverse_proxy remnawave_bot:8080 }` [id=173966].
-- Пересборка caddy-security (защита/ratelimit/geolocation) [id=247708|01.03.2026]:
+- Caddy для кабинета из README: `handle /api/* { uri strip_prefix /api; reverse_proxy remnawave_bot:8080 }` [id=173966](https://t.me/c/2941121338/173480/173966).
+- Пересборка caddy-security (защита/ratelimit/geolocation) [id=247708|01.03.2026](https://t.me/c/2941121338/247708):
 ```docker
 FROM caddy:2.10.2-builder AS builder
 RUN xcaddy build \
@@ -159,10 +159,10 @@ RUN xcaddy build \
 FROM caddy:2.10.2
 COPY --from=builder /usr/bin/caddy /usr/bin/caddy
 ```
-- Caddy reload ошибка `dial tcp 127.0.0.1:2019: connection refused` — рестартовать контейнер [id=169523]; в докере caddy слушает только localhost:9443 при селфстиле [id=213999].
+- Caddy reload ошибка `dial tcp 127.0.0.1:2019: connection refused` — рестартовать контейнер [id=169523](https://t.me/c/2941121338/169523); в докере caddy слушает только localhost:9443 при селфстиле [id=213999](https://t.me/c/2941121338/213999).
 
 ## 4.2 Nginx
-- Полный конфиг hooks+miniapp (дословно) [id=91677..91687|06.12.2025]:
+- Полный конфиг hooks+miniapp (дословно) [id=91677..91687|06.12.2025](https://t.me/c/2941121338/91677):
 ```nginx
 # Hooks + API domain - hooks.domain.com
 server {
@@ -239,7 +239,7 @@ server {
     ssl_reject_handshake on;
 }
 ```
-- Upstream — в основной nginx.conf, НЕ в conf.d (`events {} и http {} в default.conf запрещены`) [id=101409, 236397]:
+- Upstream — в основной nginx.conf, НЕ в conf.d (`events {} и http {} в default.conf запрещены`) [id=101409, 236397](https://t.me/c/2941121338/101409):
 ```nginx
 user nginx;
 worker_processes auto;
@@ -253,7 +253,7 @@ http {
     include /etc/nginx/conf.d/*.conf;
 }
 ```
-- Компактный конфиг вебхуков одной локацией [id=166475..166477]:
+- Компактный конфиг вебхуков одной локацией [id=166475..166477](https://t.me/c/2941121338/166475):
 ```nginx
 client_max_body_size 32m;
 location ~ ^/(webhook|.*-webhook|app-config\.json) {
@@ -267,7 +267,7 @@ location ~ ^/(webhook|.*-webhook|app-config\.json) {
     proxy_buffering off; proxy_request_buffering off;
 }
 ```
-- API-локация ремны с websocket-апгрейдом [id=154757]:
+- API-локация ремны с websocket-апгрейдом [id=154757](https://t.me/c/2941121338/154757):
 ```nginx
 location ^~ /api/ {
     proxy_http_version 1.1;
@@ -284,8 +284,8 @@ location ^~ /api/ {
     proxy_read_timeout 60s;
 }
 ```
-- Кабинет за nginx: upstream обязателен вверху conf.d; `location /api/ { rewrite ^/api/(.*) /$1 break; proxy_pass http://remnawave_bot:8080; ... }`; фронт — `proxy_pass http://cabinet_frontend:80` c error_page 404 → /index.html [id=281060, 174773].
-- Блок-кэш кабинета + статики [id=196643]:
+- Кабинет за nginx: upstream обязателен вверху conf.d; `location /api/ { rewrite ^/api/(.*) /$1 break; proxy_pass http://remnawave_bot:8080; ... }`; фронт — `proxy_pass http://cabinet_frontend:80` c error_page 404 → /index.html [id=281060, 174773](https://t.me/c/2941121338/281060).
+- Блок-кэш кабинета + статики [id=196643](https://t.me/c/2941121338/196643):
 ```nginx
 location ~* \.html?$ {
     add_header Cache-Control "no-store, no-cache, must-revalidate, proxy-revalidate, max-age=0";
@@ -298,7 +298,7 @@ location ~* \.(?:ico|css|js|gif|jpe?g|png|woff2?|eot|ttf|svg)$ {
     add_header Cache-Control "public";
 }
 ```
-- allowlist IP ЮKassa на реверсе [id=55579]:
+- allowlist IP ЮKassa на реверсе [id=55579](https://t.me/c/2941121338/55579):
 ```nginx
 allow 185.71.76.0/27;
 allow 185.71.77.0/27;
@@ -309,10 +309,10 @@ allow 77.75.156.35;
 allow 2a02:5180::/32;
 deny all;
 ```
-(бот должен видеть реальный IP через X-Forwarded-For; в .env `YOOKASSA_TRUSTED_PROXY_NETWORKS=172.20.0.0/16` или подсети юкассы `185.71.76.0/24,185.71.77.0/24` [id=120591, 631299].)
-- http2: `listen ... http2` deprecated → `http2 on;` [id=91744]; `server_names_hash_bucket_size 64;` при `could not build server_names_hash` [id=114513, 43804]; `ssl_reject_handshake on` на default_server для пустых SNI [id=91677].
-- Один `upstream remnawave_bot_unified { server remnawave_bot:8080; }` на все хуки (после единого webhook-сервера 2.6) [id=59948]; локейшены `location = /yookassa-webhook` с `proxy_buffering off` [id=59948, 58789].
-- nginx для xhttp (grpc_pass на unix-сокет) [id=338655]:
+(бот должен видеть реальный IP через X-Forwarded-For; в .env `YOOKASSA_TRUSTED_PROXY_NETWORKS=172.20.0.0/16` или подсети юкассы `185.71.76.0/24,185.71.77.0/24` [id=120591, 631299](https://t.me/c/2941121338/120591).)
+- http2: `listen ... http2` deprecated → `http2 on;` [id=91744](https://t.me/c/2941121338/91744); `server_names_hash_bucket_size 64;` при `could not build server_names_hash` [id=114513, 43804](https://t.me/c/2941121338/114513); `ssl_reject_handshake on` на default_server для пустых SNI [id=91677](https://t.me/c/2941121338/91677).
+- Один `upstream remnawave_bot_unified { server remnawave_bot:8080; }` на все хуки (после единого webhook-сервера 2.6) [id=59948](https://t.me/c/2941121338/59948); локейшены `location = /yookassa-webhook` с `proxy_buffering off` [id=59948, 58789](https://t.me/c/2941121338/59948).
+- nginx для xhttp (grpc_pass на unix-сокет) [id=338655](https://t.me/c/2941121338/338655):
 ```nginx
 location /xhttppath/ {
   client_max_body_size 0;
@@ -322,9 +322,9 @@ location /xhttppath/ {
   grpc_pass unix:/dev/shm/xrxh.socket;
 }
 ```
-- nginx поток с `ssl_preread` для нескольких SNI на 443 [id=320791|Josh]: вход 443 → по SNI на сайт (127.0.0.1:4443) или в Xray (127.0.0.1:18443).
-- nginx перезаписывает OPTIONS→POST (Tw CDN режет POST) [id=590049]: `map $request_method $proxy_method_override { default $request_method; OPTIONS POST; }`
-- nginx переписывает poll-путь для старого ядра (26.7.11 добавил слеш) [id=919011]:
+- nginx поток с `ssl_preread` для нескольких SNI на 443 [id=320791|Josh](https://t.me/c/2941121338/320791): вход 443 → по SNI на сайт (127.0.0.1:4443) или в Xray (127.0.0.1:18443).
+- nginx перезаписывает OPTIONS→POST (Tw CDN режет POST) [id=590049](https://t.me/c/2941121338/590049): `map $request_method $proxy_method_override { default $request_method; OPTIONS POST; }`
+- nginx переписывает poll-путь для старого ядра (26.7.11 добавил слеш) [id=919011](https://t.me/c/2941121338/919011):
 ```nginx
 location /api/v4/media/session/poll {
   error_page 418 = @xhttp_poll_legacy;
@@ -333,12 +333,12 @@ location /api/v4/media/session/poll {
   proxy_pass http://127.0.0.1:10085;
 }
 ```
-- vhost для сабки (двумя строками) [id=659893]:
+- vhost для сабки (двумя строками) [id=659893](https://t.me/c/2941121338/659893):
 ```nginx
 location / { proxy_pass http://remnawave-subscription-page:3010; include /etc/nginx/conf.d/proxy.conf; }
 ```
-healthcheck на localhost (иначе `Reverse proxy and HTTPS are required`) [id=659906].
-- VLESS WS + nginx masquerade (decoy) [id=651979|07.06.2026]:
+healthcheck на localhost (иначе `Reverse proxy and HTTPS are required`) [id=659906](https://t.me/c/2941121338/659906).
+- VLESS WS + nginx masquerade (decoy) [id=651979|07.06.2026](https://t.me/c/2941121338/651979):
 ```nginx
 server {
     listen 443 ssl;
@@ -362,11 +362,11 @@ server {
     }
 }
 ```
-- Локальный nginx.conf после обновления (уязвимость nginx 14.05.2026, Caddy не пострадал) [id=508722, 509017]; обновление — github.com/tagashi666/nginx-updater [id=508889].
-- ЦДН-лучше-nginx-нарратив: nginx — для маскировки под сайт и сложных роутов, HAProxy — для SNI-роутинга, Caddy — по стандарту для панель/бот/кабинет [id=351082].
+- Локальный nginx.conf после обновления (уязвимость nginx 14.05.2026, Caddy не пострадал) [id=508722, 509017](https://t.me/c/2941121338/508722); обновление — github.com/tagashi666/nginx-updater [id=508889](https://t.me/c/2941121338/508889).
+- ЦДН-лучше-nginx-нарратив: nginx — для маскировки под сайт и сложных роутов, HAProxy — для SNI-роутинга, Caddy — по стандарту для панель/бот/кабинет [id=351082](https://t.me/c/2941121338/351082).
 
 ## 4.3 HAProxy
-- Несколько инбаундов на 443 с разными SNI через haproxy [id=295035|User 777]:
+- Несколько инбаундов на 443 с разными SNI через haproxy [id=295035|User 777](https://t.me/c/2941121338/295035):
 ```
 frontend front0
     mode tcp
@@ -385,11 +385,11 @@ backend back0
 backend back1
     server srv1 127.0.0.1:10001 send-proxy-v2 tfo
 ```
-- HAProxy vs iptables TCP-relay: iptables проще, HAProxy распихивает исходящий трафик (в iptables — только в 1 ноду) [id=1075007]; мосты можно делать через haproxy/nginx/iptables [id=599854]; обход маршрутизации по SNI — через haproxy [id=476837].
-- Прокидывание ноды через haproxy 443 по SNI → 8443/8444 (селфсни) [id=761623].
+- HAProxy vs iptables TCP-relay: iptables проще, HAProxy распихивает исходящий трафик (в iptables — только в 1 ноду) [id=1075007](https://t.me/c/2941121338/1075007); мосты можно делать через haproxy/nginx/iptables [id=599854](https://t.me/c/2941121338/599854); обход маршрутизации по SNI — через haproxy [id=476837](https://t.me/c/2941121338/476837).
+- Прокидывание ноды через haproxy 443 по SNI → 8443/8444 (селфсни) [id=761623](https://t.me/c/2941121338/761623).
 
 ## 4.4 Traefik
-- Labels для Bedolaga bot /api + кабинет (дословно) [id=635595|04.06.2026]:
+- Labels для Bedolaga bot /api + кабинет (дословно) [id=635595|04.06.2026](https://t.me/c/2941121338/635595):
 ```yaml
 services:
   bot:
@@ -406,8 +406,8 @@ services:
       - "traefik.http.services.bot-api.loadbalancer.server.port=8080"
       - "traefik.docker.network=remnawave-network"
 ```
-Кабинет: `Host(cabinet)` → порт 80; ws — PathPrefix(`/cabinet/ws`) priority 110 [id=222502].
-- Traefik-проблема 2.6.0: webhook-режим не стартует с одним маршрутом в traefik [id=55634].
+Кабинет: `Host(cabinet)` → порт 80; ws — PathPrefix(`/cabinet/ws`) priority 110 [id=222502](https://t.me/c/2941121338/222502).
+- Traefik-проблема 2.6.0: webhook-режим не стартует с одним маршрутом в traefik [id=55634](https://t.me/c/2941121338/55634).
 
 <!-- KB:FOOT -->
 ---
