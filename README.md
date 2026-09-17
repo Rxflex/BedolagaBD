@@ -159,6 +159,34 @@ python _tools/link_proofs.py      # [id=N] → ссылка на сообщен�
 
 </details>
 
+## 💚 Поддержать
+
+<div align="center">
+
+<img src="assets/donate-banner.svg" alt="Донат на поддержку базы знаний" width="900">
+
+<table>
+<tr>
+<td align="center" width="25%"><img src="assets/donate/usdt-trc20.svg" alt="USDT TRC20" width="200"></td>
+<td align="center" width="25%"><img src="assets/donate/usdt-bep20.svg" alt="USDT BEP20" width="200"></td>
+<td align="center" width="25%"><img src="assets/donate/btc.svg" alt="Bitcoin" width="200"></td>
+<td align="center" width="25%"><img src="assets/donate/eth.svg" alt="Ethereum" width="200"></td>
+</tr>
+</table>
+
+</div>
+
+Адреса для копирования:
+
+| | Монета | Сеть | Адрес |
+|---|---|---|---|
+| 🟢 | **USDT** | TRON · TRC20 | `TYHgzVKjxiBkvXnnrQdGaYQiCrzoEYjrr7` |
+| 🟡 | **USDT** | BNB Chain · BEP20 | `0xb3954ccd45ade87f1fee9006f56cdeac41ff8707` |
+| 🟠 | **BTC** | Bitcoin | `1JxKsR9hBXqdWdJYSQpogWEtZKo8ZdnZGG` |
+| ⚪ | **ETH** | Ethereum · ERC20 | `0xb3954ccd45ade87f1fee9006f56cdeac41ff8707` |
+
+> Сеть у USDT важна: TRC20 и BEP20 — разные адреса, перепутаешь — деньги не придут. Адреса в QR-кодах и в таблице совпадают.
+
 ## 🤖 Для ИИ-агентов
 
 Отдельная страница-карта: [AGENTS.md](AGENTS.md) — где что лежит, какие соглашения в формате, какие грепы дают ответ за один вызов.
