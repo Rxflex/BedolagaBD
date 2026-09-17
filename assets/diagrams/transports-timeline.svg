@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="1200" height="700" role="img" aria-label="Таймлайн жизни транспортов 2025-2026">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/><stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M 26 0 H 0 V 26" fill="none" stroke="#ffffff" stroke-opacity="0.03"/>
+    </pattern>
+    <style>
+      .t{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+      .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+      .h{font-size:22px;font-weight:700;fill:#e6edf3}
+      .s{font-size:13px;fill:#8b949e}
+      .row{font-size:14.5px;font-weight:600;fill:#e6edf3}
+      .sub{font-size:11.5px;fill:#8b949e}
+      .seg{font-size:11px;fill:#0d1117;font-weight:600}
+      .mon{font-size:11.5px;fill:#8b949e}
+      .ev{font-size:11px;fill:#8b949e}
+    </style>
+  </defs>
+  <rect width="1200" height="700" rx="16" fill="url(#bg)"/>
+  <rect width="1200" height="700" rx="16" fill="url(#grid)"/>
+  <rect width="1200" height="700" rx="16" fill="none" stroke="#ff6b6b" stroke-opacity="0.3"/>
+  <text x="36" y="48" class="t h">Транспорты: что работало и когда</text>
+  <text x="36" y="72" class="t s">08.2025 → 08.2026 по данным чата. Зелёный — работает, жёлтый — шатко/по регионам, красный — отвал, синий — новое.</text>
+  <rect x="36" y="96" width="14" height="14" rx="4" fill="#06d6a0"/>
+  <text x="56" y="108" class="t s">работает</text>
+  <rect x="158" y="96" width="14" height="14" rx="4" fill="#ffd166"/>
+  <text x="178" y="108" class="t s">шатко</text>
+  <rect x="253" y="96" width="14" height="14" rx="4" fill="#ff6b6b"/>
+  <text x="273" y="108" class="t s">отвал</text>
+  <rect x="348" y="96" width="14" height="14" rx="4" fill="#7c8cff"/>
+  <text x="368" y="108" class="t s">новое</text>
+  <line x1="250.0" y1="132" x2="250.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="285.0" y="126" class="t mon" text-anchor="middle">08.25</text>
+  <line x1="320.0" y1="132" x2="320.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="355.0" y="126" class="t mon" text-anchor="middle">09.25</text>
+  <line x1="390.0" y1="132" x2="390.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="425.0" y="126" class="t mon" text-anchor="middle">10.25</text>
+  <line x1="460.0" y1="132" x2="460.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="495.0" y="126" class="t mon" text-anchor="middle">11.25</text>
+  <line x1="530.0" y1="132" x2="530.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="565.0" y="126" class="t mon" text-anchor="middle">12.25</text>
+  <line x1="600.0" y1="132" x2="600.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="635.0" y="126" class="t mon" text-anchor="middle">01.26</text>
+  <line x1="670.0" y1="132" x2="670.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="705.0" y="126" class="t mon" text-anchor="middle">02.26</text>
+  <line x1="740.0" y1="132" x2="740.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="775.0" y="126" class="t mon" text-anchor="middle">03.26</text>
+  <line x1="810.0" y1="132" x2="810.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="845.0" y="126" class="t mon" text-anchor="middle">04.26</text>
+  <line x1="880.0" y1="132" x2="880.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="915.0" y="126" class="t mon" text-anchor="middle">05.26</text>
+  <line x1="950.0" y1="132" x2="950.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="985.0" y="126" class="t mon" text-anchor="middle">06.26</text>
+  <line x1="1020.0" y1="132" x2="1020.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="1055.0" y="126" class="t mon" text-anchor="middle">07.26</text>
+  <line x1="1090.0" y1="132" x2="1090.0" y2="570" stroke="#ffffff" stroke-opacity="0.06"/>
+  <text x="1125.0" y="126" class="t mon" text-anchor="middle">08.26</text>
+  <text x="36" y="168" class="t row">VLESS + Reality (TCP)</text>
+  <text x="36" y="184" class="t sub">основа 2025-го</text>
+  <rect x="250" y="154" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="250.0" y="154" width="277.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="260.0" y="174" class="t seg">рабочая база</text>
+  <rect x="460.0" y="154" width="137.0" height="30" rx="8" fill="#ff6b6b" fill-opacity="0.85"/>
+  <rect x="530.0" y="154" width="417.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <text x="540.0" y="174" class="t seg">частично, по регионам</text>
+  <rect x="880.0" y="154" width="137.0" height="30" rx="8" fill="#ff6b6b" fill-opacity="0.85"/>
+  <rect x="950.0" y="154" width="207.0" height="30" rx="8" fill="#ff6b6b" fill-opacity="0.85"/>
+  <text x="36" y="214" class="t row">XHTTP + selfsni</text>
+  <text x="36" y="230" class="t sub">главный рецепт с 11.2025</text>
+  <rect x="250" y="200" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="460.0" y="200" width="557.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="470.0" y="220" class="t seg">воскрешает всё</text>
+  <rect x="950.0" y="200" width="207.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="36" y="260" class="t row">Hysteria2 (UDP)</text>
+  <text x="36" y="276" class="t sub">запас прочности</text>
+  <rect x="250" y="246" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="250.0" y="246" width="697.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <rect x="880.0" y="246" width="207.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <rect x="1020.0" y="246" width="137.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <text x="36" y="306" class="t row">gRPC</text>
+  <text x="36" y="322" class="t sub">резерв при отвале TCP</text>
+  <rect x="250" y="292" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="250.0" y="292" width="697.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <rect x="880.0" y="292" width="207.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="890.0" y="312" class="t seg">«сидим на gRPC» 28.05</text>
+  <rect x="1020.0" y="292" width="137.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <text x="36" y="352" class="t row">WebSocket + TLS</text>
+  <text x="36" y="368" class="t sub">под CDN и реверс</text>
+  <rect x="250" y="338" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="250.0" y="338" width="697.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <rect x="880.0" y="338" width="137.0" height="30" rx="8" fill="#ff6b6b" fill-opacity="0.85"/>
+  <rect x="950.0" y="338" width="207.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <text x="36" y="398" class="t row">SS-2022 / мосты RU→EU</text>
+  <text x="36" y="414" class="t sub">вход в РФ, выход в ЕС</text>
+  <rect x="250" y="384" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="250.0" y="384" width="697.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <rect x="880.0" y="384" width="277.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="890.0" y="404" class="t seg">мост «фиксит» шейпинг</text>
+  <text x="36" y="444" class="t row">CDN-фронтинг</text>
+  <text x="36" y="460" class="t sub">Yandex · Beeline · VK · MWS</text>
+  <rect x="250" y="430" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="530.0" y="430" width="487.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="540.0" y="450" class="t seg">дешёвый обход через РФ-CDN</text>
+  <rect x="950.0" y="430" width="137.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <rect x="1020.0" y="430" width="137.0" height="30" rx="8" fill="#ff6b6b" fill-opacity="0.85"/>
+  <text x="36" y="490" class="t row">БС (белые списки)</text>
+  <text x="36" y="506" class="t sub">то включают, то отбирают</text>
+  <rect x="250" y="476" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="530.0" y="476" width="347.0" height="30" rx="8" fill="#06d6a0" fill-opacity="0.85"/>
+  <text x="540.0" y="496" class="t seg">массовая выдача</text>
+  <rect x="810.0" y="476" width="207.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <text x="820.0" y="496" class="t seg">VK отбирает 01.04</text>
+  <rect x="950.0" y="476" width="137.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <rect x="1020.0" y="476" width="137.0" height="30" rx="8" fill="#ffd166" fill-opacity="0.85"/>
+  <text x="1030.0" y="496" class="t seg">бан по /32</text>
+  <text x="36" y="536" class="t row">finalmask (SSH/DNS/XMC)</text>
+  <text x="36" y="552" class="t sub">новое, август 2026</text>
+  <rect x="250" y="522" width="910" height="30" rx="8" fill="#ffffff" fill-opacity="0.03"/>
+  <rect x="1020.0" y="522" width="137.0" height="30" rx="8" fill="#7c8cff" fill-opacity="0.85"/>
+  <text x="1030.0" y="542" class="t seg">SSH · DNS · XMC</text>
+  <text x="36" y="602" class="t row">Переломы</text>
+  <line x1="467.0" y1="132" x2="467.0" y2="588" stroke="#ff6b6b" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="467.0" cy="588" r="3.5" fill="#ff6b6b"/>
+  <text x="467.0" y="604" class="t m ev" fill="#ff6b6b" text-anchor="middle">22–25.11.25</text>
+  <line x1="607.0" y1="132" x2="607.0" y2="588" stroke="#ff6b6b" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="607.0" cy="588" r="3.5" fill="#ff6b6b"/>
+  <text x="607.0" y="604" class="t m ev" fill="#ff6b6b" text-anchor="middle">01.12.25</text>
+  <line x1="894.0" y1="132" x2="894.0" y2="588" stroke="#ff6b6b" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="894.0" cy="588" r="3.5" fill="#ff6b6b"/>
+  <text x="894.0" y="604" class="t m ev" fill="#ff6b6b" text-anchor="middle">25–27.05.26</text>
+  <line x1="957.0" y1="132" x2="957.0" y2="612" stroke="#ff6b6b" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="957.0" cy="612" r="3.5" fill="#ff6b6b"/>
+  <text x="957.0" y="628" class="t m ev" fill="#ff6b6b" text-anchor="middle">08.06.26</text>
+  <line x1="999.0" y1="132" x2="999.0" y2="636" stroke="#ff6b6b" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="999.0" cy="636" r="3.5" fill="#ff6b6b"/>
+  <text x="999.0" y="652" class="t m ev" fill="#ff6b6b" text-anchor="middle">25.06.26</text>
+  <line x1="1090.0" y1="132" x2="1090.0" y2="588" stroke="#ff6b6b" stroke-opacity="0.5" stroke-dasharray="4 3"/>
+  <circle cx="1090.0" cy="588" r="3.5" fill="#ff6b6b"/>
+  <text x="1084.0" y="604" class="t m ev" fill="#ff6b6b" text-anchor="end">04–13.08.26</text>
+  <text x="1164" y="680" class="t m" font-size="11.5" fill="#8b949e" fill-opacity="0.6" text-anchor="end">assets/diagrams/transports-timeline.svg</text>
+</svg>

@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 520" width="1200" height="520" role="img" aria-label="Путь платежа и вебхуков">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/><stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M 26 0 H 0 V 26" fill="none" stroke="#ffffff" stroke-opacity="0.035"/>
+    </pattern>
+    <marker id="a1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f78c6b"/>
+    </marker>
+    <marker id="a2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#06d6a0"/>
+    </marker>
+    <style>
+      .t{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif}
+      .m{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+      .h{font-size:22px;font-weight:700;fill:#e6edf3}
+      .bh{font-size:16px;font-weight:700;fill:#e6edf3}
+      .s{font-size:13px;fill:#8b949e}
+      .xs{font-size:11.5px;fill:#8b949e}
+      .num{font-size:12px;font-weight:700;fill:#0d1117}
+    </style>
+  </defs>
+
+  <rect width="1200" height="520" rx="16" fill="url(#bg)"/>
+  <rect width="1200" height="520" rx="16" fill="url(#grid)"/>
+  <rect width="1200" height="520" rx="16" fill="none" stroke="#f78c6b" stroke-opacity="0.3"/>
+
+  <text x="36" y="48" class="t h">Путь денег: от кнопки до продления</text>
+  <text x="36" y="72" class="t s">И где именно всё ломается — по разборам чата. Подробности: docs/06-платёжки</text>
+
+  <!-- шаги -->
+  <g>
+    <rect x="36" y="110" width="200" height="120" rx="12" fill="#7c8cff" fill-opacity="0.08" stroke="#7c8cff" stroke-opacity="0.5"/>
+    <circle cx="60" cy="134" r="12" fill="#7c8cff"/><text x="60" y="139" class="t num" text-anchor="middle">1</text>
+    <text x="80" y="140" class="t bh">Юзер</text>
+    <text x="54" y="170" class="t xs">бот или кабинет: выбрал тариф,</text>
+    <text x="54" y="188" class="t xs">период, устройства, трафик</text>
+    <text x="54" y="212" class="t xs m" fill="#e6edf3">цена = база + услуги × мес</text>
+  </g>
+
+  <g>
+    <rect x="276" y="110" width="210" height="120" rx="12" fill="#f78c6b" fill-opacity="0.08" stroke="#f78c6b" stroke-opacity="0.5"/>
+    <circle cx="300" cy="134" r="12" fill="#f78c6b"/><text x="300" y="139" class="t num" text-anchor="middle">2</text>
+    <text x="320" y="140" class="t bh">Bedolaga</text>
+    <text x="294" y="170" class="t xs">создаёт инвойс у провайдера,</text>
+    <text x="294" y="188" class="t xs">пишет запись платежа в БД</text>
+    <text x="294" y="212" class="t xs m" fill="#e6edf3">pending → paid → applied</text>
+  </g>
+
+  <g>
+    <rect x="526" y="110" width="210" height="120" rx="12" fill="#c792ea" fill-opacity="0.08" stroke="#c792ea" stroke-opacity="0.5"/>
+    <circle cx="550" cy="134" r="12" fill="#c792ea"/><text x="550" y="139" class="t num" text-anchor="middle">3</text>
+    <text x="570" y="140" class="t bh">Платёжка</text>
+    <text x="544" y="170" class="t xs">СБП / карта / крипта,</text>
+    <text x="544" y="188" class="t xs">комиссия 3–12 %</text>
+    <text x="544" y="212" class="t xs m" fill="#e6edf3">рекурренты: Platega, Lava</text>
+  </g>
+
+  <g>
+    <rect x="776" y="110" width="190" height="120" rx="12" fill="#ffd166" fill-opacity="0.08" stroke="#ffd166" stroke-opacity="0.5"/>
+    <circle cx="800" cy="134" r="12" fill="#ffd166"/><text x="800" y="139" class="t num" text-anchor="middle">4</text>
+    <text x="820" y="140" class="t bh">Вебхук</text>
+    <text x="794" y="170" class="t xs">Caddy/Nginx → бот:</text>
+    <text x="794" y="188" class="t xs m" fill="#e6edf3">/webhook/&lt;провайдер&gt;</text>
+    <text x="794" y="212" class="t xs">подпись HMAC, идемпотентность</text>
+  </g>
+
+  <g>
+    <rect x="1006" y="110" width="158" height="120" rx="12" fill="#4ecdc4" fill-opacity="0.08" stroke="#4ecdc4" stroke-opacity="0.5"/>
+    <circle cx="1030" cy="134" r="12" fill="#4ecdc4"/><text x="1030" y="139" class="t num" text-anchor="middle">5</text>
+    <text x="1050" y="140" class="t bh">Панель</text>
+    <text x="1024" y="170" class="t xs">продление юзера,</text>
+    <text x="1024" y="188" class="t xs">сквады, лимиты</text>
+    <text x="1024" y="212" class="t xs m" fill="#e6edf3">выдача подписки</text>
+  </g>
+
+  <line x1="236" y1="170" x2="276" y2="170" stroke="#f78c6b" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="486" y1="170" x2="526" y2="170" stroke="#f78c6b" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="736" y1="170" x2="776" y2="170" stroke="#f78c6b" stroke-width="1.8" marker-end="url(#a1)"/>
+  <line x1="966" y1="170" x2="1006" y2="170" stroke="#06d6a0" stroke-width="1.8" marker-end="url(#a2)"/>
+
+  <path d="M 1085 230 C 1085 290 200 280 136 230" fill="none" stroke="#06d6a0" stroke-width="1.6" stroke-dasharray="6 5" marker-end="url(#a2)"/>
+  <text x="560" y="286" class="t xs" fill="#06d6a0" text-anchor="middle">ссылка на подписку и уведомление в бота</text>
+
+  <!-- грабли -->
+  <text x="36" y="336" class="t bh">Где ломается</text>
+  <g>
+    <rect x="36" y="352" width="272" height="132" rx="12" fill="#ff6b6b" fill-opacity="0.07" stroke="#ff6b6b" stroke-opacity="0.4"/>
+    <text x="54" y="380" class="t xs" fill="#e6edf3">Вебхук не приходит</text>
+    <text x="54" y="402" class="t xs">путь занят реверсом, нет HTTPS,</text>
+    <text x="54" y="420" class="t xs">провайдер шлёт на 80, секрет пустой</text>
+    <text x="54" y="446" class="t xs" fill="#e6edf3">ЮKassa с 01.12.2025 — только РФ-IP</text>
+    <text x="54" y="466" class="t xs">обход: SS+Privoxy на api.yookassa.ru</text>
+  </g>
+  <g>
+    <rect x="328" y="352" width="272" height="132" rx="12" fill="#ff6b6b" fill-opacity="0.07" stroke="#ff6b6b" stroke-opacity="0.4"/>
+    <text x="346" y="380" class="t xs" fill="#e6edf3">Деньги списались, подписки нет</text>
+    <text x="346" y="402" class="t xs">race condition: SELECT FOR UPDATE,</text>
+    <text x="346" y="420" class="t xs">savepoint, авто-возврат (v3.10.2)</text>
+    <text x="346" y="446" class="t xs" fill="#e6edf3">двойное зачисление</text>
+    <text x="346" y="466" class="t xs">лечится идемпотентным ключом платежа</text>
+  </g>
+  <g>
+    <rect x="620" y="352" width="272" height="132" rx="12" fill="#ff6b6b" fill-opacity="0.07" stroke="#ff6b6b" stroke-opacity="0.4"/>
+    <text x="638" y="380" class="t xs" fill="#e6edf3">Провайдер отвалился</text>
+    <text x="638" y="402" class="t xs">заморозка выплат, требование KYC,</text>
+    <text x="638" y="420" class="t xs">смена реквизитов без предупреждения</text>
+    <text x="638" y="446" class="t xs" fill="#e6edf3">правило чата: две платёжки минимум</text>
+    <text x="638" y="466" class="t xs">и не держать остаток на балансе</text>
+  </g>
+  <g>
+    <rect x="912" y="352" width="252" height="132" rx="12" fill="#ff6b6b" fill-opacity="0.07" stroke="#ff6b6b" stroke-opacity="0.4"/>
+    <text x="930" y="380" class="t xs" fill="#e6edf3">Абузы</text>
+    <text x="930" y="402" class="t xs">рефералка без порога пополнения,</text>
+    <text x="930" y="420" class="t xs">тариф + скидка = минус деньги</text>
+    <text x="930" y="446" class="t xs" fill="#e6edf3">промокоды брутфорсят</text>
+    <text x="930" y="466" class="t xs">лимит 5 неудач / 5 мин, burst-лимитер</text>
+  </g>
+
+  <text x="1164" y="504" class="t m" font-size="11.5" fill="#8b949e" fill-opacity="0.6" text-anchor="end">assets/diagrams/payment-flow.svg</text>
+</svg>

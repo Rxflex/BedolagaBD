@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 620" width="1200" height="620" role="img" aria-label="Архитектура стека Remnawave + Bedolaga">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#161b22"/><stop offset="1" stop-color="#0d1117"/>
+    </linearGradient>
+    <pattern id="grid" width="26" height="26" patternUnits="userSpaceOnUse">
+      <path d="M 26 0 H 0 V 26" fill="none" stroke="#ffffff" stroke-opacity="0.035"/>
+    </pattern>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#8b949e"/>
+    </marker>
+    <marker id="arrA" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7c8cff"/>
+    </marker>
+    <marker id="arrG" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#06d6a0"/>
+    </marker>
+    <style>
+      .t  { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,Arial,sans-serif; }
+      .m  { font-family: ui-monospace,SFMono-Regular,Menlo,Consolas,monospace; }
+      .h  { font-size: 17px; font-weight: 700; fill: #e6edf3; }
+      .s  { font-size: 13px; fill: #8b949e; }
+      .xs { font-size: 11.5px; fill: #8b949e; }
+      .lbl{ font-size: 12px; fill: #8b949e; }
+      .cap{ font-size: 12.5px; font-weight: 700; letter-spacing: 2px; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="620" rx="16" fill="url(#bg)"/>
+  <rect width="1200" height="620" rx="16" fill="url(#grid)"/>
+  <rect width="1200" height="620" rx="16" fill="none" stroke="#7c8cff" stroke-opacity="0.3"/>
+
+  <text x="36" y="46" class="t h" font-size="22">Стек: что с чем разговаривает</text>
+  <text x="36" y="70" class="t s">Bedolaga-бот · Cabinet · Remnawave-панель · ноды Xray · платёжки. Стрелки — направление вызова.</text>
+
+  <!-- колонки -->
+  <text x="36" y="108" class="t cap" fill="#7c8cff">КЛИЕНТ</text>
+  <text x="330" y="108" class="t cap" fill="#f78c6b">ОБВЯЗКА И ПРОДАЖИ</text>
+  <text x="700" y="108" class="t cap" fill="#4ecdc4">ПАНЕЛЬ</text>
+  <text x="960" y="108" class="t cap" fill="#06d6a0">НОДЫ</text>
+
+  <!-- клиент -->
+  <g>
+    <rect x="30" y="124" width="250" height="92" rx="12" fill="#7c8cff" fill-opacity="0.08" stroke="#7c8cff" stroke-opacity="0.5"/>
+    <text x="48" y="152" class="t h">Telegram-бот</text>
+    <text x="48" y="174" class="t xs">aiogram · меню, покупка, промокоды</text>
+    <text x="48" y="194" class="t xs m">/start · Mini App · Rich Menu</text>
+  </g>
+  <g>
+    <rect x="30" y="232" width="250" height="92" rx="12" fill="#7c8cff" fill-opacity="0.08" stroke="#7c8cff" stroke-opacity="0.5"/>
+    <text x="48" y="260" class="t h">Web Cabinet</text>
+    <text x="48" y="282" class="t xs">React-ЛК: оплата, устройства, QR</text>
+    <text x="48" y="302" class="t xs m">Telegram OIDC · JWT auto-login</text>
+  </g>
+  <g>
+    <rect x="30" y="340" width="250" height="92" rx="12" fill="#7c8cff" fill-opacity="0.08" stroke="#7c8cff" stroke-opacity="0.5"/>
+    <text x="48" y="368" class="t h">Клиент VPN</text>
+    <text x="48" y="390" class="t xs">Happ · INCY · Throne · sing-box</text>
+    <text x="48" y="410" class="t xs m">подписка → конфиг → коннект</text>
+  </g>
+
+  <!-- реверс-прокси -->
+  <g>
+    <rect x="30" y="456" width="250" height="84" rx="12" fill="#ffd166" fill-opacity="0.07" stroke="#ffd166" stroke-opacity="0.45"/>
+    <text x="48" y="484" class="t h">Caddy / Nginx</text>
+    <text x="48" y="506" class="t xs">TLS, вебхук-пути, статика кабинета</text>
+    <text x="48" y="526" class="t xs m">/webhook/* · /miniapp · /sub</text>
+  </g>
+
+  <!-- бот -->
+  <g>
+    <rect x="330" y="124" width="300" height="200" rx="12" fill="#f78c6b" fill-opacity="0.07" stroke="#f78c6b" stroke-opacity="0.5"/>
+    <text x="350" y="152" class="t h">Bedolaga Bot</text>
+    <text x="350" y="173" class="t xs">ядро продаж: тарифы, балансы, триалы, рассылки</text>
+    <rect x="350" y="188" width="122" height="46" rx="8" fill="#0d1117" stroke="#f78c6b" stroke-opacity="0.35"/>
+    <text x="362" y="206" class="t xs" fill="#e6edf3">Web API</text>
+    <text x="362" y="223" class="t xs m">:8080 /docs</text>
+    <rect x="488" y="188" width="122" height="46" rx="8" fill="#0d1117" stroke="#f78c6b" stroke-opacity="0.35"/>
+    <text x="500" y="206" class="t xs" fill="#e6edf3">Webhook-сервер</text>
+    <text x="500" y="223" class="t xs m">30 событий</text>
+    <rect x="350" y="246" width="122" height="46" rx="8" fill="#0d1117" stroke="#f78c6b" stroke-opacity="0.35"/>
+    <text x="362" y="264" class="t xs" fill="#e6edf3">PostgreSQL</text>
+    <text x="362" y="281" class="t xs m">alembic · bot_config</text>
+    <rect x="488" y="246" width="122" height="46" rx="8" fill="#0d1117" stroke="#f78c6b" stroke-opacity="0.35"/>
+    <text x="500" y="264" class="t xs" fill="#e6edf3">Redis</text>
+    <text x="500" y="281" class="t xs m">кеш · dedup</text>
+    <text x="350" y="313" class="t xs">настройки в БД, в .env — только BOT_TOKEN и ADMIN_IDS (с v2.4.0)</text>
+  </g>
+
+  <!-- платёжки -->
+  <g>
+    <rect x="330" y="348" width="300" height="192" rx="12" fill="#c792ea" fill-opacity="0.07" stroke="#c792ea" stroke-opacity="0.5"/>
+    <text x="350" y="376" class="t h">Платёжки</text>
+    <text x="350" y="397" class="t xs">вебхук → зачисление → продление подписки</text>
+    <text x="350" y="424" class="t xs m" fill="#e6edf3">ЮKassa · Platega · Lava · RollyPay</text>
+    <text x="350" y="444" class="t xs m" fill="#e6edf3">WATA · cisPay · CryptoBot · Heleket</text>
+    <text x="350" y="464" class="t xs m" fill="#e6edf3">AntiLopay · Pal24 · Overpay · …</text>
+    <text x="350" y="492" class="t xs">комиссии 3–12 % · рекурренты у Platega/Lava</text>
+    <text x="350" y="512" class="t xs">ЮKassa требует РФ-IP для вебхуков (с 01.12.2025)</text>
+  </g>
+
+  <!-- панель -->
+  <g>
+    <rect x="690" y="124" width="228" height="200" rx="12" fill="#4ecdc4" fill-opacity="0.08" stroke="#4ecdc4" stroke-opacity="0.5"/>
+    <text x="710" y="152" class="t h">Remnawave Panel</text>
+    <text x="710" y="173" class="t xs">юзеры, сквады, профили,</text>
+    <text x="710" y="191" class="t xs">хосты, HWID, лимиты</text>
+    <rect x="710" y="206" width="188" height="44" rx="8" fill="#0d1117" stroke="#4ecdc4" stroke-opacity="0.35"/>
+    <text x="722" y="224" class="t xs" fill="#e6edf3">REST API</text>
+    <text x="722" y="241" class="t xs m">:3000 · api_key / basic</text>
+    <rect x="710" y="262" width="188" height="44" rx="8" fill="#0d1117" stroke="#4ecdc4" stroke-opacity="0.35"/>
+    <text x="722" y="280" class="t xs" fill="#e6edf3">Subscription page</text>
+    <text x="722" y="297" class="t xs m">/sub/&lt;token&gt;</text>
+  </g>
+  <g>
+    <rect x="690" y="348" width="228" height="112" rx="12" fill="#4ecdc4" fill-opacity="0.05" stroke="#4ecdc4" stroke-opacity="0.35"/>
+    <text x="710" y="376" class="t h" font-size="15">Admin-панели</text>
+    <text x="710" y="397" class="t xs">remnawave-admin (Case211)</text>
+    <text x="710" y="415" class="t xs">вебадминка бота · Решала</text>
+    <text x="710" y="440" class="t xs">HWID-инспектор, авто-блок</text>
+  </g>
+
+  <!-- ноды -->
+  <g>
+    <rect x="952" y="124" width="216" height="90" rx="12" fill="#06d6a0" fill-opacity="0.08" stroke="#06d6a0" stroke-opacity="0.5"/>
+    <text x="970" y="150" class="t h" font-size="15">Нода · Reality</text>
+    <text x="970" y="171" class="t xs m">:443 raw + selfsteal</text>
+    <text x="970" y="191" class="t xs">SNI свой, xver 1, shortIds</text>
+  </g>
+  <g>
+    <rect x="952" y="226" width="216" height="90" rx="12" fill="#06d6a0" fill-opacity="0.08" stroke="#06d6a0" stroke-opacity="0.5"/>
+    <text x="970" y="252" class="t h" font-size="15">Нода · XHTTP</text>
+    <text x="970" y="273" class="t xs m">stream-one + selfsni</text>
+    <text x="970" y="293" class="t xs">главный рецепт с 11.2025</text>
+  </g>
+  <g>
+    <rect x="952" y="328" width="216" height="90" rx="12" fill="#06d6a0" fill-opacity="0.08" stroke="#06d6a0" stroke-opacity="0.5"/>
+    <text x="970" y="354" class="t h" font-size="15">Нода · Hysteria2</text>
+    <text x="970" y="375" class="t xs m">UDP + обфускация</text>
+    <text x="970" y="395" class="t xs">держится, когда TCP душат</text>
+  </g>
+  <g>
+    <rect x="952" y="430" width="216" height="110" rx="12" fill="#06d6a0" fill-opacity="0.05" stroke="#06d6a0" stroke-opacity="0.35"/>
+    <text x="970" y="456" class="t h" font-size="15">Мост RU → EU</text>
+    <text x="970" y="477" class="t xs">вход в БС-подсети РФ,</text>
+    <text x="970" y="495" class="t xs">выход через ЕС-ноду</text>
+    <text x="970" y="520" class="t xs m">SS-2022 / gRPC / WG</text>
+  </g>
+
+  <!-- связи -->
+  <line x1="280" y1="170" x2="330" y2="180" stroke="#7c8cff" stroke-width="1.6" marker-end="url(#arrA)"/>
+  <line x1="280" y1="278" x2="330" y2="230" stroke="#7c8cff" stroke-width="1.6" marker-end="url(#arrA)"/>
+  <line x1="280" y1="490" x2="330" y2="430" stroke="#ffd166" stroke-width="1.6" marker-end="url(#arr)"/>
+  <line x1="480" y1="348" x2="480" y2="324" stroke="#c792ea" stroke-width="1.6" marker-end="url(#arrA)"/>
+  <text x="492" y="342" class="t lbl">вебхук оплаты</text>
+
+  <line x1="630" y1="200" x2="690" y2="200" stroke="#4ecdc4" stroke-width="1.8" marker-end="url(#arrG)"/>
+  <text x="634" y="192" class="t lbl">REST</text>
+  <line x1="690" y1="240" x2="630" y2="240" stroke="#4ecdc4" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#arrG)"/>
+  <text x="634" y="258" class="t lbl">вебхуки событий</text>
+
+  <line x1="918" y1="170" x2="952" y2="170" stroke="#06d6a0" stroke-width="1.8" marker-end="url(#arrG)"/>
+  <line x1="918" y1="200" x2="952" y2="266" stroke="#06d6a0" stroke-width="1.8" marker-end="url(#arrG)"/>
+  <line x1="918" y1="230" x2="952" y2="368" stroke="#06d6a0" stroke-width="1.8" marker-end="url(#arrG)"/>
+
+  <path d="M 155 432 C 155 560 900 600 1060 540" fill="none" stroke="#7c8cff" stroke-width="1.8" stroke-dasharray="6 5" marker-end="url(#arrA)"/>
+  <text x="470" y="588" class="t lbl" fill="#7c8cff">трафик клиента: подписка → инбаунд ноды (через ТСПУ)</text>
+
+  <text x="1164" y="600" class="t xs m" text-anchor="end" fill="#8b949e" fill-opacity="0.6">assets/diagrams/stack.svg</text>
+</svg>
